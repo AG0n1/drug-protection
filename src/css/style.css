@@ -1,0 +1,393 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+/* background: url("../components/images/main-Photo.jpg"); */
+html {
+    background: #0f0f10;;
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.absoluteCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+/* Header */
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    transition: .5s;
+    background: black;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    height: 5vw;
+}
+
+.header-nav {
+    justify-content: space-around;
+    width: 60%;
+}
+
+.header-link {
+    color: #FF3EF7;
+    font-size: 20px;
+}
+
+.header-link:hover {
+    color: #00EAC0;
+    transition: .5s;
+}
+
+.header-link:hover > .header-link::after {
+    width: 100%;
+    height: 4px;
+    background: white;
+    transition: .5s;
+}
+
+.logo {
+    width: 20vw;
+}
+
+/* Main */
+.main-background {
+    min-height: 100vh;
+    
+    background: #0f0f10;
+}
+
+#main-info {
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.infoBlock {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 200px;
+    border-radius: 20px;
+    margin-top: 40px;
+    color: white;
+    padding: 40px;
+    transition: 1s;
+    box-shadow: 0 0 30px rgb(0, 0, 0) inset;
+    background: #0f0f10;
+}
+
+.information {
+    width: 60%;
+}
+
+.infoBlock > h1 {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.titleText {
+    /* color: #FF3EF7; */
+    color: #FF3EF7;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+.infoText {
+    color: #00EAC0;
+    font-size: 20px;
+}
+
+p {
+    cursor: pointer;
+    margin-top: 2vw;
+    /*text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;*/
+}
+
+.show-hide {
+    font-size: 20px;
+    color: #FF3EF7;
+}
+
+.preview {
+    flex-direction: column;
+}
+
+.photoZone {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.Drugphoto {
+    position: relative;
+    margin-top: 50px;
+    width: 27%;
+    min-height: 15vw;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Drugphoto > img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+#btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    width: 350px;
+    height: 80px;
+    border-radius: 40px;
+    background: #039BE5;
+    outline: none;
+    border: 0px;
+    cursor: pointer;
+}
+
+#btn > h1 {
+    text-align: center;
+    font-size: 22px;
+    min-width: 70%;
+}
+
+.contact-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transition: .5s;
+    height: 90vh;
+    background-image: url(../components/images/170306180001-what-are-statins-cholesterol-sje-orig-00000000.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 200px;
+}
+
+.contact-block-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 70%;
+    min-height: 80%;
+}
+
+.contact-block-text .titleText {
+    font-size: 45px;
+    color: rgba(255, 0, 170);
+}
+
+#btn > .logo {
+    width: 50px;
+}
+
+.dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    transition: .3s;
+
+    background: linear-gradient(rgb(0,0,0,.9), rgb(0,0,0,0)); 
+    border-radius: 20px 20px 0 0px;
+}
+
+.Drugphoto:hover .dark {
+    background: linear-gradient(rgb(0,0,0,.9), rgb(0,0,0,0.04)); 
+    
+    height: 100%;
+}
+
+#first {
+    margin-top: 97vh;
+}
+
+
+
+/* News */
+
+.pos-rel {
+    position: relative;
+}
+
+.newsBlock {
+    position: absolute;
+    justify-content: space-around;
+    padding: 10px;
+    padding-top: 0;
+    flex-wrap: wrap;
+    top: 60px;
+    left: 0;
+    background: rgb(19, 19, 19);
+}
+
+.newsBlock > div {
+    margin-top: 15px;
+}
+
+.dark-text {
+    position: relative;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100px;
+}
+
+.news-block {
+    height: 300px;
+    border-radius: 20px;
+    background: black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.news-block-large {
+    width: 66%;
+}
+
+.news-block-small {
+    width: 32.5%;
+}
+
+.news-title {
+    font-size: 20px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.likes-dislikes {
+    display: flex;
+    font-size: 10px;
+}
+
+.likes-dislikes > div > .logo {
+    width: 15px;
+    cursor: pointer;
+}
+
+.likes {
+    margin: 0px 30px 0px 7px;
+    font-family: normal;
+    font-weight: 100;
+}
+
+/* Laws */
+
+#first-law {
+    margin-top: 90px;
+}
+
+.laws-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    color: #FF3EF7;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.laws-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.lawLi {
+    flex-direction: column;
+    margin-top: 0;
+}
+
+ol {
+    list-style: none;
+}
+
+.law-list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.list-number {
+    color: #FF3EF7;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.law-info {
+    width: 95%;
+    color: #00EAC0;
+    font-size: 18px;
+}
+
+.lawName {
+    width: 100%;
+    min-height: 50px;
+    text-align: center;
+    color: #FF3EF7;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1250px) {
+    .container {
+        width: 1000px;
+    }
+}
+
+@media (max-width: 1015px) {
+    .container {
+        width: 767px;
+    }
+}
+
+
+/* Footer */
+
+footer {
+    width: 100%;
+    min-height: 40vh;
+    margin-top: 50px;
+    background: #0f0f10;
+}
