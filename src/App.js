@@ -5,8 +5,9 @@ import Header from "./components/Header"
 import MainInfo from "./components/InfoTable/MainInfo"
 import News from "./components/news/News";
 import Laws from "./components/laws/Laws";
-import Species from "./components/species/Species";
-import Footer from "./components/Footer";
+
+import Stories from "./components/stories/Stories";
+import Registration from "./components/Registration";
     
 class App extends React.Component {
 
@@ -19,8 +20,9 @@ class App extends React.Component {
                     
                     <Route path="news" element={<News />} />
                     <Route path="laws" element={<Laws />} />
-                    <Route path="species" element={<Species />} />
+                    <Route path="stories" element={<Stories />}/>
                 </Routes>
+                <Registration display="none" />
             </BrowserRouter>
         )
     }

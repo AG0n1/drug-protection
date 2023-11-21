@@ -15,29 +15,36 @@ import logo8 from "./images/logo8.jpg"
 
 
 class News extends React.Component {
-
     render() {
 
         const text = {
             title1: "написать про то, как милиция схватила школьников на вечеринке",
-            like1: 2,
-            dislike1: 3,
+            like1: 190,
+            dislike1: 12,
 
             title2: "написать о статье про пагубное воздействие наркотиков",
-            like2: 4,
-            dislike2: 5,
+            like2: 44,
+            dislike2: 8,
 
+            title3: "написать о статье про пагубное воздействие наркотиков",
+            like3: 63,
+            dislike3: 13,
 
+            title4: "написать о статье про пагубное воздействие наркотиков",
+            like4: 209,
+            dislike4: 13,
         }
         
+        
+
         return (
             <div className="pos-rel container">
                 <div className="infoBlock newsBlock">
 
                     <NewsBlockLarge title={text.title1} like={text.like1} dislike={text.dislike1} image={logo1} />
                     <NewsBlockSmall title={text.title2} like={text.like2} dislike={text.dislike2} image={logo2} />
-                    <NewsBlockSmall title="Некий другой заголовок" image={logo3} />
-                    <NewsBlockLarge title="Еще один заголовок" image={logo4} />
+                    <NewsBlockSmall title={text.title3} like={text.like3} dislike={text.dislike3} image={logo3} />
+                    <NewsBlockLarge title={text.title4} like={text.like4} dislike={text.dislike4} image={logo4} />
                     <NewsBlockSmall title="Дополнительный заголовок" image={logo5} />
                     <NewsBlockSmall image={logo6} />
                     <NewsBlockSmall image={logo7} />
