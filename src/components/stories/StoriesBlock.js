@@ -5,21 +5,19 @@ import Image from "../Image"
 class StoriesBlock extends React.Component {
 
     render() {
-        const style = {
-            background: this.props.background,
-        }
+
         return(
             <div className="storiesBlock">
-                <div className="story-image" style={style}>
-
+                <div className="story-image absoluteCenter">
+                    <Image image={this.props.background} />
                 </div>
-
-                <div className="story-text">
-                    <div className="stroy-title">
+                
+                <div className="story-text ">
+                    <div className="absoluteCenter story-title ">
                         {this.props.title}
                     </div>
 
-                    <div className="stroy-info">
+                    <div className="story-info">
                         {this.props.info}
                     </div>
                 </div>
