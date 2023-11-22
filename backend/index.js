@@ -14,6 +14,7 @@ app.get('/api', (req, res) => {
       AG0n1: {
         status: "admin",
         email: "mmarkovec15072003@gmail.com",
+        password: "8Puvjgppy",
         phoneNumber: "+375293883088"
       }
     });

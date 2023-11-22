@@ -7,7 +7,11 @@ import News from "./components/news/News";
 import Laws from "./components/laws/Laws";
 import Stories from "./components/stories/Stories";
 import Registration from "./components/Registration";
-    
+// npx create-react-app
+// npm i express
+// npm i concurrently
+// npm i mongoose
+// npm i nodemon
 function App() {
 
         
@@ -23,15 +27,6 @@ function App() {
                     <Route path="stories" element={<Stories />}/>
                 </Routes>
                 <Registration display="none" />
-                {
-                    /*
-                        <p>
-                            {
-                                !data ? "Loading.." : data
-                            }
-                        </p>
-                    */
-                }
             </BrowserRouter>
         )
 } 
