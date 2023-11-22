@@ -39,11 +39,11 @@ header {
 
 .autorisation {
     position: absolute;
-    top: 12px;
+    top: 17px;
     right: 30px;
 
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 
     cursor: pointer;
 }
@@ -77,7 +77,7 @@ header {
 }
 
 .logo {
-    width: 20vw;
+    width: 300px;
 }
 
 
@@ -567,12 +567,13 @@ ol {
 .story-image > img {
     margin: 0 auto;
     border-radius: 20px;
+    width: 80%;
 
     box-shadow: 0px 0px 20px black;
 }
 
 .story-text {
-    width: 50%;
+    width: 55%;
     min-height: 500px;
 }
 
@@ -583,6 +584,11 @@ ol {
     font-size: 30px;
     font-weight: bold;
     color:#FF3EF7 ;
+}
+
+.story-info {
+    color:#00EAC0;
+    font-size: 15px;
 }
 
 /* Footer */
@@ -605,5 +611,13 @@ footer {
 @media (max-width: 1180px) {
     .container {
         width: 767px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .header-link {
+        font-size: 15px;
     }
 }

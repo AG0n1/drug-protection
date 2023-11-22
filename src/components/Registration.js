@@ -47,7 +47,7 @@ class Registration extends React.Component {
                         </div>
                         <div className="btn">
                         <button className="button1" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                        <button className="button2">Sign Up</button>
+                        <button onClick={console.log(1)} className="button2">Sign Up</button> {/* !!!!OnClick?!!!!!  */}
                     </div>
                 <button className="button3">Forgot Password?</button>
                 <div className="closeForm" onClick={this.close} >
