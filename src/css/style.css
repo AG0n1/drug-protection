@@ -321,6 +321,10 @@ p {
     font-weight: 100;
 }
 
+.pill-news > img {
+    width: 50px;
+}
+
 /* Laws */
 
 #first-law {
@@ -541,6 +545,7 @@ ol {
     justify-content: space-around;
 
     padding-top: 100px;
+    
 
     min-height: 100vh;
 
@@ -551,7 +556,7 @@ ol {
     display: flex;
     align-items: center;
     justify-content: space-around;
-
+    padding-bottom: 40px;
     width: 100%;
     min-height: 500px;
     border-radius: 20px;
@@ -559,21 +564,8 @@ ol {
     box-shadow: 0px 0px 20px black inset;
 }
 
-.story-image {
-    width: 30%;
-    height: 300px;
-}
-
-.story-image > img {
-    margin: 0 auto;
-    border-radius: 20px;
-    width: 80%;
-
-    box-shadow: 0px 0px 20px black;
-}
-
 .story-text {
-    width: 55%;
+    width: 90%;
     min-height: 500px;
 }
 
@@ -588,7 +580,14 @@ ol {
 
 .story-info {
     color:#00EAC0;
-    font-size: 15px;
+    font-size: 18px;
+}
+
+.quote {
+    color:#FF3EF7 ;
+    font-size: 23px;
+    font-weight: bold;
+    font-style: italic;
 }
 
 /* Footer */

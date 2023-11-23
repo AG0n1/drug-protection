@@ -8,18 +8,14 @@ class StoriesBlock extends React.Component {
 
         return(
             <div className="storiesBlock">
-                <div className="story-image absoluteCenter">
-                    <Image image={this.props.background} />
-                </div>
-                
                 <div className="story-text ">
                     <div className="absoluteCenter story-title ">
                         {this.props.title}
                     </div>
 
-                    <div className="story-info">
-                        {this.props.info}
-                    </div>
+                    {
+                        this.props.info
+                    }
                 </div>
             </div>
         )
