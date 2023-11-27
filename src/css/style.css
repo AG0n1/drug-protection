@@ -263,6 +263,7 @@ p {
     top: 60px;
     left: 0;
     background: rgb(19, 19, 19);
+    z-index: 2;
 }
 
 .newsBlock > div {
@@ -321,8 +322,17 @@ p {
     font-weight: 100;
 }
 
+.pill-news {
+    z-index: 1;
+}
+
 .pill-news > img {
     width: 50px;
+}
+
+#large-pill > img {
+    transform: rotate(57deg);
+    width: 110px;
 }
 
 /* Laws */

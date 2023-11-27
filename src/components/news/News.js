@@ -25,6 +25,7 @@ class News extends React.Component {
             scrollY: 0,
             initialTop: 800,
             initialTop1: 400,
+            rotVar: 57,
         };
         this.handleScroll = this.handleScroll.bind(this);
         this.pillRef1 = React.createRef();
@@ -73,11 +74,14 @@ class News extends React.Component {
             position: 'absolute',
             top: `${this.state.initialTop - this.state.scrollY * parallaxCoefficient}px`,
             left: '30px',
+            transform: `rotate(${this.state.rotVar - this.state.scrollY * parallaxCoefficient}deg)`,
+            filter: "blur(2px)",
         };
 
         const pillStyle1 = {
             position: 'absolute',
             top: `${this.state.initialTop1 - this.state.scrollY * parallaxCoefficient1}px`,
+            transform: `rotate(${this.state.rotVar - this.state.scrollY * parallaxCoefficient}deg)`,
             left: '1400px',
         }
         
@@ -99,7 +103,7 @@ class News extends React.Component {
                     </div>
                 </div>
                 
-                <div className="pill-news" style={pillStyle} ref={this.pillRef1}>
+                <div className="pill-news" id = "large-pill" style={pillStyle} ref={this.pillRef1}>
                     <Image image={pill} />
                 </div>
 

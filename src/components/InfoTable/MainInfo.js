@@ -9,12 +9,12 @@ import Contact from "../Contact"
 function MainInfo() {
     const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch('http://localhost:3001/api')
-      .then((response) => response.json())
-      .then((response) => setData(response.AG0n1.email))
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+    useEffect(() => {
+        fetch('http://localhost:3001/api')
+        .then((response) => response.json())
+        .then((response) => setData(response.AG0n1.email))
+        .catch((error) => console.error('Error fetching data:', error));
+    }, []);
         return (
             <div className="main-background">
                 <div id="main-info" className="absoluteCenter container">
