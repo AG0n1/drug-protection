@@ -15,20 +15,42 @@ function MainInfo() {
         .then((response) => setData(response.AG0n1.email))
         .catch((error) => console.error('Error fetching data:', error));
     }, []);
-        return (
-            <div className="main-background">
-                <div id="main-info" className="absoluteCenter container">
-                    <Contact  />
-                    <Information id="first" />
-                    <Information2 />
+
+    /*
+        1 предложение про актуальность
+
+        Технологии: пара предложений
+
+        Функционал: 
+            Демонстрация пользователю инфы
+                сказать про руты
+            Сервер
+            
+            Бот
+            В конце рассказать про хакатон
+        Упомянуть про гит
+        избавится от хард кода
+    */
+
+    return (
+        <div className="main-background">
+            <div id="main-info" className="absoluteCenter container">
+                <Contact  />
+                <Information id="first" />
+                <Information2 />
+                {
+                    /*
                     <p>
                         {
                             !data ? "Loading..." : data
                         }
                     </p>
-                </div>
+                    */
+                }
+                
             </div>
-        )
+        </div>
+    )
 }
 
 export default MainInfo

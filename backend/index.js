@@ -16,6 +16,10 @@ app.get('/api', (req, res) => {
         email: "mmarkovec15072003@gmail.com",
         password: "8Puvjgppy",
         phoneNumber: "+375293883088"
+      },
+      Teacher: {
+        status: "admin",
+        test: "test"
       }
     });
   });

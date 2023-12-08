@@ -75,13 +75,13 @@ class Stories extends React.Component {
 
     render() {
         return(
-            <div className="container">
-                <div className="storiesMain">
-                    <StoriesBlock background={logo1} title={this.state.title1} info={this.state.info1} />
-                    <StoriesBlock background={logo2} title={this.state.title2} info={this.state.info2} />
-                    
+                <div className="container">
+                    <div className="storiesMain">
+                        <StoriesBlock background={logo1} title={this.state.title1} info={this.state.info1} />
+                        <StoriesBlock background={logo2} title={this.state.title2} info={this.state.info2} />
+                        
+                    </div>
                 </div>
-            </div>
         )
     }
 }

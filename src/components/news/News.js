@@ -12,13 +12,9 @@ import logo5 from "./images/logo5.jpg"
 import logo6 from "./images/logo6.jpg"
 import logo7 from "./images/logo7.jpg"
 import logo8 from "./images/logo8.jpg"
-
 import pill from "../images/pill.png"
 
-
-
 class News extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {

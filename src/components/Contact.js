@@ -7,7 +7,7 @@ class Contact extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: "Если вы подозреваете, что у вас зависимость - напишите нам!"
+            title: "Наша миссия - сделать мир безопаснее"
         }
     }
 
@@ -24,9 +24,6 @@ class Contact extends React.Component {
                             Свяжитесь с нами
                         </h1>
                     </button>
-                </div>
-                <div className="contact-block-photo">
-
                 </div>
             </div>
                 

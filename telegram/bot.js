@@ -5,7 +5,7 @@ const bot = new TelegramApi(token, { polling: true })
 
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
-
+  
   if (msg.text === "/start") {
     bot.sendMessage(chatId, 'Привет, юзер!');
   } else {
