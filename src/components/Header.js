@@ -12,14 +12,14 @@ class Header extends React.Component {
         super(props);
         this.registrationRef = React.createRef();
         this.open = this.open.bind(this);
-    }
-
-    open() {
+      }
+    
+      open() {
         if (this.registrationRef.current) {
-            this.registrationRef.current.openForm();
+          this.registrationRef.current.openForm();
         }
-    }
-
+      }
+      
     render() {
         return (
             <header >

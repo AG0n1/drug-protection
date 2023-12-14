@@ -38,15 +38,13 @@ function MainInfo() {
                 <Contact  />
                 <Information id="first" />
                 <Information2 />
-                {
-                    /*
+
                     <p>
                         {
                             !data ? "Loading..." : data
                         }
                     </p>
-                    */
-                }
+
                 
             </div>
         </div>
