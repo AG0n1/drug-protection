@@ -7,15 +7,6 @@ import Contact from "../Contact"
 
 
 function MainInfo() {
-    const [data, setData] = useState(null);
-
-    useEffect(() => {
-        fetch('http://localhost:3001/api')
-        .then((response) => response.json())
-        .then((response) => setData(response.AG0n1.email))
-        .catch((error) => console.error('Error fetching data:', error));
-    }, []);
-
     /*
         1 предложение про актуальность
 
@@ -38,13 +29,6 @@ function MainInfo() {
                 <Contact  />
                 <Information id="first" />
                 <Information2 />
-
-                    <p>
-                        {
-                            !data ? "Loading..." : data
-                        }
-                    </p>
-
                 
             </div>
         </div>

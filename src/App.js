@@ -11,8 +11,6 @@ import Registration from "./components/Registration";
 // npx create-react-app
 // npm i express
 // npm i concurrently
-// npm i mongoose
-// npm i nodemon
 function App() {
 
         

@@ -1,3 +1,4 @@
+import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 
 const Registration = forwardRef(({ openFormCallback }, ref) => {
@@ -13,30 +14,31 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
     setDisplay("none");
   };
 
-  const handleLogin = () => {
-  const formData = {
-    email: login,
-    password: password,
-  };
-
-  fetch("http://localhost:3001/api", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.user) {
-        alert(`Welcome, ${data.user.name}!`);
-      } else {
-        alert("User not found!");
-      }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const formData = {
+      email: login,
+      password: password,
+      };
+    fetch("http://localhost:3001/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(formData),
     })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.user) {
+          alert(`Welcome, ${data.user.name}!`);
+        } else {
+          alert("User not found!");
+        }
+      })
+      .catch((error) => {
+        alert("Error fetching data:" + error);
+      });
 };
 
   useImperativeHandle(ref, () => ({
@@ -61,6 +63,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
             placeholder="example@email.com"
             autoComplete="off"
             value={login}
+
             onChange={(e) => setLogin(e.target.value)}
           />
         </div>

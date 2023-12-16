@@ -10,14 +10,16 @@ const users = {
   AG0n1: {
     name: "AG0n1",
     status: "admin",
-    email: "1121",
+    email: "mmarkovec15072003@gmail.com",
     password: "111",
     phoneNumber: "+375293883088",
   },
   Teacher: {
     name: "Teacher",
+    status: "admin",
     email: "admin",
-    test: "test",
+    password: "test",
+    phoneNumber: "+375293883088",
   },
   User: {
     name: "User",
@@ -27,14 +29,17 @@ const users = {
 };
 
 app.post('/api', (req, res) => {
+  console.log("Received a POST request");
   const { email, password } = req.body;
   const user = Object.values(users).find((u) => u.email === email && u.password === password);
   if (user) {
+    console.log(user)
     res.json({ user });
   } else {
-    res.json({ user: null });
+    res.status(401).json({ error: 'Invalid credentials' });
   }
 });
+
 
 app.get('/api', (req, res) => {
   res.json(users);
