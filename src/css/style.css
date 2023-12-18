@@ -118,9 +118,7 @@ header {
 }
 
 .titleText {
-    /* color: #FF3EF7; */
     color: #FF3EF7;
-    margin-bottom: 20px;
     z-index: 1;
 }
 
@@ -195,7 +193,7 @@ p {
     top: 0;
     left: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     transition: .5s;
@@ -204,7 +202,14 @@ p {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    padding: 200px;
+}
+
+.limit {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+    width: 80%;
 }
 
 .contact-block-text {
@@ -212,7 +217,6 @@ p {
     flex-direction: column;
     justify-content: space-between;
     width: 70%;
-    min-height: 80%;
 }
 
 .contact-block-text .titleText {
@@ -267,6 +271,7 @@ p {
 }
 
 .newsBlock > div {
+    cursor: pointer;
     margin-top: 15px;
 }
 
@@ -667,6 +672,10 @@ footer {
 
 /* Media */
 
+.mobile {
+    display: none;
+}
+
 @media (max-width: 1343px) {
     .container {
         width: 1000px;
@@ -684,5 +693,53 @@ footer {
 
     .header-link {
         font-size: 15px;
+    }
+}
+
+@media (max-width: 760px) {
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 170px;
+        width: 100%;
+    }
+    #header {
+        display: none;
+    }
+    .autorisation {
+        display: none;
+    }
+    .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+    }
+    .mobile-header > div > img {
+        width: 300px;
+    }
+    .mobile-burger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90px;
+        height: 90px;
+        border: 4px solid white;
+        border-radius: 50%;
+    }
+    .titleText { 
+        width: 120%;    
+    }
+    .limit { 
+        min-height: 300px;
+    }
+    .container {
+        width: 80%;
+    }
+    .infoBlock > .photo {
+        display: none;
+    }
+    .information {
+        width: 100%;
     }
 }

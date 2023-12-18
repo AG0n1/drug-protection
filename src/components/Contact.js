@@ -14,17 +14,20 @@ class Contact extends React.Component {
     render() {
         return (
             <div className="contact-block" id="contact">
-                <div className="contact-block-text">
-                    <h1 data-text={this.state.title} className="titleText">
-                        {this.state.title}
-                    </h1>
-                    <button id="btn">
-                        <Image image={telegramLogo} />
-                        <h1>
-                            Свяжитесь с нами
+                <div className="limit">
+                    <div className="contact-block-text">
+                        <h1 data-text={this.state.title} className="titleText">
+                            {this.state.title}
                         </h1>
+                        
+                    </div>
+                    <button id="btn">
+                            <Image image={telegramLogo} />
+                            <h1>
+                                Свяжитесь с нами
+                            </h1>
                     </button>
-                </div>
+                </div> 
             </div>
                 
         )

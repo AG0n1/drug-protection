@@ -1,16 +1,60 @@
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-
+let isLoggedIn = false
 const Registration = forwardRef(({ openFormCallback }, ref) => {
   const [display, setDisplay] = useState("none");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-
+  const [isUserStyle, setIsUserStyle] = useState(null);
+  const isUser = document.getElementById("input-div-isuser")
+  useImperativeHandle(ref, () => ({
+    openForm: openForm,
+  }));
+  const styles = {
+    defaultStyle: {
+      display: "none",
+    },
+    styleForSuccessLogin: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      border: "2px solid green",
+      background: "#32a852",
+      width: "100%",
+      height: "40px",
+      borderRadius: "5px",
+      fontWeight: "bold"
+    },
+    styleForUnsuccessLogin: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      border: "2px solid red",
+      background: "#c41834",
+      width: "100%",
+      height: "40px",
+      borderRadius: "5px",
+      fontWeight: "bold"
+    },
+    loggedIn: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      background: "gray",
+      width: "100%",
+      height: "40px",
+      borderRadius: "5px",
+      fontWeight: "bold"
+    }
+  }
+  
   const openForm = () => {
     setDisplay("flex");
   };
 
   const close = () => {
+    setIsUserStyle(style.defaultStyle)
+    isUser.textContent = ""
     setDisplay("none");
   };
 
@@ -31,9 +75,19 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
-          alert(`Welcome, ${data.user.name}!`);
+          if (!isLoggedIn) {
+            setIsUserStyle(styles.styleForSuccessLogin);
+            isUser.textContent = `Welcome, ${data.user.name}`
+            isLoggedIn = true 
+          } else {
+            e.preventDefault();
+            setIsUserStyle(styles.loggedIn)
+            isUser.textContent = "You are alredy logged in"
+          }
         } else {
-          alert("User not found!");
+          setIsUserStyle(styles.styleForUnsuccessLogin);
+          isUser.textContent = "User not found"
+          isLoggedIn = false
         }
       })
       .catch((error) => {
@@ -41,9 +95,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
       });
 };
 
-  useImperativeHandle(ref, () => ({
-    openForm: openForm,
-  }));
+  
 
   const style = {
     display: display,
@@ -78,6 +130,9 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+        </div>
+        <div id="input-div-isuser" style={isUserStyle}>
+          
         </div>
         <div className="btn">
           <button className="button1" onClick={handleLogin}>

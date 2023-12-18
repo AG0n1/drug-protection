@@ -24,13 +24,10 @@ function MainInfo() {
     */
 
     return (
-        <div className="main-background">
-            <div id="main-info" className="absoluteCenter container">
-                <Contact  />
-                <Information id="first" />
-                <Information2 />
-                
-            </div>
+        <div id="main-info" className="absoluteCenter container">
+            <Contact  />
+            <Information id="first" />
+            <Information2 />  
         </div>
     )
 }

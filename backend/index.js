@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -29,14 +29,12 @@ const users = {
 };
 
 app.post('/api', (req, res) => {
-  console.log("Received a POST request");
   const { email, password } = req.body;
   const user = Object.values(users).find((u) => u.email === email && u.password === password);
   if (user) {
-    console.log(user)
     res.json({ user });
   } else {
-    res.status(401).json({ error: 'Invalid credentials' });
+    res.json({ user: null });
   }
 });
 
