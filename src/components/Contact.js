@@ -21,12 +21,12 @@ class Contact extends React.Component {
                         </h1>
                         
                     </div>
-                    <button id="btn">
+                    <a href="https://t.me/DrugFreeUbot" id="btn">
                             <Image image={telegramLogo} />
                             <h1>
                                 Свяжитесь с нами
                             </h1>
-                    </button>
+                    </a>
                 </div> 
             </div>
                 
