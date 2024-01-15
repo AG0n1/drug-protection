@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const app = express();
 
@@ -28,16 +29,25 @@ const users = {
   },
 };
 
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: 'mmarkovec15072003@gmail.com',
+    pass: '8Puvjgppy'
+  }
+})
+
 app.post('/api', (req, res) => {
   const { email, password } = req.body;
   const user = Object.values(users).find((u) => u.email === email && u.password === password);
+
+  console.log(user)
   if (user) {
     res.json({ user });
   } else {
     res.json({ user: null });
   }
 });
-
 
 app.get('/api', (req, res) => {
   res.json(users);

@@ -82,7 +82,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
           } else {
             e.preventDefault();
             setIsUserStyle(styles.loggedIn)
-            isUser.textContent = "You are alredy logged in"
+            isUser.textContent = "You are already logged in"
           }
         } else {
           setIsUserStyle(styles.styleForUnsuccessLogin);
@@ -93,9 +93,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
       .catch((error) => {
         alert("Error fetching data:" + error);
       });
-};
-
-  
+};  
 
   const style = {
     display: display,

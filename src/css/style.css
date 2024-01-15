@@ -7,7 +7,7 @@
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
 }
-/* background: url("../components/images/main-Photo.jpg"); */
+
 html {
     background: #0f0f10;;
     background-size: cover;
@@ -701,7 +701,7 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 170px;
+        height: 120px;
         width: 100%;
     }
     #header {
@@ -716,14 +716,14 @@ footer {
         width: 80%;
     }
     .mobile-header > div > img {
-        width: 300px;
+        width: 200px;
     }
     .mobile-burger {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 90px;
-        height: 90px;
+        width: 70px;
+        height: 70px;
         border: 4px solid white;
         border-radius: 50%;
     }
@@ -741,5 +741,9 @@ footer {
     }
     .information {
         width: 100%;
+    }
+    .mobile-burger > svg {
+        width: 60%;
+        height: 70px;
     }
 }
