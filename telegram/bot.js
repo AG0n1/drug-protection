@@ -47,25 +47,29 @@ bot.on('message', async (msg) => {
   if (msg.text === '/start') {
     bot.sendMessage(chatId, "Вы зарегистрированы на нашем сайте?");
 
-    const userResponse = await new Promise((resolve) => {
+    const isRegister = await new Promise((resolve) => {
       bot.on('message', (msg) => {
         resolve(msg.text.trim().toLowerCase());
       });
     });
 
-    if (userResponse === "да") {
+    if (isRegister === "да") {
       bot.sendMessage(chatId, "Вы входите в аккаунт как сотрудник или как клиент?")
-      bot.on("message", (msg) => {
-        if (msg.text.trim().toLowerCase() == "да") {
-          bot.sendMessage("Отправьте Ваш уникальный код:")
-          
-          
 
-        } else {
-          // написать логику для пользователей
-        }
+      const isClient = await new Promise((res) => {
+        bot.on("message", (msg) => {
+          res(msg.text.trim().toLowerCase())
+        })
       })
-    } else if (userResponse === "нет") {
+
+      if (isClient == "да") {
+        bot.sendMessage("Отправьте Ваш уникальный код:")
+
+      } else {
+        // написать логику для пользователей
+      }
+
+    } else if (isRegister === "нет") {
       await user.askForName(chatId, bot);
       console.log("Отправьте свой email: ");
       await user.askForEmail(bot)
