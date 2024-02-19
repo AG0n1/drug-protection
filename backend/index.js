@@ -37,11 +37,20 @@ app.post('/api', (req, res) => {
   const { email, password } = req.body;
   const user = Object.values(users).find((u) => u.email === email && u.password === password);
 
-  console.log(user)
   if (user) {
     res.json({ user });
   } else {
-    res.json({ user: null });
+    // Если пользователь не найден, добавляем новую запись в SQL таблицу
+    const newUser = { email, password }; // Здесь вы можете добавить другие поля, если они присутствуют в вашей таблице
+    connection.query('INSERT INTO ваша_таблица SET ?', newUser, (error, results) => {
+      if (error) {
+        console.error('Ошибка добавления пользователя в базу данных:', error);
+        res.json({ error: 'Ошибка добавления пользователя в базу данных' });
+      } else {
+        console.log('Новый пользователь успешно добавлен в базу данных');
+        res.json({ user: newUser });
+      }
+    });
   }
 });
 

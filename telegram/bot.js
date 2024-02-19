@@ -21,7 +21,7 @@ const user = new User();
 bot.onText(/\/start/, (msg) => {
   const { chatId } = msg.chat;
 
-  bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой  `)
+  bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
 
 })
 
