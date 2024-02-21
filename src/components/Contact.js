@@ -14,12 +14,9 @@ class Contact extends React.Component {
     render() {
         return (
             <div className="contact-block" id="contact">
-                <div className="limit">
-                    <div className="contact-block-text">
-                        <h1 data-text={this.state.title} className="titleText">
-                            {this.state.title}
-                        </h1>
-                        
+                <div className="contact-block-text">
+                    <div className="contact-title">
+                        {this.state.title}
                     </div>
                     <a href="https://t.me/DrugFreeUbot" id="btn">
                             <Image image={telegramLogo} />
@@ -27,7 +24,10 @@ class Contact extends React.Component {
                                 Свяжитесь с нами
                             </h1>
                     </a>
-                </div> 
+                </div>
+                <div className="contact-logo">
+                    
+                </div>
             </div>
                 
         )

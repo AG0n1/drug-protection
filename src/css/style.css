@@ -9,10 +9,7 @@
 }
 
 html {
-    background: #0f0f10;;
-    background-size: cover;
-    background-position: top;
-    background-attachment: fixed;
+    background-color: #000;
     min-height: 100vh;
 }
 
@@ -35,6 +32,8 @@ header {
     z-index: 100;
     transition: .5s;
     background: black;
+
+    color: white;
 }
 
 .autorisation {
@@ -51,6 +50,7 @@ header {
 #header {
     display: flex;
     justify-content: space-between;
+    font-size: 30px;
     height: 80px;
 }
 
@@ -60,7 +60,7 @@ header {
 }
 
 .header-link {
-    color: #FF3EF7;
+    color: #fff;
     font-size: 20px;
 }
 
@@ -117,11 +117,6 @@ header {
     margin: 0 auto;
 }
 
-.titleText {
-    color: #FF3EF7;
-    z-index: 1;
-}
-
 .infoText {
     color: #00EAC0;
     font-size: 20px;
@@ -173,55 +168,51 @@ p {
     color: white;
     font-size: 16px;
     font-weight: 700;
-    width: 350px;
+    width: 400px;
     height: 80px;
     border-radius: 40px;
     background: #039BE5;
-    outline: none;
-    border: 0px;
     cursor: pointer;
 }
 
 #btn > h1 {
     text-align: center;
     font-size: 22px;
-    min-width: 70%;
+    min-width: 75%;
 }
 
 .contact-block {
-    position: absolute;
-    top: 0;
-    left: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 100%;
     transition: .5s;
     height: 90vh;
-    background-image: url(../components/images/170306180001-what-are-statins-cholesterol-sje-orig-00000000.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-
-.limit {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 250px;
-    width: 70%;
 }
 
 .contact-block-text {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 10px;
+    height: 30vh;
     width: 70%;
 }
 
-.contact-block-text .titleText {
-    font-size: 45px;
-    color: rgba(255, 0, 170);
+.contact-title {
+    font-size: 50px;
+    color: #fff;
+}
+
+.contact-logo {
+    width: 450px;
+    height: 450px;
+    background-image: url("../components/images/intro.jpg");
+    background-size: cover;
+    background-position: center;
+
 }
 
 #btn > .logo {

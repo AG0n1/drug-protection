@@ -1,10 +1,30 @@
 {
   "files": {
-    "main.js": "/static/js/main.b770c467.js",
+    "main.css": "/static/css/main.6a20b430.css",
+    "main.js": "/static/js/main.76983fec.js",
+    "static/media/effect.png": "/static/media/effect.7ed80d5c5edac13a49ae.png",
+    "static/media/Montserrat-Bold.ttf": "/static/media/Montserrat-Bold.50f0257aa1e905f4bfaf.ttf",
+    "static/media/logo3.jpg": "/static/media/logo3.501a25c8005f21f73554.jpg",
+    "static/media/170306180001-what-are-statins-cholesterol-sje-orig-00000000.jpg": "/static/media/170306180001-what-are-statins-cholesterol-sje-orig-00000000.6eb1a2e76704e8d4e524.jpg",
+    "static/media/header-logo.png": "/static/media/header-logo.1c5b4c46b29d9a3b4d85.png",
+    "static/media/logo5.jpg": "/static/media/logo5.a87df3b642aa1b792c04.jpg",
+    "static/media/formula.png": "/static/media/formula.1cbe09c3a181b6c4275a.png",
+    "static/media/logo8.jpg": "/static/media/logo8.813be478f558dcceb4a5.jpg",
+    "static/media/logo7.jpg": "/static/media/logo7.2462a38af2f54b36ccda.jpg",
+    "static/media/logo1.jpg": "/static/media/logo1.ed81662c0973336b8969.jpg",
+    "static/media/pill.png": "/static/media/pill.bbdea651683d336a504d.png",
+    "static/media/Telegram_logo.svg.webp": "/static/media/Telegram_logo.svg.be6948c6962cac4685eb.webp",
+    "static/media/logo6.jpg": "/static/media/logo6.b8001ed4fc0cb829454b.jpg",
+    "static/media/logo2.jpg": "/static/media/logo2.5b00bba2372bb43b75af.jpg",
+    "static/media/logo4.jpg": "/static/media/logo4.03f08ed5030b2c849fdc.jpg",
+    "static/media/like.svg": "/static/media/like.ca4ece120d930110da224c157bdcac95.svg",
+    "static/media/dislike.svg": "/static/media/dislike.8196134769e86e1050d8bacf0dea242e.svg",
     "index.html": "/index.html",
-    "main.b770c467.js.map": "/static/js/main.b770c467.js.map"
+    "main.6a20b430.css.map": "/static/css/main.6a20b430.css.map",
+    "main.76983fec.js.map": "/static/js/main.76983fec.js.map"
   },
   "entrypoints": [
-    "static/js/main.b770c467.js"
+    "static/css/main.6a20b430.css",
+    "static/js/main.76983fec.js"
   ]
 }
