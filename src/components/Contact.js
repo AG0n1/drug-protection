@@ -13,7 +13,7 @@ class Contact extends React.Component {
 
     render() {
         return (
-            <div className="contact-block" id="contact">
+            <div className="contact-block">
                 <div className="contact-block-text">
                     <div className="contact-title">
                         {this.state.title}

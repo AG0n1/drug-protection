@@ -20,25 +20,22 @@ const user = new User();
 
 bot.onText(/\/start/, (msg) => {
   const { chatId } = msg.chat;
-  
-  bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
-
+  console.log(msg)
+  bot.sendMessage(chatId, `Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
+  .then(() => {
+    bot.on('message', (msg) => {
+      bot.sendMessage(chatId, `Окей`)
+    })
+  }
+    
+  )  
 })
-.then(() => {
-  bot.on((msg) => {
-    if (msg.text === "Да") { 
-      bot.sendMessage(msg.chatId, "Окей")
-    } else {
-      bot.sendMessage(msg.chatId, "Не окей")
-    }
-  })
-}) 
+
 
 bot.onText(/\/register/, (msg) => {
   const { chatId } = msg.chat;
 
   bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой  `)
-
 })
 
 bot.onText(/\/donate/, (msg) => {

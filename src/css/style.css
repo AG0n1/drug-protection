@@ -101,29 +101,17 @@ header {
     min-height: 200px;
     border-radius: 20px;
     color: white;
-    padding: 40px;
-    box-shadow: 0 0 30px rgb(0, 0, 0) inset;
-    background: #0f0f10;
     margin: 0 auto;
-    margin-bottom: 60px;
+    margin-bottom: 100px;
 }
 
 .titleText {
-    margin-bottom: 10px;
-}
-
-.information {
-    width: 60%;
-}
-
-.infoBlock > h1 {
-    width: 95%;
-    margin: 0 auto;
+    margin-bottom: 30px;
 }
 
 .infoText {
-    color: #00EAC0;
     font-size: 20px;
+    font-weight: normal;
 }
 
 p {

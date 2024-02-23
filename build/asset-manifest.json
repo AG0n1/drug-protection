@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.6a20b430.css",
-    "main.js": "/static/js/main.76983fec.js",
+    "main.css": "/static/css/main.60ffcfe7.css",
+    "main.js": "/static/js/main.42559313.js",
+    "static/media/Subtract.png": "/static/media/Subtract.2b4b121d10321894a463.png",
     "static/media/effect.png": "/static/media/effect.7ed80d5c5edac13a49ae.png",
     "static/media/Montserrat-Bold.ttf": "/static/media/Montserrat-Bold.50f0257aa1e905f4bfaf.ttf",
     "static/media/logo3.jpg": "/static/media/logo3.501a25c8005f21f73554.jpg",
-    "static/media/170306180001-what-are-statins-cholesterol-sje-orig-00000000.jpg": "/static/media/170306180001-what-are-statins-cholesterol-sje-orig-00000000.6eb1a2e76704e8d4e524.jpg",
     "static/media/header-logo.png": "/static/media/header-logo.1c5b4c46b29d9a3b4d85.png",
     "static/media/logo5.jpg": "/static/media/logo5.a87df3b642aa1b792c04.jpg",
     "static/media/formula.png": "/static/media/formula.1cbe09c3a181b6c4275a.png",
@@ -20,11 +20,11 @@
     "static/media/like.svg": "/static/media/like.ca4ece120d930110da224c157bdcac95.svg",
     "static/media/dislike.svg": "/static/media/dislike.8196134769e86e1050d8bacf0dea242e.svg",
     "index.html": "/index.html",
-    "main.6a20b430.css.map": "/static/css/main.6a20b430.css.map",
-    "main.76983fec.js.map": "/static/js/main.76983fec.js.map"
+    "main.60ffcfe7.css.map": "/static/css/main.60ffcfe7.css.map",
+    "main.42559313.js.map": "/static/js/main.42559313.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a20b430.css",
-    "static/js/main.76983fec.js"
+    "static/css/main.60ffcfe7.css",
+    "static/js/main.42559313.js"
   ]
 }
