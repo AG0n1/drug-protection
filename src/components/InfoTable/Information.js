@@ -9,11 +9,8 @@ class Information extends React.Component {
         this.state = {
             more: "Подробнее",
             hide: "",
-            firstBlock: "Что такое наркотик?",
-            firstInfoBlock: "Нарко́тик — согласно определению ВОЗ, «химический агент, вызывающий ступор, ко́му или нечувствительность к боли...",
-            
-            secondBlock: "Механизм действия",
-            secondInfoBlock: "Практически все наркотики прямо или косвенно нацелены на «систему поощрения» мозга, увеличивая в 5-10 раз поток нейромедиаторов типа дофамина и серотонина в постсинаптических нейронах...",
+            firstBlock: "Кто мы такие...",
+            firstInfoBlock: "Мы - команда энтузиастов, заинтересованных проблемой зависимостей у...",    
         }
 
         this.onClick = this.onClick.bind(this)
@@ -24,7 +21,7 @@ class Information extends React.Component {
         return (
             <div className="infoBlock" id={this.props.id}>
                 <div className="information">
-                    <h1 data-text={this.state.firstBlock} className="titleText" >
+                    <h1 className="titleText" >
                         {this.state.firstBlock}
                     </h1> 
                         <h1 data-text={this.state.firstInfoBlock} className="infoText">
@@ -38,13 +35,7 @@ class Information extends React.Component {
                             </p>
                         </h1>
                 </div>
-
-                <div className="photo">
-                    <Image image = {logo} />
-                </div>
-                    
-            </div>
-                
+            </div> 
         )
     }
     

@@ -24,6 +24,15 @@ bot.onText(/\/start/, (msg) => {
   bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
 
 })
+.then(() => {
+  bot.on((msg) => {
+    if (msg.text === "Да") { 
+      bot.sendMessage(msg.chatId, "Окей")
+    } else {
+      bot.sendMessage(msg.chatId, "Не окей")
+    }
+  })
+}) 
 
 bot.onText(/\/register/, (msg) => {
   const { chatId } = msg.chat;

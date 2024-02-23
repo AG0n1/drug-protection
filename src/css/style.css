@@ -97,15 +97,19 @@ header {
 .infoBlock {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 80%;
     min-height: 200px;
     border-radius: 20px;
-    margin-top: 40px;
     color: white;
     padding: 40px;
-    transition: 1s;
     box-shadow: 0 0 30px rgb(0, 0, 0) inset;
     background: #0f0f10;
+    margin: 0 auto;
+    margin-bottom: 60px;
+}
+
+.titleText {
+    margin-bottom: 10px;
 }
 
 .information {
@@ -183,22 +187,20 @@ p {
 
 .contact-block {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 80%;
     transition: .5s;
-    height: 90vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    height: 85vh;
+    margin: 0 auto;
 }
 
 .contact-block-text {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 10px;
+    width: 50%;
     height: 30vh;
-    width: 70%;
 }
 
 .contact-title {
@@ -207,38 +209,16 @@ p {
 }
 
 .contact-logo {
-    width: 450px;
-    height: 450px;
-    background-image: url("../components/images/intro.jpg");
+    width: 500px;
+    height: 500px;
+    background-image: url("../components/images/Subtract.png");
     background-size: cover;
     background-position: center;
-
+    border-radius: 10px;
 }
 
 #btn > .logo {
     width: 50px;
-}
-
-.dark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0%;
-    transition: .3s;
-
-    background: linear-gradient(rgb(0,0,0,.9), rgb(0,0,0,0)); 
-    border-radius: 20px 20px 0 0px;
-}
-
-.Drugphoto:hover .dark {
-    background: linear-gradient(rgb(0,0,0,.9), rgb(0,0,0,0.04)); 
-    
-    height: 100%;
-}
-
-#first {
-    margin-top: 97vh;
 }
 
 

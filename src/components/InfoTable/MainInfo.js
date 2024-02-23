@@ -24,7 +24,7 @@ function MainInfo() {
     */
 
     return (
-        <div id="main-info" className="absoluteCenter container">
+        <div>
             <Contact  />
             <Information id="first" />
             <Information2 />  

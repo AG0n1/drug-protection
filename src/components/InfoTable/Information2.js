@@ -10,7 +10,7 @@ class Information2 extends React.Component {
             more: "Подробнее",
             hide: "",
             
-            firstBlock: "Механизм действия",
+            firstBlock: "Наша команда",
             firstInfoBlock: "Практически все наркотики прямо или косвенно нацелены на «систему поощрения» мозга, увеличивая в 5-10 раз поток нейромедиаторов типа дофамина и серотонина в постсинаптических нейронах...",
         }
 
@@ -20,12 +20,7 @@ class Information2 extends React.Component {
 
     render() {
         return (
-            <div className="infoBlock" id={this.props.id}>
-
-                <div className="photo">
-                    <Image image = {logo} />
-                </div>
-                
+            <div className="infoBlock" id={this.props.id}>         
                 <div className="information">
                     <h1 data-text={this.state.firstBlock} className="titleText" >
                         {this.state.firstBlock}
@@ -40,10 +35,7 @@ class Information2 extends React.Component {
                                 {this.state.hide}
                             </p>
                         </h1>
-                </div>
-
-                
-                    
+                </div>     
             </div>
                 
         )

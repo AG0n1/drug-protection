@@ -18,7 +18,7 @@ class Contact extends React.Component {
                     <div className="contact-title">
                         {this.state.title}
                     </div>
-                    <a href="https://t.me/DrugFreeUbot" id="btn">
+                    <a target="_blank" href="https://t.me/DrugFreeUbot" id="btn">
                             <Image image={telegramLogo} />
                             <h1>
                                 Свяжитесь с нами
