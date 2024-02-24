@@ -5,13 +5,22 @@ const mysql = require('mysql');
 
 const app = express();
 
+class User {
+  constructor(name, second_name, status, role) {
+    this.name = name
+    this.status = status
+    this.second_name = second_name
+    this.role = role
+  }
+}
+
 app.use(cors());
 app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
-  host: 'localhost:3306',
-  user: 'b29388wp_ag0n1',
-  password: '8Puvjgppy',
+  host: 'free29.beget.com',
+  user: 'root',
+  password: '8Puvjgppy;',
   database: 'b29388wp_ag0n1'
 });
 

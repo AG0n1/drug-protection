@@ -3,11 +3,11 @@ const token = '6958498691:AAGDn9X5SqZIgFFGNXpJgKO_Sg4jqsfq7jw';
 const bot = new TelegramApi(token, { polling: true });
 
 class User {
-  constructor() {
-    this.name = '';
-    this.id = 0;
-    this.email = '';
-    this.userStatus = '';
+  constructor(name, second_name, status, role) {
+    this.name = name
+    this.status = status
+    this.second_name = second_name
+    this.role = role
   }
 
   sayHello(msg, chatId) {
@@ -41,21 +41,26 @@ bot.onText(/\/register/, (msg) => {
 bot.onText(/\/donate/, (msg) => {
   const { chatId } = msg.chat;
 
-  bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой  `)
+  bot.sendMessage(`Для поддержания проекта, Вам следует придерживаться следующих инструкций:\n`)
 
 })
 
 bot.onText(/\/search/, (msg) => {
   const { chatId } = msg.chat;
 
-  bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой  `)
+  if (User.status === "customer") {
+    bot.sendMessage(chatId, `Выполняется поиск клиента...`)
+  } else {
+    bot.sendMessage(chatId, `Выполняется поиск сотрудника...`)
+  }
+  
 
 })
 
 bot.onText(/\/help/, (msg) => {
   const { chatId } = msg.chat;
 
-  bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой  `)
+  bot.sendMessage(chatId, `Вы - сотрудник`) ? User.role === `customer` : bot.sendMessage(chatId, `Вы - клиент`)
 
 })
 
@@ -64,9 +69,10 @@ bot.on('message', (msg) => {
   chatId = msg.chat.id
   console.log(msg)
   user.sayHello(msg, chatId)
+  bot.on('message', (msg) => {
+    bot.sendMessage(chatId, "11")
+  })
 })
-
-
 
 function debug(obj = {}) {
    return JSON.stringify(obj, null, 4)
