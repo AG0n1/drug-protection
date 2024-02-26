@@ -18,8 +18,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
-  host: 'free29.beget.com',
-  user: 'root',
+  host: 'b29388wp.beget.tech',
+  user: 'b29388wp_ag0n1',
   password: '8Puvjgppy;',
   database: 'b29388wp_ag0n1'
 });
@@ -51,9 +51,4 @@ app.post('/api', (req, res) => {
   });
 
   connection.query('SELECT * FROM ')
-});
-
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
 });

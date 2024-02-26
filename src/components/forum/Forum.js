@@ -17,17 +17,15 @@ class Forum extends React.Component {
             <div className="forumElem">
                 <div className="forum-nav">
                     <div className="forum-nav-choose">
-                        <ul>
-                            <li onClick={forum} className="absoluteCenter" >
-                                Форум
-                            </li>
-                            <li onClick={forum} className="absoluteCenter" >
-                                FaQ 
-                            </li>
-                            <li onClick={forum} className="absoluteCenter" >
-                                Истории
-                            </li>
-                        </ul>
+                        <a className="forum-link" href="#">
+                            Форум
+                        </a>
+                        <a className="forum-link" href="#">
+                            FAQ
+                        </a>
+                        <a className="forum-link" href="#">
+                            Истории
+                        </a>
                     </div>
 
                     <div className="forum-nav-list">
