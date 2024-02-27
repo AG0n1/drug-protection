@@ -214,7 +214,7 @@ p {
     justify-content: space-between;
 
     width: 80%;
-    height: 200px;
+    height: 130px;
 
     margin: 0 auto;
 }
@@ -244,6 +244,48 @@ p {
     color: white;
     background-color: #3700ff;
     border-radius: 10px;
+}
+
+.advertising {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 80%;
+    height: 600px;
+    color: white;
+    margin: 0 auto;
+}
+
+.advertising-title {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.advertising-main {
+    display: flex;
+    justify-content: space-around;
+    
+    width: 100%;
+    height: 400px;
+
+    background-color: #d10050;
+    border-radius: 20px;
+}
+
+.a-main-text {
+    width: 65%;
+}
+
+.a-main-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+}
+
+.a-main-photo > img {
+    border-radius: 20px;
 }
 
 /* News */

@@ -21,21 +21,7 @@ class Information2 extends React.Component {
     render() {
         return (
             <div className="infoBlock" id={this.props.id}>         
-                <div className="information">
-                    <h1 data-text={this.state.firstBlock} className="titleText" >
-                        {this.state.firstBlock}
-                    </h1> 
-                        <h1 data-text={this.state.firstInfoBlock} className="infoText">
-                            {this.state.firstInfoBlock} 
-                            <p className="show-hide" onClick={this.onClick}  > 
-                                {this.state.more}
-                            </p>
-
-                            <p className="show-hide" onClick={this.hide}  > 
-                                {this.state.hide}
-                            </p>
-                        </h1>
-                </div>     
+                
             </div>
                 
         )
