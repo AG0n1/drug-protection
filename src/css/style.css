@@ -209,7 +209,42 @@ p {
     width: 50px;
 }
 
+.search {
+    display: flex;
+    justify-content: space-between;
 
+    width: 80%;
+    height: 200px;
+
+    margin: 0 auto;
+}
+
+.search-input {
+    width: 81%;
+    height: 70px;
+
+    border: none;
+    outline: none;
+    padding-left: 20px;
+
+    font-size: 20px;
+
+    border-radius: 10px;
+}
+
+.search-btn {
+    width: 18%;
+    height: 70px;
+
+    border: none;
+    outline: none;
+
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    background-color: #3700ff;
+    border-radius: 10px;
+}
 
 /* News */
 
@@ -630,12 +665,6 @@ ol {
     width: 70%;
     margin: 100px auto;
 }
-
-.forum-tree > li {
-    
-}
-
-/* Footer */
 
 footer {
     width: 100%;
