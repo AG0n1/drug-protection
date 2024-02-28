@@ -2,7 +2,6 @@ import React, {Component} from "react"
 import * as ReactDOMClient from 'react-dom/client'
 
 import Image from "./Image"
-import logo from "./images/header-logo.png"
 import Nav from "./Nav"
 import Registration from "./Registration"
 import Burger from "./mobile/header/burger"
@@ -36,10 +35,7 @@ class Header extends React.Component {
                 <Registration ref={this.registrationRef} />
 
                 <div className="mobile mobile-header">
-                    <div className="absoluteCenter">
-                        <Image image={logo} />
-                    </div>
-                    <Burger />
+                    Safe Society
                 </div>
             </header>
     )

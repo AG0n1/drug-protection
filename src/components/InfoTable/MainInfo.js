@@ -13,8 +13,7 @@ function MainInfo() {
             <Contact  />
             <Search />
             <Advertising />
-            <Information id="first" />
-            <Information2 />  
+            
         </div>
     )
 }

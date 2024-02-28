@@ -252,7 +252,7 @@ p {
     justify-content: space-around;
 
     width: 80%;
-    height: 600px;
+    min-height: 600px;
     color: white;
     margin: 0 auto;
 }
@@ -794,6 +794,7 @@ footer {
 
 @media (max-width: 760px) {
     header {
+        position: inherit;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -808,38 +809,89 @@ footer {
     }
     .mobile-header {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         width: 80%;
+        margin: 0 auto;
+
+        font-size: 50px;
     }
-    .mobile-header > div > img {
-        width: 200px;
+    .contact-block {
+        flex-direction: column;
+
+        height: 75vh;
+        width: 90%;
+        margin-top: 70px;
     }
-    .mobile-burger {
+    #btn {
+        width: 300px;
+    }
+    .contact-block-text {
+        height: 240px;
+        width: 100%;
+    }
+    .contact-title {
+        font-size: 40px;
+        
+    }
+    .contact-logo {
+        width: 90vw;
+        height: 90vw;
+        margin: 0 auto;
+    }
+    .search {
+        margin-top: 40px;
+        width: 90%;
+    }
+    .search-desktop {
+        display: none;
+    }
+    .mobile-search {
+        display: block;
+    }
+    .search-input {
+        font-size: 20px;
+    }
+    .search-btn > .dd {
+        display: none;
+    }
+    .mobile-search {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 70px;
-        height: 70px;
-        border: 4px solid white;
-        border-radius: 50%;
     }
-    .titleText { 
-        width: 120%;    
+    .mobile-search > img {
+        width: 40px
     }
-    .limit { 
-        min-height: 300px;
+    
+    .advertising {
+        min-height: 500px;
+        width: 90%;
     }
-    .container {
-        width: 80%;
+    .advertising-main {
+        flex-direction: column;
+        margin-top: 40px;
+        height: 900px;
+        margin-bottom: 30px;
     }
-    .infoBlock > .photo {
-        display: none;
-    }
-    .information {
+    .a-main-text {
         width: 100%;
     }
-    .mobile-burger > svg {
-        width: 60%;
-        height: 70px;
+    .advertising-title {
+        font-size: 40px;
+    }
+    .a-text-title {
+        font-size: 40px;
+    }
+    .a-text-info {
+        font-size: 20px;
+        width: 90%;
+        height: 200px;
+    }
+    .a-main-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 700px;
     }
 }
