@@ -264,7 +264,6 @@ p {
 
 .advertising-main {
     display: flex;
-    justify-content: space-around;
     
     width: 100%;
     height: 400px;
@@ -282,23 +281,29 @@ p {
 }
 
 .a-text-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     font-size: 20px;
     width: 100%;
+    height: 170px;
 }
 
 .a-main-text {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     width: 65%;
     padding-left: 40px;
 }
 
 .a-text-title {
+    display: flex;
+    align-items: center;
     color: rgb(159, 239, 255);
 
     font-size: 40px;
     font-weight: bold;
+    height: 140px;
 }
 
 .a-main-photo {
@@ -310,6 +315,28 @@ p {
 
 .a-main-photo > img {
     border-radius: 20px;
+}
+
+.a-text-info > button {
+    background: #3700ff;
+    width: 250px;
+    height: 70px;
+    border: none;
+    outline: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    font-size: 17px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.a-text-info > button:hover {
+    background: black;
 }
 
 /* News */
