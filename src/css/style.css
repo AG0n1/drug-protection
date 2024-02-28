@@ -271,10 +271,34 @@ p {
 
     background-color: #d10050;
     border-radius: 20px;
+    outline: 0px solid #d10050;
+    transition: .2s;
+    border: none;
+    cursor: pointer;
+}
+
+.advertising-main:hover {
+    outline: 10px solid #d10050;
+}
+
+.a-text-info {
+    font-size: 20px;
+    width: 100%;
 }
 
 .a-main-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     width: 65%;
+    padding-left: 40px;
+}
+
+.a-text-title {
+    color: rgb(159, 239, 255);
+
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .a-main-photo {
