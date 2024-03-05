@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
 const app = express();
+app.use(cors())
 
 class User {
   constructor(name, second_name, status, role) {
@@ -35,7 +36,7 @@ connection.connect((err) => {
 app.post('/api', (req, res) => {
   const { email, password } = req.body;
 
-  connection.query('SELECT * FROM Users WHERE email = ? AND password = ?', [email, password], (error, results) => {
+  connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
     if (error) {
       console.error('Error in trying to connect to database:', error);
       res.status(500).json({ error: 'Error in fetching' });

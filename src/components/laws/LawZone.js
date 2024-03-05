@@ -1,7 +1,5 @@
 import React from "react"
 import * as ReactDOMClient from 'react-dom/client'
-import Image from "../Image"
-import logo from "../images/formula.png"
 import LawList from "./LawList"
 
 class Information extends React.Component {

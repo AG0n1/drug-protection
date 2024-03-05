@@ -1,7 +1,6 @@
 import React from "react"
 import * as ReactDOMClient from 'react-dom/client'
-import Image from "../Image"
-import logo from "../images/effect.png"
+
 
 class Information2 extends React.Component {
     constructor(props) {
