@@ -9,17 +9,13 @@ class User {
     this.second_name = second_name
     this.role = role
   }
-
-  sayHello(msg, chatId) {
-    bot.sendMessage(chatId, `Здравствуйте, ${msg.from.first_name}`)
-  }
   
 }
 
 const user = new User();
 
 bot.onText(/\/start/, (msg) => {
-  const { chatId } = msg.chat;
+  const chatId = msg.chat.id;
   console.log(msg)
   bot.sendMessage(chatId, `Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
   .then(() => {
@@ -33,21 +29,18 @@ bot.onText(/\/start/, (msg) => {
 
 
 bot.onText(/\/register/, (msg) => {
-  const { chatId } = msg.chat;
-
+  const chatId = msg.chat.id;
   bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой  `)
 })
 
 bot.onText(/\/donate/, (msg) => {
-  const { chatId } = msg.chat;
-
+  const chatId = msg.chat.id;
   bot.sendMessage(`Для поддержания проекта, Вам следует придерживаться следующих инструкций:\n`)
 
 })
 
 bot.onText(/\/search/, (msg) => {
-  const { chatId } = msg.chat;
-
+  const chatId = msg.chat.id;
   if (User.status === "customer") {
     bot.sendMessage(chatId, `Выполняется поиск клиента...`)
   } else {
@@ -58,20 +51,9 @@ bot.onText(/\/search/, (msg) => {
 })
 
 bot.onText(/\/help/, (msg) => {
-  const { chatId } = msg.chat;
-
+  const chatId = msg.chat.id;
   bot.sendMessage(chatId, `Вы - сотрудник`) ? User.role === `customer` : bot.sendMessage(chatId, `Вы - клиент`)
 
-})
-
-
-bot.on('message', (msg) => {
-  chatId = msg.chat.id
-  console.log(msg)
-  user.sayHello(msg, chatId)
-  bot.on('message', (msg) => {
-    bot.sendMessage(chatId, "11")
-  })
 })
 
 function debug(obj = {}) {

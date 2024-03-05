@@ -18,10 +18,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
-  host: 'b29388wp.beget.tech',
-  user: 'b29388wp_ag0n1',
-  password: '8Puvjgppy;',
-  database: 'b29388wp_ag0n1'
+  host: 'localhost',
+  user: "mmark",
+  password: "LQ8G/WoJJd_EsC9v",
+  database: 'users'
 });
 
 connection.connect((err) => {
