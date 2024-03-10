@@ -1,5 +1,26 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 let isLoggedIn = false
+
+function emailForm(emailValue) {
+  const arrOfDomain = ["@tut.by", "@gmail.com", "@mail.com", "@yandex.ru", "@"]
+  const deniedSimbols = [".", "/", "<", ">", "{", "}", "[", "]", "|", "\\", "(", ")", "*", ";", ":", "&", "^", "%", "$", "#", "!", "\"", "№"]
+  let subStr = ""
+  for (let i = 0; i < emailValue.length; i++) {
+    if (emailValue[i] === "@") {
+      for (let j = i; j < emailValue.length; j++) {
+        subStr += emailValue[j]
+      }
+      break;
+    } else {
+      if (deniedSimbols.find((u) => u === emailValue[i])) {
+        return false;
+      }
+    }
+  }
+  console.log(subStr)
+  return true ? arrOfDomain.find((u) => u === subStr) : false
+}
+
 const Registration = forwardRef(({ openFormCallback }, ref) => {
   const [display, setDisplay] = useState("none");
   const [login, setLogin] = useState("");
@@ -57,24 +78,20 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
     setDisplay("none");
   };
 
-  const emailForm = () => {
-    return true
-  }
-
   const handleSignUp = (e) => {
-    if (emailForm) {
-      alert("Normal email format")
-    } else {
-      alert("Wrong Email Format!")
-    }
     e.preventDefault();
     const formData = {
       email: login,
       password: password
     };
-    console.log("formData", formData)
+    if (emailForm(login)) {
+      alert("Normal email format")
+    } else {
+      alert("Wrong Email Format!")
+      return
+    }
     fetch("http://localhost:3001/register", {
-      method: "POST",
+      method: "POST",   
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem('token')}` 

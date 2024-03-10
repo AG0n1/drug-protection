@@ -32,9 +32,9 @@ const verifyToken = (req, res, next) => {
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: "b29388wp_ag0n1",
-  password: "YES",
-  database: 'b29388wp_ag0n1'
+  user: 'mmark',
+  password: 'LQ8G/WoJJd_EsC9v',
+  database: 'users'
 })
 
 connection.connect((err) => {
@@ -66,6 +66,15 @@ app.post('/signIn', (req, res) => {
 
 app.post('/register', (req,res) => {
   const { email, password } = req.body;
+
+  connection.query('SELECT id FROM users WHERE id = ?', (err, result) => {
+    if (!err) {
+      if (result.length > 0) {
+        console.log(result)
+      }
+    }
+  })
+
   connection.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
     if (err) { 
       console.log("Error in trying to connect to database: ", err)
