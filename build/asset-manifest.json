@@ -1,14 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.f83613aa.css",
-    "main.js": "/static/js/main.c6785996.js",
+    "main.js": "/static/js/main.ce18fafe.js",
     "static/media/Subtract.png": "/static/media/Subtract.2b4b121d10321894a463.png",
-    "static/media/effect.png": "/static/media/effect.7ed80d5c5edac13a49ae.png",
     "static/media/precent-removebg-preview.png": "/static/media/precent-removebg-preview.0ab7f54c8e0086d9f3ee.png",
     "static/media/Montserrat-Bold.ttf": "/static/media/Montserrat-Bold.50f0257aa1e905f4bfaf.ttf",
     "static/media/logo3.jpg": "/static/media/logo3.501a25c8005f21f73554.jpg",
     "static/media/logo5.jpg": "/static/media/logo5.a87df3b642aa1b792c04.jpg",
-    "static/media/formula.png": "/static/media/formula.1cbe09c3a181b6c4275a.png",
     "static/media/logo8.jpg": "/static/media/logo8.813be478f558dcceb4a5.jpg",
     "static/media/logo7.jpg": "/static/media/logo7.2462a38af2f54b36ccda.jpg",
     "static/media/logo1.jpg": "/static/media/logo1.ed81662c0973336b8969.jpg",
@@ -22,10 +20,10 @@
     "index.html": "/index.html",
     "static/media/magnifying-glass-solid.svg": "/static/media/magnifying-glass-solid.84a405bf1405dacb99d8b6a6b08b8e15.svg",
     "main.f83613aa.css.map": "/static/css/main.f83613aa.css.map",
-    "main.c6785996.js.map": "/static/js/main.c6785996.js.map"
+    "main.ce18fafe.js.map": "/static/js/main.ce18fafe.js.map"
   },
   "entrypoints": [
     "static/css/main.f83613aa.css",
-    "static/js/main.c6785996.js"
+    "static/js/main.ce18fafe.js"
   ]
 }

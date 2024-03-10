@@ -15,6 +15,7 @@
     "bootstrap": "^5.3.2",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.1",
     "mysql": "^2.18.1",
     "node-telegram-bot-api": "^0.64.0",
@@ -30,7 +31,7 @@
     "start": "react-scripts start",
     "bot": "nodemon telegram/bot.js",
     "server": "nodemon index.js --prefix backend",
-    "dev": "concurrently \"npm run start\" \"npm run server\" \"npm run bot\"",
+    "dev": "concurrently \"npm run start\" \"npm run server\" \"npm run boot\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

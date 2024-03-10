@@ -1,4 +1,3 @@
-import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 let isLoggedIn = false
 const Registration = forwardRef(({ openFormCallback }, ref) => {
@@ -58,17 +57,52 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
     setDisplay("none");
   };
 
+  const emailForm = () => {
+    return true
+  }
+
+  const handleSignUp = (e) => {
+    if (emailForm) {
+      alert("Normal email format")
+    } else {
+      alert("Wrong Email Format!")
+    }
+    e.preventDefault();
+    const formData = {
+      email: login,
+      password: password
+    };
+    console.log("formData", formData)
+    fetch("http://localhost:3001/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('token')}` 
+      },
+      body: JSON.stringify(formData),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.user) {
+        alert("User already exist")
+      } else {
+        alert("User succesfully created")
+        isLoggedIn = true
+      }
+    })
+  } 
+
   const handleLogin = (e) => {
     e.preventDefault();
     const formData = {
       email: login,
       password: password,
-      };
-    fetch("http://localhost:3001/api", {
+    };
+    fetch("http://localhost:3001/signIn", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Authorization": `Bearer ${localStorage.getItem('token')}` 
       },
       body: JSON.stringify(formData),
     })
@@ -78,6 +112,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
           if (!isLoggedIn) {
             setIsUserStyle(styles.styleForSuccessLogin);
             isUser.textContent = `Welcome, ${data.user.name}`
+            console.log(data)
             isLoggedIn = true 
           } else {
             e.preventDefault();
@@ -93,7 +128,8 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
       .catch((error) => {
         alert("Error fetching data:" + error);
       });
-};  
+  };
+  
 
   const style = {
     display: display,
@@ -136,7 +172,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
           <button className="button1" onClick={handleLogin}>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </button>
-          <button className="button2">Sign Up</button>
+          <button onClick={handleSignUp} className="button2">Sign Up</button>
         </div>
         <button className="button3">Forgot Password?</button>
         <div className="closeForm" onClick={close}>
