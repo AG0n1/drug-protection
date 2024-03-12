@@ -8,10 +8,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Ключ для подписи токена
 const secretKey = 'your_secret_key';
 
-// Middleware для проверки токена
 const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
   console.log(`token: ${token}`)
@@ -47,7 +45,6 @@ connection.connect((err) => {
 
 app.post('/signIn', (req, res) => {
   const { email, password } = req.body;
-
   connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
     if (error) {
       console.error('Error in trying to connect to database:', error)
