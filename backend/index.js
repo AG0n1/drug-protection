@@ -10,15 +10,6 @@ app.use(bodyParser.json());
 
 const secretKey = 'your_secret_key';
 
-const user = {
-  "AG0n1": {
-    name: "Matthew",
-    second_name: "Markovets",
-    telegram_id: 1
-  },
-
-}
-
 const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
   console.log(`token: ${token}`)
@@ -56,9 +47,27 @@ connection.connect((err) => {
   }
 });
 
+app.post('/telegramCheckUser', (req, res) => {
+  const { telegram_id } = req.body;
+  connection.query(`SELECT * FROM users WHERE telegram_id = ${telegram_id}`, [telegram_id], (err, result) => {
+    if (err) {
+      console.log("Somethinng wrong with connection to database ")
+    } else {
+      if (result.length > 0) {
+        res.json({name: name})
+      } else {
+        console.log("User not found")
+        connection.query(`INSERT INTO \`users\`(\`id\`, \`name\`, \`second_name\`, \`email\`, \`password\`, \`status\`, \`telegram_name\`, \`telegram_id\`, \`donate_value\`) VALUES ('undefined','undefined','undefined','undefined','undefined','user','undefined',${telegram_id},0) `)
+        res.json({user: null})
+      }
+    }
+  })
+})
+
 app.post('/signIn', (req, res) => {
   const { email, password } = req.body;
   connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
+    console.log(results)
     if (error) {
       console.error('Error in trying to connect to database:', error)
       res.status(500).json({ error: 'Error in fetching' });

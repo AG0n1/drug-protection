@@ -9,21 +9,38 @@ class User {
     this.second_name = second_name
     this.role = role
   }
-  
 }
 
 const user = new User();
 
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
+  formData = {
+    chatId: chatId
+  }
+  fetch('http://localhost:3001/api', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem('token')}` 
+    },
+    body: JSON.stringify(formData),
+  })
+  .then((response) => response.json) 
+  .then((data) => {
+    if (data.user) {
+      bot.sendMessage(chatId, `Здравствуйте, ${data.user.name}! Мы рады, что вы пользутесь нашим телеграм-ботом! Вот список команд и их назначение:\n
+      1)\n
+      2)
+      3)
+      4)`)
+    } else {
+      bot.sendMessage(chatId, `Здравствуйте! Это телеграм-бот общественной организации Safe society. Мы - группа энтузиастов, обеспокоенная проблемой зависимости у человека. Рекомендуем посетить наш сайт для получения более точной информации`)
+    }
+  })
   console.log(msg)
   bot.sendMessage(chatId, `Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
-  .then(() => {
-    bot.on('message', (msg) => {
-      bot.sendMessage(chatId, `Окей`)
-    })
-  }
-  )  
+   
 })
 
 
