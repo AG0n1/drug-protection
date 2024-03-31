@@ -23,7 +23,6 @@ bot.onText(/\/start/, (msg) => {
       bot.sendMessage(chatId, `Окей`)
     })
   }
-    
   )  
 })
 

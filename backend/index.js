@@ -10,6 +10,15 @@ app.use(bodyParser.json());
 
 const secretKey = 'your_secret_key';
 
+const user = {
+  "AG0n1": {
+    name: "Matthew",
+    second_name: "Markovets",
+    telegram_id: 1
+  },
+
+}
+
 const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
   console.log(`token: ${token}`)
@@ -27,6 +36,10 @@ const verifyToken = (req, res, next) => {
     next();
   });
 };
+
+app.get('/api', (req, res) => {
+  res.json(user)
+})
 
 const connection = mysql.createConnection({
   host: 'localhost',
