@@ -80,7 +80,7 @@ app.post('/signIn', (req, res) => {
         res.json({ user: null });
       }
     }
-  }); 
+  });
 });
 
 app.post('/register', (req,res) => {
