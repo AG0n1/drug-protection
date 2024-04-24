@@ -1,4 +1,5 @@
 import React from "react"
+import Stories from "./forumData/Stories";
 import * as ReactDOMClient from 'react-dom/client'
 import Info from "./Info";
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
