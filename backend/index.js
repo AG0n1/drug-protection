@@ -10,6 +10,12 @@ app.use(bodyParser.json());
 
 const secretKey = 'your_secret_key';
 
+const user = {
+  name: "someName",
+  age: 0,
+  
+}
+
 const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
   console.log(`token: ${token}`)

@@ -15,9 +15,14 @@ const user = new User();
 
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
+  user.name = msg.chat.first_name
+  user.second_name = msg.chat.second_name
+  user.status = "user"
+  user.role = "patient"
   formData = {
     chatId: chatId
   }
+  /*
   fetch('http://localhost:3001/api', {
     method: "POST",
     headers: {
@@ -38,9 +43,14 @@ bot.onText(/\/start/, (msg) => {
       bot.sendMessage(chatId, `Здравствуйте! Это телеграм-бот общественной организации Safe society. Мы - группа энтузиастов, обеспокоенная проблемой зависимости у человека. Рекомендуем посетить наш сайт для получения более точной информации`)
     }
   })
+  */
+  
   console.log(msg)
   bot.sendMessage(chatId, `Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
-   
+  bot.on('message', (msg) => {
+    bot.sendMessage(chatId, `Вот некоторая информация о Вас: \n${JSON.stringify(user)}`)
+    return
+  })
 })
 
 
