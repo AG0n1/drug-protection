@@ -8,6 +8,21 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'mmark',
+  password: 'LQ8G/WoJJd_EsC9v',
+  database: 'users'
+})
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Ошибка подключения к базе данных:', err);
+  } else {
+    console.log('Подключение к базе данных успешно');
+  }
+});
+
 const secretKey = 'your_secret_key';
 
 const user = {
@@ -38,20 +53,6 @@ app.get('/api', (req, res) => {
   res.json(user)
 })
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'mmark',
-  password: 'LQ8G/WoJJd_EsC9v',
-  database: 'users'
-})
-
-connection.connect((err) => {
-  if (err) {
-    console.error('Ошибка подключения к базе данных:', err);
-  } else {
-    console.log('Подключение к базе данных успешно');
-  }
-});
 
 app.post('/telegramCheckUser', (req, res) => {
   const { telegram_id } = req.body;

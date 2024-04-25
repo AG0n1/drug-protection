@@ -3,10 +3,10 @@ const token = '6958498691:AAGDn9X5SqZIgFFGNXpJgKO_Sg4jqsfq7jw';
 const bot = new TelegramApi(token, { polling: true });
 
 class User {
-  constructor(name, second_name, status, role) {
+  constructor(name, last_name, status, role) {
     this.name = name
     this.status = status
-    this.second_name = second_name
+    this.last_name = last_name
     this.role = role
   }
 }
@@ -16,7 +16,7 @@ const user = new User();
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   user.name = msg.chat.first_name
-  user.second_name = msg.chat.second_name
+  user.last_name = msg.chat.last_name
   user.status = "user"
   user.role = "patient"
   formData = {
@@ -45,7 +45,7 @@ bot.onText(/\/start/, (msg) => {
   })
   */
   
-  console.log(msg)
+  console.log(msg) 
   bot.sendMessage(chatId, `Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
   bot.on('message', (msg) => {
     bot.sendMessage(chatId, `Вот некоторая информация о Вас: \n${JSON.stringify(user)}`)
