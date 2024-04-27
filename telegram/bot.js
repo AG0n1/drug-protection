@@ -12,6 +12,7 @@ class User {
 }
 const user = new User();
 
+/*
 import('node-fetch', fetch => {
   function start() {
     fetch('http://localhost:3002/telegramCheckUser', {
@@ -30,11 +31,16 @@ import('node-fetch', fetch => {
   start()
 })
 
+*/
 
 
 
+bot.on('polling_error', (err) => {
+  console.log(err)
+})
 
 bot.onText(/\/start/, (msg) => {
+
   const chatId = msg.chat.id;
   user.name = msg.chat.first_name
   user.last_name = msg.chat.last_name
@@ -43,8 +49,6 @@ bot.onText(/\/start/, (msg) => {
   formData = {
     chatId: chatId
   }
-
-  
   
   console.log(msg) 
   bot.sendMessage(chatId, `Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
@@ -54,39 +58,38 @@ bot.onText(/\/start/, (msg) => {
   })
 })
 
-
-bot.onText(/\/register/, (msg) => {
+bot.onText(/\/register (.+)/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой  `)
 })
 
-bot.onText(/\/donate/, (msg) => {
+bot.onText(/\/donate (.+)/ , (msg, match) => {
   const chatId = msg.chat.id;
-  bot.sendMessage(`Для поддержания проекта, Вам следует придерживаться следующих инструкций:\n`)
+  const amount = match[0];
+  bot.sendMessage(chatId, `Для поддержания проекта, Вам следует придерживаться следующих инструкций:\n`)
 
 })
 
-bot.onText(/\/search/, (msg) => {
+bot.onText(/\/search (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
+  const nameOfAddiction = match[0]
   if (User.status === "customer") {
     bot.sendMessage(chatId, `Выполняется поиск клиента...`)
   } else {
     bot.sendMessage(chatId, `Выполняется поиск сотрудника...`)
   }
-  
-
 })
 
 bot.onText(/\/help/, (msg) => {
   const chatId = msg.chat.id;
-  bot.sendMessage(chatId, `Вы - сотрудник`) ? User.role === `customer` : bot.sendMessage(chatId, `Вы - клиент`)
+  
+  user.role === "customer" ? bot.sendMessage(chatId, `Вы - сотрудник`) : bot.sendMessage(chatId, `Вы - клиент`)
 
 })
 
 function debug(obj = {}) {
    return JSON.stringify(obj, null, 4)
 }
-
 /*
 
 askForEmail(botInstance) {
