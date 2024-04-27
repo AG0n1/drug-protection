@@ -779,15 +779,30 @@ footer {
 
 .userInfo {
     display: flex;
-    justify-content: center;
-    align-items: center;
 
     width: 80%;
-    min-height: 20vh;
-    margin-top: 200px;
+    min-height: 30vh;
+    margin-top: 150px;
     background-color: #171717;
+    padding-top: 3vh;
+    padding-left: 3vh;
 
     border-radius: 30px;
+}
+
+.userPhoto {
+    width: 24vh;
+    height: 24vh;
+    
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.userData {
+    margin-left: 20px;
+    width: 50%;
+    height: 20px;
+
 }
 
 /* Media */
