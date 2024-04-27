@@ -1,7 +1,10 @@
 function UserPage() {
+
     return (
-        <div>
-            
+        <div className="userPage" >
+            <div className="userInfo">
+                
+            </div>
         </div>
     )
 }

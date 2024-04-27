@@ -766,7 +766,29 @@ footer {
 
 /* SLider */
 
+/* User Page */
 
+.userPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+.userInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 80%;
+    min-height: 20vh;
+    margin-top: 200px;
+    background-color: #171717;
+
+    border-radius: 30px;
+}
 
 /* Media */
 
