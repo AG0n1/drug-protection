@@ -13,60 +13,50 @@ class User {
 }
 const user = new User();
 
-/*
-import('node-fetch', fetch => {
-  function start() {
-    fetch('http://localhost:3002/telegramCheckUser', {
-      method: "POST",
+import('axios').then(
+  bot.onText(/\/start/, (msg) => {
+    const formData = {
+      telegram_id: msg.chat.id
+    }
+    console.log(formData)
+    axios.post('http://localhost:3002/telegramCheckUser', {
+      method: "POST",   
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem('token')}` 
       },
       body: JSON.stringify(formData),
     })
-    .then((response) => response.json()) 
-    .then((data) => {
-      console.log(data)
-    })
-  }
-  start()
-})
+      .then(response => {
+        const data = response.data;
 
-*/
+        bot.sendMessage(chatId, `Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
 
-import('axios').then(
-axios.post('http://localhost:3002/telegramCheckUser')
-  .then(response => {
-    const data = response.data;
-    console.log(data);
+        console.log("------", data);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+
+    const chatId = msg.chat.id;
+    /*
+    user.name = msg.chat.first_name
+    user.last_name = msg.chat.last_name
+    user.status = "user"
+    user.role = "patient"
+    */
+    
+    
+    console.log(msg) 
+    
   })
-  .catch(error => {
-    console.log(error);
-  })
+  
 )
 
 bot.on('polling_error', (err) => {
   console.log(err)
 })
 
-bot.onText(/\/start/, (msg) => {
 
-  const chatId = msg.chat.id;
-  user.name = msg.chat.first_name
-  user.last_name = msg.chat.last_name
-  user.status = "user"
-  user.role = "patient"
-  formData = {
-    chatId: chatId
-  }
-  
-  console.log(msg) 
-  bot.sendMessage(chatId, `Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
-  bot.on('message', (msg) => {
-    bot.sendMessage(chatId, `Вот некоторая информация о Вас: \n${JSON.stringify(user)}`)
-    return
-  })
-})
 
 bot.onText(/\/register (.+)/, (msg) => {
   const chatId = msg.chat.id;

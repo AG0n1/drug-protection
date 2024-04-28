@@ -31,24 +31,6 @@ const user = {
   
 }
 
-const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization;
-  console.log(`token: ${token}`)
-
-  if (!token) {
-    return res.status(401).json({ message: 'Требуется токен авторизации' });
-  }
-
-  jwt.verify(token.split(' ')[1], secretKey, (err, decoded) => {
-    if (err) {
-      return res.status(403).json({ message: 'Неверный токен авторизации' })
-    }
-
-    req.user = decoded;
-    next();
-  });
-};
-
 app.get('/api', (req, res) => {
   res.json(user)
 })
@@ -104,9 +86,6 @@ app.post('/register', (req,res) => {
   // })
 })
 
-app.post('/secure-endpoint', verifyToken, (req, res) => {
-  
-});
 
 const PORT = 3001;
 app.listen(PORT, () => {
