@@ -1,3 +1,4 @@
+const { default: axios } = require('axios');
 const TelegramApi = require('node-telegram-bot-api');
 const token = '6958498691:AAGDn9X5SqZIgFFGNXpJgKO_Sg4jqsfq7jw';
 const bot = new TelegramApi(token, { polling: true });
@@ -33,7 +34,16 @@ import('node-fetch', fetch => {
 
 */
 
-
+import('axios').then(
+axios.post('http://localhost:3002/telegramCheckUser')
+  .then(response => {
+    const data = response.data;
+    console.log(data);
+  })
+  .catch(error => {
+    console.log(error);
+  })
+)
 
 bot.on('polling_error', (err) => {
   console.log(err)

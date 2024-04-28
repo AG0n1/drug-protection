@@ -11,7 +11,7 @@ function MainInfo() {
         <div>
             <Contact  />
             <Search />
-            <Slider />
+            {/*<Slider />*/}
             <Advertising />
         </div>
     )
