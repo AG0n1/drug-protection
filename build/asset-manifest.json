@@ -1,29 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.f83613aa.css",
-    "main.js": "/static/js/main.ce18fafe.js",
+    "main.css": "/static/css/main.cbe0d87e.css",
+    "main.js": "/static/js/main.2b6f12be.js",
     "static/media/Subtract.png": "/static/media/Subtract.2b4b121d10321894a463.png",
     "static/media/precent-removebg-preview.png": "/static/media/precent-removebg-preview.0ab7f54c8e0086d9f3ee.png",
     "static/media/Montserrat-Bold.ttf": "/static/media/Montserrat-Bold.50f0257aa1e905f4bfaf.ttf",
-    "static/media/logo3.jpg": "/static/media/logo3.501a25c8005f21f73554.jpg",
-    "static/media/logo5.jpg": "/static/media/logo5.a87df3b642aa1b792c04.jpg",
-    "static/media/logo8.jpg": "/static/media/logo8.813be478f558dcceb4a5.jpg",
-    "static/media/logo7.jpg": "/static/media/logo7.2462a38af2f54b36ccda.jpg",
-    "static/media/logo1.jpg": "/static/media/logo1.ed81662c0973336b8969.jpg",
-    "static/media/pill.png": "/static/media/pill.bbdea651683d336a504d.png",
     "static/media/Telegram_logo.svg.webp": "/static/media/Telegram_logo.svg.be6948c6962cac4685eb.webp",
-    "static/media/logo6.jpg": "/static/media/logo6.b8001ed4fc0cb829454b.jpg",
-    "static/media/logo2.jpg": "/static/media/logo2.5b00bba2372bb43b75af.jpg",
-    "static/media/logo4.jpg": "/static/media/logo4.03f08ed5030b2c849fdc.jpg",
-    "static/media/like.svg": "/static/media/like.ca4ece120d930110da224c157bdcac95.svg",
-    "static/media/dislike.svg": "/static/media/dislike.8196134769e86e1050d8bacf0dea242e.svg",
     "index.html": "/index.html",
     "static/media/magnifying-glass-solid.svg": "/static/media/magnifying-glass-solid.84a405bf1405dacb99d8b6a6b08b8e15.svg",
-    "main.f83613aa.css.map": "/static/css/main.f83613aa.css.map",
-    "main.ce18fafe.js.map": "/static/js/main.ce18fafe.js.map"
+    "main.cbe0d87e.css.map": "/static/css/main.cbe0d87e.css.map",
+    "main.2b6f12be.js.map": "/static/js/main.2b6f12be.js.map"
   },
   "entrypoints": [
-    "static/css/main.f83613aa.css",
-    "static/js/main.ce18fafe.js"
+    "static/css/main.cbe0d87e.css",
+    "static/js/main.2b6f12be.js"
   ]
 }
