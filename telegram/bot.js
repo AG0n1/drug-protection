@@ -1,5 +1,6 @@
 const { default: axios } = require('axios');
 const TelegramApi = require('node-telegram-bot-api');
+const FormData = require('form-data');
 const token = '6958498691:AAGDn9X5SqZIgFFGNXpJgKO_Sg4jqsfq7jw';
 const bot = new TelegramApi(token, { polling: true });
 
@@ -15,38 +16,35 @@ const user = new User();
 
 import('axios').then(
   bot.onText(/\/start/, (msg) => {
-    const formData = {
-      telegram_id: msg.chat.id
-    }
-    console.log(formData)
-    axios.post('http://localhost:3002/telegramCheckUser', {
-      method: "POST",   
+  
+  user.name = msg.chat.first_name
+  user.last_name = msg.chat.last_name
+  user.status = "user"
+  user.role = "patient"
+    
+  const formData = new FormData();
+  formData.append('telegram_id', msg.chat.id);
+    axios.post('http://localhost:3002/telegramCheckUser', formData, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'multipart/form-data', 
       },
-      body: JSON.stringify(formData),
-    })
-      .then(response => {
-        const data = response.data;
+})
+  .then(response => {
+    const data = response.data;
 
-        bot.sendMessage(chatId, `Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой зависимостью. `)
+    if (data.user !== null) {
+      bot.sendMessage(chatId, `Здравствуйте, ${data.name} ${data.second_name}! Мы рады, что Вы решили воспользоваться нашим ботом.`)
+    } else {
+      bot.sendMessage(chatId, `Здравствуйте, пользователь! Мы рады, что Вы решили воспользоваться нашим ботом.`)
+    }
+    
 
-        console.log("------", data);
-      })
-      .catch(error => {
-        console.log(error);
-      })
-
+    console.log(data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
     const chatId = msg.chat.id;
-    /*
-    user.name = msg.chat.first_name
-    user.last_name = msg.chat.last_name
-    user.status = "user"
-    user.role = "patient"
-    */
-    
-    
-    console.log(msg) 
     
   })
   
@@ -55,8 +53,6 @@ import('axios').then(
 bot.on('polling_error', (err) => {
   console.log(err)
 })
-
-
 
 bot.onText(/\/register (.+)/, (msg) => {
   const chatId = msg.chat.id;

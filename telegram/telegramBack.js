@@ -1,8 +1,12 @@
 const express = require('express')
 const cors = require('cors')
+const multer = require('multer');
+const upload = multer(); 
 const mysql = require('mysql');
 const app = express() 
+
 app.use(cors())
+app.use(upload.any());
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -33,7 +37,19 @@ app.get('/telegramCheckUser', (req,res) => {
 })
 
 app.post('/telegramCheckUser', (req, res) => {
-    console.log("-------", req)
-    connection.query('SELECT * FROM users ')
-    res.json({user: "name"})
-})
+    console.log("FormData:", req.body.telegram_id);
+    
+    connection.query(`SELECT * FROM users WHERE telegram_id = ${req.body.telegram_id}`, [], (err, result) => {
+      if (result.length !== 0) {
+        res.json({
+          user: true,
+          name: result[0].name,
+          second_name: result[0].second_name,
+        })
+      } else {
+        res.json({user: null})
+      }
+    })
+    
+    
+});

@@ -61,31 +61,30 @@ app.post('/signIn', (req, res) => {
 });
 
 app.post('/register', (req,res) => {
-  // const { email, password } = req.body;
+  const { email, password } = req.body;
 
-  // connection.query('SELECT id FROM users WHERE id = ?', (err, result) => {
-  //   if (!err) {
-  //     if (result.length > 0) {
-  //       console.log(result)
-  //     }
-  //   }
-  // })
+  connection.query('SELECT id FROM users WHERE id = ?', (err, result) => {
+    if (!err) {
+      if (result.length > 0) {
+        console.log(result)
+      }
+    }
+  })
 
-  // connection.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
-  //   if (err) { 
-  //     console.log("Error in trying to connect to database: ", err)
-  //     res.status(500).json({error: 'Error in fetching'})
-  //   } else {
-  //     if (results.length > 0) {
-  //       res.json({user: true})
-  //     } else {
-  //       connection.query(`INSERT INTO \`users\`(\`id\`, \`name\`, \`second_name\`, \`email\`, \`password\`, \`status\`, \`telegram_name\`, \`telegram_id\`, \`donate_value\`) VALUES (1,'[value-2]','[value-3]','${email}','${password}','[value-6]','[value-7]',11,1.1)`)
-  //       console.log("User succesfully created")
-  //     }
-  //   }
-  // })
+  connection.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+    if (err) { 
+      console.log("Error in trying to connect to database: ", err)
+      res.status(500).json({error: 'Error in fetching'})
+    } else {
+      if (results.length > 0) {
+        res.json({user: true})
+      } else {
+        connection.query(`INSERT INTO \`users\`(\`id\`, \`name\`, \`second_name\`, \`email\`, \`password\`, \`status\`, \`telegram_name\`, \`telegram_id\`, \`donate_value\`) VALUES (1,'[value-2]','[value-3]','${email}','${password}','[value-6]','[value-7]',11,1.1)`)
+        console.log("User succesfully created")
+      }
+    }
+  })
 })
-
 
 const PORT = 3001;
 app.listen(PORT, () => {
