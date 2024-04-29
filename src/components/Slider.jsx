@@ -22,8 +22,6 @@ const ScrollableContainer = () => {
 
   const debounceCheckForScrollPosition = debounce(checkForScrollPosition, 200);
 
-  const scrollContainerBy = (distance) =>
-    containerRef.current?.scrollBy({ left: distance, behavior: "smooth" });
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -42,6 +40,10 @@ const ScrollableContainer = () => {
     setIsDragging(false);
   };
 
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
   useEffect(() => {
     const { current } = containerRef;
     checkForScrollPosition();
@@ -56,15 +58,17 @@ const ScrollableContainer = () => {
   return (
     <div
       className="scrollableContainer"
-      
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
     >
       <ul 
         className="list" 
         ref={containerRef}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-      >
+        style={{paddingBottom: "20px"}}
+    >
+        
         <li className="item">1</li>
         <li className="item">2</li>
         <li className="item">3</li>
@@ -73,36 +77,6 @@ const ScrollableContainer = () => {
         <li className="item">6</li>
         <li className="item">7</li>
       </ul>
-      <button
-        type="button"
-        disabled={!canScrollLeft}
-        onClick={() => scrollContainerBy(-400)}
-        className={cn("button", "buttonLeft", {
-          "button--hidden": !canScrollLeft
-        })}
-      >
-        ←
-      </button>
-      <button
-        type="button"
-        disabled={!canScrollRight}
-        onClick={() => scrollContainerBy(400)}
-        className={cn("button", "buttonRight", {
-          "button--hidden": !canScrollRight
-        })}
-      >
-        →
-      </button>
-      {canScrollLeft && (
-        <div className="shadowWrapper leftShadowWrapper">
-          <div className="shadow leftShadow" />
-        </div>
-      )}
-      {canScrollRight && (
-        <div className="shadowWrapper rightShadowWrapper">
-          <div className="shadow rightShadow" />
-        </div>
-      )}
     </div>
   );
 };
