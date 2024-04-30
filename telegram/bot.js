@@ -4,6 +4,13 @@ const FormData = require('form-data');
 const token = '6958498691:AAGDn9X5SqZIgFFGNXpJgKO_Sg4jqsfq7jw';
 const bot = new TelegramApi(token, { polling: true });
 
+bot.on('message', msg => {
+  if (msg.chat.id == 889294418) {
+    console.log(msg)
+    bot.sendMessage(msg.chat.id, 'Женя лох')
+  }
+})
+
 class User {
   constructor(name, last_name, status, role) {
     this.name = name

@@ -107,7 +107,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
         isLoggedIn = true
       }
     })
-  } 
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -129,6 +129,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
           if (!isLoggedIn) {
             setIsUserStyle(styles.styleForSuccessLogin);
             isUser.textContent = `Welcome, ${data.user.name}`
+            localStorage.setItem('token', data.token)
             console.log(data)
             isLoggedIn = true 
           } else {

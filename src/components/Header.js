@@ -2,6 +2,7 @@ import React from "react"
 import * as ReactDOMClient from 'react-dom/client'
 import Nav from "./Nav"
 import Registration from "./Registration"
+import { redirect } from "react-router-dom";
 
 
 class Header extends React.Component {
@@ -12,12 +13,15 @@ class Header extends React.Component {
         this.open = this.open.bind(this);
       }
     
-      open() {
-        console.log(localStorage.getItem('token'))
-        if (this.registrationRef.current) {
-          this.registrationRef.current.openForm();
+      open(e) {
+        if (localStorage.getItem('token') !== null) {
+            // Редирект на страницу "../user", если токен существует
+            return
+        } else {
+            this.registrationRef.current.openForm();
         }
-      }
+    }
+    
       
     render() {
         return (

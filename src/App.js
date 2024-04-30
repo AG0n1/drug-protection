@@ -7,6 +7,7 @@ import Laws from "./components/laws/Laws";
 import Forum from './components/forum/Forum';
 import Registration from "./components/Registration";
 import UserPage from './components/userPage/UserPage';
+
 function App() {
         return (
             <BrowserRouter>
