@@ -4,12 +4,9 @@ const FormData = require('form-data');
 const token = '6958498691:AAGDn9X5SqZIgFFGNXpJgKO_Sg4jqsfq7jw';
 const bot = new TelegramApi(token, { polling: true });
 
-bot.on('message', msg => {
-  if (msg.chat.id == 889294418) {
-    console.log(msg)
-    bot.sendMessage(msg.chat.id, 'Женя лох')
-  }
-})
+let rooms = [
+
+]
 
 class User {
   constructor(name, last_name, status, role) {
@@ -28,15 +25,14 @@ import('axios').then(
   user.last_name = msg.chat.last_name
   user.status = "user"
   user.role = "patient"
-    
+  
   const formData = new FormData();
   formData.append('telegram_id', msg.chat.id);
     axios.post('http://localhost:3002/telegramCheckUser', formData, {
       headers: {
         'Content-Type': 'multipart/form-data', 
       },
-})
-  .then(response => {
+  }) .then(response => {
     const data = response.data;
 
     if (data.user !== null) {
@@ -57,19 +53,17 @@ import('axios').then(
   
 )
 
-bot.on('polling_error', (err) => {
-  console.log(err)
-})
-
-bot.onText(/\/register (.+)/, (msg) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(`Зравствуйте, ${msg.from.first_name}, это помощник DrugFree! Этот бот был разработан для помощи людям с разной формой  `)
-})
 
 bot.onText(/\/donate (.+)/ , (msg, match) => {
   const chatId = msg.chat.id;
   const amount = match[0];
-  bot.sendMessage(chatId, `Для поддержания проекта, Вам следует придерживаться следующих инструкций:\n`)
+  const isWorking = false
+
+  if (isWorking) {
+    bot.sendMessage(chatId, `Для поддержания проекта, Вам следует придерживаться следующих инструкций:\n`)
+  } else {
+    bot.sendMessage(chatId, `Извините, но данная функция находится в разработке\n`)
+  }
 
 })
 
@@ -83,11 +77,21 @@ bot.onText(/\/search (.+)/, (msg, match) => {
   }
 })
 
+bot.onText(/\/stop/, msg => {
+  const chatId = msg.chat.id
+
+})
+
 bot.onText(/\/help/, (msg) => {
   const chatId = msg.chat.id;
   
   user.role === "customer" ? bot.sendMessage(chatId, `Вы - сотрудник`) : bot.sendMessage(chatId, `Вы - клиент`)
 
+})
+
+
+bot.on('polling_error', (err) => {
+  console.log(err)
 })
 
 function debug(obj = {}) {

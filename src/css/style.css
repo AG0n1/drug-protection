@@ -919,11 +919,18 @@ footer {
     border: 2px solid white;
 }
 
+.space {
+    width: 60px;
+}
+
 .userData {
-    margin-left: 20px;
     width: 50%;
     height: 20px;
+}
 
+.userName {
+    color: white;
+    font-size: 40px
 }
 
 /* Scroll */
