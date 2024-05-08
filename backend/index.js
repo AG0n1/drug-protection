@@ -18,7 +18,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 */
-
+ 
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -93,7 +93,7 @@ app.post('/register', (req,res) => {
       if (results.length > 0) {
         res.json({user: true})
       } else {
-        connection.query(`INSERT INTO \`users\`(\`id\`, \`name\`, \`second_name\`, \`email\`, \`password\`, \`status\`, \`telegram_name\`, \`telegram_id\`, \`donate_value\`) VALUES (1,'[value-2]','[value-3]','${email}','${password}','[value-6]','[value-7]',11,1.1)`)
+        connection.query(`INSERT INTO \`users\`(\`name\`, \`second_name\`, \`email\`, \`password\`, \`status\`, \`telegram_name\`, \`telegram_id\`, \`donate_value\`) VALUES ('[value-2]','[value-3]','${email}','${password}','[value-6]','[value-7]',11,1.1)`)
         console.log("User succesfully created")
       }
     }

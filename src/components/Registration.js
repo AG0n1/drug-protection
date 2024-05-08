@@ -1,7 +1,9 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
+import { useNavigate } from "react-router-dom";
 let isLoggedIn = false
 
 function emailForm(emailValue) {
+  
   const arrOfDomain = ["@tut.by", "@gmail.com", "@mail.com", "@yandex.ru", "@"]
   const deniedSimbols = [".", "/", "<", ">", "{", "}", "[", "]", "|", "\\", "(", ")", "*", ";", ":", "&", "^", "%", "$", "#", "!", "\"", "№"]
   let subStr = ""
@@ -22,6 +24,7 @@ function emailForm(emailValue) {
 }
 
 const Registration = forwardRef(({ openFormCallback }, ref) => {
+  const navigate = useNavigate()
   const [display, setDisplay] = useState("none");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -102,10 +105,8 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
     .then((data) => {
       if (data.user) {
         alert("User already exist")
-      } else {
-        alert("User succesfully created")
-        isLoggedIn = true
       }
+      navigate("/")
     })
   }
 
@@ -128,7 +129,12 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
         if (data.user) {
           if (localStorage.getItem("token") === "null") {
             setIsUserStyle(styles.styleForSuccessLogin);
-            isUser.textContent = `Welcome, ${data.user.name}`
+            if (data.user.name !== "[value-2]") {
+              isUser.textContent = `Welcome, ${data.user.name}`
+            } else {
+              isUser.textContent = `Welcome, user`
+            }
+             
             localStorage.setItem('token', data.token)
             console.log(data)
             isLoggedIn = true
