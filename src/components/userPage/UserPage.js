@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
-import User from "../User"
+import React, { useState, useContext } from "react"
+import UserContext from '../UserContext';
 
 function UserPage() {
+    const { userData } = useContext(UserContext);
+    console.log(userData)
     const navigate = useNavigate()
     const deleteToken = () => {
         fetch("http://localhost:3001/logout", {
@@ -17,19 +19,16 @@ function UserPage() {
         navigate("/")
     }
 
-    const user = new User({})
-
-    console.log(user)
-
-    const [nickname, setNickname] = useState("")
-    const [name, setName] = useState("")
-    const [second_name, setSecondName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [telegram_id, setTelegramId] = useState("")
-    const [donate_value, setDonateValue] = useState("")
-    const [description, setDescription] = useState("")
-    const [background, setbackground] = useState("")
+    // const [nickname, setNickname] = useState("")
+    // const [name, setName] = useState("")
+    // const [second_name, setSecondName] = useState("")
+    // const [email, setEmail] = useState("")
+    // const [password, setPassword] = useState("")
+    // const [telegram_id, setTelegramId] = useState("")
+    // const [donate_value, setDonateValue] = useState("")
+    // const [description, setDescription] = useState("")
+    // const [background, setbackground] = useState("")
+    
 
     return (
         <div className="userPage" >

@@ -7,6 +7,7 @@ import Laws from "./components/laws/Laws";
 import Forum from './components/forum/Forum';
 import Registration from "./components/Registration";
 import UserPage from './components/userPage/UserPage';
+import { UserProvider } from './components/UserContext';
 
 function App() {
     if (localStorage.getItem("token") !== null) {
@@ -27,35 +28,38 @@ function App() {
     }
 
     return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route 
-                    path = "/" 
-                    element={
-                        <MainInfo />
-                    } />
+        <UserProvider>
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route 
+                        path = "/" 
+                        element={
+                            <MainInfo />
+                        } />
 
-                <Route 
-                    path = "laws" 
-                    element ={
-                        <Laws />
-                    } />
+                    <Route 
+                        path = "laws" 
+                        element ={
+                            <Laws />
+                        } />
 
-                <Route 
-                    path = "forum" 
-                    element={
-                        <Forum />
-                    } />
+                    <Route 
+                        path = "forum" 
+                        element={
+                            <Forum />
+                        } />
 
-                <Route 
-                    path = "user" 
-                    element={
-                        <UserPage />
-                    } />
-            </Routes>
-            <Registration display="none" />
-        </BrowserRouter>
+                    <Route 
+                        path = "user" 
+                        element={
+                            <UserPage />
+                        } />
+                </Routes>
+                <Registration display="none" />
+            </BrowserRouter>
+        </UserProvider>
+        
     )
 } 
 

@@ -1,7 +1,6 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { useState, forwardRef, useImperativeHandle, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import User from "./User";
-let isLoggedIn = false
+import UserContext from "./UserContext";
 
 function emailForm(emailValue) {
   const arrOfDomain = ["@tut.by", "@gmail.com", "@mail.com", "@yandex.ru", "@"]
@@ -24,6 +23,7 @@ function emailForm(emailValue) {
 }
 
 const Registration = forwardRef(({ openFormCallback }, ref) => {
+  const { setUserData } = useContext(UserContext);
   const navigate = useNavigate()
   const [display, setDisplay] = useState("none");
   const [login, setLogin] = useState("");
@@ -70,7 +70,8 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
       fontWeight: "bold"
     }
   }
-  
+
+
   const openForm = () => {
     setDisplay("flex");
   };
@@ -134,12 +135,8 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
             } else {
               isUser.textContent = `Welcome, user`
             }
-            console.log(data)
-            const user = new User(data.user)
-            console.log(user)
+            setUserData(data.user);
             localStorage.setItem('token', data.token)
-          } else {
-            
           }
         } else {
           setIsUserStyle(styles.styleForUnsuccessLogin);
