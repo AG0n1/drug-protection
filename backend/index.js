@@ -109,7 +109,7 @@ app.post('/register', (req,res) => {
       if (results.length > 0) {
         res.json({user: true})
       } else {
-        connection.query(`INSERT INTO \`users\`(\`name\`, \`second_name\`, \`email\`, \`password\`, \`status\`, \`telegram_name\`, \`telegram_id\`, \`donate_value\`) VALUES ('[value-2]','[value-3]','${email}','${password}','[value-6]','[value-7]',11,1.1)`)
+        connection.query(`INSERT INTO \`users\`(\`email\`, \`password\`) VALUES ('${email}','${password}')`)
         console.log("User succesfully created")
       }
     }

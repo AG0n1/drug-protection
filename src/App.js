@@ -26,7 +26,9 @@ function App() {
             }
         })
     }
-
+    const deleteToken = () => {
+        localStorage.setItem("token", "null")
+    }
     return (
         <UserProvider>
             <BrowserRouter>
@@ -58,6 +60,7 @@ function App() {
                 </Routes>
                 <Registration display="none" />
             </BrowserRouter>
+            <button style={{position: "absolute", top: "0", left: "0", zIndex: "100000"}} onClick={deleteToken} >Log out</button>
         </UserProvider>
         
     )

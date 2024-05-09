@@ -1,67 +1,106 @@
-import { useNavigate } from "react-router-dom"
-import React, { useState, useContext } from "react"
-import UserContext from '../UserContext';
+import React, { Component } from "react";
+import UserContext from "../UserContext";
 
-function UserPage() {
-    const { userData } = useContext(UserContext);
-    console.log(userData)
-    const navigate = useNavigate()
-    const deleteToken = () => {
-        fetch("http://localhost:3001/logout", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem('token')}` 
-              },
-            body: JSON.stringify({token: localStorage.getItem("token")}),
-        })
-        localStorage.setItem("token", "null")
-        navigate("/")
-    }
+class UserPage extends Component {
+  static contextType = UserContext;
 
-    // const [nickname, setNickname] = useState("")
-    // const [name, setName] = useState("")
-    // const [second_name, setSecondName] = useState("")
-    // const [email, setEmail] = useState("")
-    // const [password, setPassword] = useState("")
-    // const [telegram_id, setTelegramId] = useState("")
-    // const [donate_value, setDonateValue] = useState("")
-    // const [description, setDescription] = useState("")
-    // const [background, setbackground] = useState("")
-    
+  constructor(props) {
+    super(props);
+    this.state = {
+      nickname: "",
+      name: "",
+      second_name: "",
+      email: "",
+      telegram_id: "",
+      donate_value: "",
+      description: "",
+      background: "",
+    };
+  }
+
+  componentDidMount() {
+    const { userData } = this.context;
+    this.setState({
+      nickname: userData.nickname,
+      name: userData.name,
+      second_name: userData.second_name,
+      email: userData.email,
+      telegram_id: userData.telegram_id,
+      donate_value: userData.donate_value,
+      description: userData.description,
+      background: userData.background,
+    });
+  }
+
+  deleteToken = () => {
+    fetch("http://localhost:3001/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({ token: localStorage.getItem("token") }),
+    });
+    localStorage.setItem("token", "null");
+  };
+
+  render() {
+    const {
+      nickname,
+      name,
+      second_name,
+      email,
+      telegram_id,
+      donate_value,
+      description,
+      background,
+    } = this.state;
 
     return (
-        <div className="userPage" >
-            <div className="userInfo">
-                <div className="userPhoto">
+      <div className="userPage">
+        <div className="userInfo">
+          <div className="userPhoto"></div>
 
-                </div>
+          <div className="space"></div>
 
-                <div className="space">
-                        
-                </div>
-
-                <div className="userData">
-                    <div className="userName">
-                        <span id="firstName" >User</span>
-                        <span id="secondName" > User</span>
-                    </div>
-
-                    <div className="userDescription">
-                        Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there Hey there 
-                    </div>
-                </div>
+          <div className="userData">
+            <div className="userName">
+              <span id="firstName">{name || "user"}</span>
+              <span id="secondName"> {second_name}</span>
             </div>
 
-            <div className="userInfo userInput">
-                <input className="user__input" placeholder="Введите ваше имя:" />
-                <input className="user__input" placeholder="Введите вашу фамилию:" />
-                <input className="user__input" placeholder="Введите ваш id" />
-                <input className="user__input" placeholder="Введите ваш id" />
+            <div className="userDescription">{description}</div>
+          </div>
+        </div>
+
+        <div className="userInfo userInput">
+          <input
+            className="user__input"
+            placeholder="Введите ваше имя:"
+            value={name}
+            onChange={(e) => this.setState({ name: e.target.value })}
+          />
+          <input
+            className="user__input"
+            placeholder="Введите вашу фамилию:"
+            value={second_name}
+            onChange={(e) => this.setState({ second_name: e.target.value })}
+          />
+          <input
+            className="user__input"
+            placeholder="Введите ваш id"
+            value={telegram_id}
+            onChange={(e) => this.setState({ telegram_id: e.target.value })}
+          />
+          <input
+            className="user__input"
+            placeholder="Введите ваш id"
+             />
             </div>
-            <button onClick={deleteToken} >Log out</button>
+            {/* <button onClick={deleteToken} >Log out</button> */}
         </div>
     )
+  }
 }
 
 export default UserPage
