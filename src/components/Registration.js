@@ -135,15 +135,12 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
               isUser.textContent = `Welcome, user`
             }
             localStorage.setItem('token', data.token)
-            console.log(data)
-            isLoggedIn = true
           } else {
             
           }
         } else {
           setIsUserStyle(styles.styleForUnsuccessLogin);
           isUser.textContent = "User not found"
-          isLoggedIn = false
         }
       })
       .catch((error) => {

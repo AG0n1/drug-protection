@@ -3,6 +3,14 @@ import { useNavigate } from "react-router-dom"
 function UserPage() {
     const navigate = useNavigate()
     const deleteToken = () => {
+        fetch("http://localhost:3001/logout", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('token')}` 
+              },
+            body: JSON.stringify({token: localStorage.getItem("token")}),
+        })
         localStorage.setItem("token", "null")
         navigate("/")
     }

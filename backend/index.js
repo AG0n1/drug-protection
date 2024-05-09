@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
+const { act } = require('react');
 
 app = express()
 
@@ -21,6 +22,19 @@ app.get('*', (req, res) => {
  
 app.use(cors());
 app.use(bodyParser.json());
+
+function generateToken() {
+  const symbols = ['1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i','g','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  let token = "";
+  for (let i = 0; i < 16; i++) {
+      token += symbols[Math.floor(Math.random() * 36)];
+  }
+  return token;
+}
+
+let activeUsers = {
+
+}
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -53,8 +67,6 @@ app.get('/telegramCheckUser', (req, res) => {
   res.json(user)
 })
 
-
-
 app.post('/signIn', (req, res) => {
   const { email, password } = req.body;
   connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
@@ -64,7 +76,11 @@ app.post('/signIn', (req, res) => {
       res.status(500).json({ error: 'Error in fetching' });
     } else {
       if (results.length > 0) {
-        const token = jwt.sign({ email: email }, secretKey, { expiresIn: '8h' });
+        const token = generateToken()
+        activeUsers[token] = {
+          expiresIn: "10h",
+          isActive: true,
+        }
         res.json({ user: results[0], token: token });
       } else {
         console.log('Пользователь не найден');
@@ -98,6 +114,20 @@ app.post('/register', (req,res) => {
       }
     }
   })
+})
+
+app.get('/logout', (req, res) => {
+  let {token} = req.body
+  activeUsers[token] = {
+    expiresIn: undefined,
+    isActive: false,
+  }
+  console.log(activeUsers)
+})
+
+app.post("/isActiveUser", (req, res) => {
+  // Добавить логику проверки пользователя
+  res.json({isActive: true})
 })
 
 const PORT = 3001;

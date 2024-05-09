@@ -25,39 +25,38 @@ function App() {
             }
         })
     }
-    
 
-        return (
-            <BrowserRouter>
-                <Header />
-                <Routes>
-                    <Route 
-                        path = "/" 
-                        element={
-                            <MainInfo />
-                        } />
+    return (
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route 
+                    path = "/" 
+                    element={
+                        <MainInfo />
+                    } />
 
-                    <Route 
-                        path = "laws" 
-                        element ={
-                            <Laws />
-                        } />
+                <Route 
+                    path = "laws" 
+                    element ={
+                        <Laws />
+                    } />
 
-                    <Route 
-                        path = "forum" 
-                        element={
-                            <Forum />
-                        } />
+                <Route 
+                    path = "forum" 
+                    element={
+                        <Forum />
+                    } />
 
-                    <Route 
-                        path = "user" 
-                        element={
-                            <UserPage />
-                        } />
-                </Routes>
-                <Registration display="none" />
-            </BrowserRouter>
-        )
+                <Route 
+                    path = "user" 
+                    element={
+                        <UserPage />
+                    } />
+            </Routes>
+            <Registration display="none" />
+        </BrowserRouter>
+    )
 } 
 
 export default App
