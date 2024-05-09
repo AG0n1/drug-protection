@@ -1,9 +1,10 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { useNavigate } from "react-router-dom";
+import User from "./User";
 let isLoggedIn = false
 
 function emailForm(emailValue) {
-  
+  const user = new User
   const arrOfDomain = ["@tut.by", "@gmail.com", "@mail.com", "@yandex.ru", "@"]
   const deniedSimbols = [".", "/", "<", ">", "{", "}", "[", "]", "|", "\\", "(", ")", "*", ";", ":", "&", "^", "%", "$", "#", "!", "\"", "№"]
   let subStr = ""

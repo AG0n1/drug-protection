@@ -16,8 +16,6 @@ function UserPage() {
         navigate("/")
     }
 
-    
-
     const [nickname, setNickname] = useState("")
     const [name, setName] = useState("")
     const [second_name, setSecondName] = useState("")
