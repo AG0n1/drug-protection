@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 function UserPage() {
     const navigate = useNavigate()
@@ -14,6 +15,18 @@ function UserPage() {
         localStorage.setItem("token", "null")
         navigate("/")
     }
+
+    
+
+    const [nickname, setNickname] = useState("")
+    const [name, setName] = useState("")
+    const [second_name, setSecondName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [telegram_id, setTelegramId] = useState("")
+    const [donate_value, setDonateValue] = useState("")
+    const [description, setDescription] = useState("")
+    const [background, setbackground] = useState("")
 
     return (
         <div className="userPage" >
@@ -39,8 +52,8 @@ function UserPage() {
             </div>
 
             <div className="userInfo userInput">
-                <input className="user__input" placeholder="Введите ваш id" />
-                <input className="user__input" placeholder="Введите ваш id" />
+                <input className="user__input" placeholder="Введите ваше имя:" />
+                <input className="user__input" placeholder="Введите вашу фамилию:" />
                 <input className="user__input" placeholder="Введите ваш id" />
                 <input className="user__input" placeholder="Введите ваш id" />
             </div>
