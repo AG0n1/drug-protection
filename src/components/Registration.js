@@ -4,7 +4,6 @@ import User from "./User";
 let isLoggedIn = false
 
 function emailForm(emailValue) {
-  const user = new User
   const arrOfDomain = ["@tut.by", "@gmail.com", "@mail.com", "@yandex.ru", "@"]
   const deniedSimbols = [".", "/", "<", ">", "{", "}", "[", "]", "|", "\\", "(", ")", "*", ";", ":", "&", "^", "%", "$", "#", "!", "\"", "№"]
   let subStr = ""
@@ -130,11 +129,14 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
         if (data.user) {
           if (localStorage.getItem("token") === "null") {
             setIsUserStyle(styles.styleForSuccessLogin);
-            if (data.user.name !== "[value-2]") {
+            if (data.user.name !== "\"\"") {
               isUser.textContent = `Welcome, ${data.user.name}`
             } else {
               isUser.textContent = `Welcome, user`
             }
+            console.log(data)
+            const user = new User(data.user)
+            console.log(user)
             localStorage.setItem('token', data.token)
           } else {
             

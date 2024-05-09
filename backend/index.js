@@ -116,7 +116,7 @@ app.post('/register', (req,res) => {
   })
 })
 
-app.get('/logout', (req, res) => {
+app.post('/logout', (req, res) => {
   let {token} = req.body
   activeUsers[token] = {
     expiresIn: undefined,

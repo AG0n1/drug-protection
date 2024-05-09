@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import User from "../User"
 
 function UserPage() {
     const navigate = useNavigate()
     const deleteToken = () => {
         fetch("http://localhost:3001/logout", {
-            method: "GET",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem('token')}` 
@@ -15,6 +16,10 @@ function UserPage() {
         localStorage.setItem("token", "null")
         navigate("/")
     }
+
+    const user = new User({})
+
+    console.log(user)
 
     const [nickname, setNickname] = useState("")
     const [name, setName] = useState("")
