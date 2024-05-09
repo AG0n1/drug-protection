@@ -7,14 +7,15 @@ class UserPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickname: "",
-      name: "",
-      second_name: "",
-      email: "",
-      telegram_id: "",
-      donate_value: "",
-      description: "",
-      background: "",
+        nickname: "",
+        name: "",
+        second_name: "",
+        email: "",
+        telegram_id: "",
+        donate_value: "",
+        description: "",
+        background: "",
+        hasError: false, // Добавьте эту строку
     };
   }
 
@@ -44,7 +45,14 @@ class UserPage extends Component {
     localStorage.setItem("token", "null");
   };
 
+  componentDidCatch(error, errorInfo) {
+    this.setState({ hasError: true });
+  }
+  
   render() {
+    if (this.state.hasError) {
+        return <p style={{ color: "white" }}>Some error was caught</p>;
+      }
     const {
       nickname,
       name,
@@ -95,10 +103,10 @@ class UserPage extends Component {
           <input
             className="user__input"
             placeholder="Введите ваш id"
-             />
-            </div>
-            {/* <button onClick={deleteToken} >Log out</button> */}
+          />
         </div>
+            {/* <button onClick={deleteToken} >Log out</button> */}
+    </div>
     )
   }
 }
