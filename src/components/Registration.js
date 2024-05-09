@@ -134,7 +134,6 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
             } else {
               isUser.textContent = `Welcome, user`
             }
-             
             localStorage.setItem('token', data.token)
             console.log(data)
             isLoggedIn = true

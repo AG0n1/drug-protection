@@ -21,7 +21,7 @@ function App() {
 
                     <Route 
                         path = "laws" 
-                        element={
+                        element ={
                             <Laws />
                         } />
 
