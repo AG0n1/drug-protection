@@ -43,7 +43,7 @@
     "server": "nodemon index.js --prefix backend",
     "ConnectDatabase": "node ConnectDatabase.js --prefix backend",
     "tg": "nodemon telegramBack.js --prefix backend",
-    "dev": "concurrently \"npm run start\" \"npm run server\" \"npm run bot\"",
+    "dev": "concurrently \"npm run start\" \"npm run server\" \"npm run bo0t\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

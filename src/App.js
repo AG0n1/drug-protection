@@ -9,6 +9,24 @@ import Registration from "./components/Registration";
 import UserPage from './components/userPage/UserPage';
 
 function App() {
+    if (localStorage.getItem("token") !== null) {
+        fetch("http://localhost:3001/isActiveUser", {
+            method: "POST",
+            headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem('token')}` 
+            },
+            body: JSON.stringify({token: localStorage.getItem("token")})
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            if (!data.isActive) {
+                localStorage.setItem("token", null)   
+            }
+        })
+    }
+    
+
         return (
             <BrowserRouter>
                 <Header />
