@@ -28,6 +28,16 @@ function App() {
     }
     const deleteToken = () => {
         localStorage.setItem("token", "null")
+        localStorage.setItem("userData", JSON.stringify({
+            nickname: "",
+            name: "",
+            second_name: "",
+            email: "", 
+            telegram_id: "",
+            donate_value: "",
+            description: "",
+            background: "",
+        }))
     }
     return (
         <UserProvider>

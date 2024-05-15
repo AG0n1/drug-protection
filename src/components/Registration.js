@@ -137,6 +137,8 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
             }
             setUserData(data.user);
             localStorage.setItem('token', data.token)
+            
+            localStorage.setItem('userData', JSON.stringify(data.user))
           }
         } else {
           setIsUserStyle(styles.styleForUnsuccessLogin);

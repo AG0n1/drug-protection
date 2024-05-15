@@ -15,13 +15,14 @@ class UserPage extends Component {
         donate_value: "",
         description: "",
         background: "",
-        hasError: false, // Добавьте эту строку
+        hasError: false,
     };
   }
 
   componentDidMount() {
-    const { userData } = this.context;
-    this.setState({
+    const userData = JSON.parse(localStorage.getItem("userData"))
+    console.log(userData)
+    this.setState({  
       nickname: userData.nickname,
       name: userData.name,
       second_name: userData.second_name,
@@ -82,6 +83,12 @@ class UserPage extends Component {
         </div>
 
         <div className="userInfo userInput">
+          <input
+            className="user__input"
+            placeholder="Введите имя пользователя:"
+            value={nickname}
+            onChange={(e) => this.setState({ nickname: e.target.value })}
+          />
           <input
             className="user__input"
             placeholder="Введите ваше имя:"
