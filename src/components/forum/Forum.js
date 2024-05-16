@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 import FaQ from "./forumData/FaQ";
 import UsersQuestions from "./forumData/UsersQuestion";
 import Stories from "./Stories/Stories"
-import StoriesList from "./Stories/StoriesList";
 
 class Forum extends React.Component {
   constructor(props) {
@@ -77,9 +76,16 @@ class Forum extends React.Component {
                     <div className="stories-list">
                         <div className="stories-list-elem">
                             Я жил в страхе, но не успокоился
+                            <div>
+                                Никита, 21 год
+                            </div>
                         </div>
                         <div className="stories-list-elem">
-                            Как так можно жить? Адский круг этот не отпускает
+                            Как так можно жить? Адский кру...
+
+                            <div>
+                                Валерия, 20 лет
+                            </div>
                         </div>
                     </div>
             }

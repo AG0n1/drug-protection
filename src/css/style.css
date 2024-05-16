@@ -698,21 +698,25 @@ ol {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    padding-left: 20px;
     width: 90%;
     margin-top: 20px;
     height: 70px;
-    background-color: #00EAC0;
-    border: 1px solid black;
+    background-color: black;
     outline: 0;
-    color: black;
+    color: #00EAC0;
     cursor: pointer;
     border-radius: 10px;
-    font-size: 15px;
-    text-align: center;
+    font-size: 16px;
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+}
+
+.stories-list-elem > div {
+    font-size: 13px;
+    margin-top: 3px;
+    color: #FF3EF7;
 }
 
 /* Forum */
