@@ -639,6 +639,19 @@ ol {
   }
 
 /* Stories */
+  
+.placeholder {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #505050;
+    font-size: 30px;
+    font-style: italic;
+    
+}
+  
 
 .storiesMain {
     display: flex;
@@ -647,6 +660,7 @@ ol {
     position: absolute;
     top: 0;
     color: white;
+    width: 100%;
 }
 
 .storiesBlock {

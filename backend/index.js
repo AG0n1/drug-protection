@@ -12,6 +12,26 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const messagesDir = path.join(__dirname, 'messages');
+const storiesFilePath = path.join(__dirname, 'stories', 'stories.txt');
+
+app.post('/getStoriesInfo', (req, res) => {
+  fs.readFile(storiesFilePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Ошибка чтения файла:', err);
+      res.status(500).json({data: 'Произошла ошибка при чтении данных.'});
+      return;
+    }
+
+    try {
+      const parsedData = JSON.parse(data);
+      res.json(parsedData);
+    } catch (parseError) {
+      console.error('Ошибка парсинга данных:', parseError);
+      res.status(500).json({data: 'Произошла ошибка при парсинге данных.'});
+    }
+  });
+});
+
 if (!fs.existsSync(messagesDir)) {
   fs.mkdirSync(messagesDir);
 }

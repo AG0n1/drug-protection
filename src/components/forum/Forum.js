@@ -3,103 +3,79 @@ import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 import FaQ from "./forumData/FaQ";
 import UsersQuestions from "./forumData/UsersQuestion";
 import Stories from "./Stories/Stories"
+import StoriesBlock from "./Stories/StoriesBlock";
 
 class Forum extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentPage: "forum", 
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentPage: "forum",
+            selectedStory: "0",
+        };
+    }
 
-  handlePageChange = (page) => {
-    this.setState({ currentPage: page });
-  };
-
-  render() {
-    const style = {
-      background: "#121212",
+    handlePageChange = (page) => {
+        this.setState({ currentPage: page });
     };
 
-    const { currentPage } = this.state;
+    handleStoryClick = (storyId) => {
+        this.setState({ selectedStory: storyId });
+    };
 
-    return (
-      <div className="forumElem">
-        <div className="forum-nav">
-          <div className="forum-nav-choose">
-            <Link
-              className="forum-link"
-              to="#"
-              onClick={() => this.handlePageChange("forum")}
-            >
-              Форум
-            </Link>
-            <Link
-              className="forum-link"
-              to="#"
-              onClick={() => this.handlePageChange("faq")}
-            >
-              FAQ
-            </Link>
-            <Link
-              className="forum-link"
-              to="#"
-              onClick={() => this.handlePageChange("stories")}
-            >
-              Истории
-            </Link>
-          </div>
+    render() {
+        const { currentPage, selectedStory } = this.state;
 
-          <div className="forum-nav-list">
-            {
-                currentPage === "forum" && 
-                    <ul className="forum-tree">
-                        <li className="lvl-1">Текст1</li>
-                        <li className="lvl-1">Текст2</li>
-                        <li className="lvl-1">Текст3</li>
-                        <li className="lvl-1">Текст4</li>
-                    </ul>
-            }
-
-            {
-                currentPage === "faq" && 
-                    <ul className="forum-tree">
-                        <li className="lvl-1">Текст1</li>
-                        <li className="lvl-1">Текст2</li>
-                        <li className="lvl-1">Текст3</li>
-                        <li className="lvl-1">Текст4</li>
-                    </ul>
-            }
-
-            {
-                currentPage === "stories" && 
-                    <div className="stories-list">
-                        <div className="stories-list-elem">
-                            Я жил в страхе, но не успокоился
-                            <div>
-                                Никита, 21 год
-                            </div>
-                        </div>
-                        <div className="stories-list-elem">
-                            Как так можно жить? Адский кру...
-
-                            <div>
-                                Валерия, 20 лет
-                            </div>
-                        </div>
+        return (
+            <div className="forumElem">
+                <div className="forum-nav">
+                    <div className="forum-nav-choose">
+                        <Link
+                            className="forum-link"
+                            to="#"
+                            onClick={() => this.handlePageChange("forum")}
+                        >
+                            Форум
+                        </Link>
+                        <Link
+                            className="forum-link"
+                            to="#"
+                            onClick={() => this.handlePageChange("faq")}
+                        >
+                            FAQ
+                        </Link>
+                        <Link
+                            className="forum-link"
+                            to="#"
+                            onClick={() => this.handlePageChange("stories")}
+                        >
+                            Истории
+                        </Link>
                     </div>
-            }
-            
-          </div>
-        </div>
-        <div className="forum-info">
-          {currentPage === "forum" && <UsersQuestions />}
-          {currentPage === "faq" && <FaQ />}
-          {currentPage === "stories" && <Stories data="1" />}
-        </div>
-      </div>
-    );
-  }
+
+                    <div className="forum-nav-list">
+                        {currentPage === "stories" && (
+                            <div className="stories-list">
+                                <div className="stories-list-elem" onClick={() => this.handleStoryClick(1)}>
+                                    Я жил в страхе, но не успокоился
+                                    <div>Никита, 21 год</div>
+                                </div>
+                                <div className="stories-list-elem" onClick={() => this.handleStoryClick(2)}>
+                                    Как так можно жить? Адский кру...
+                                    <div>Валерия, 20 лет</div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className="forum-info">
+                    {currentPage === "forum" && <UsersQuestions />}
+                    {currentPage === "faq" && <FaQ />}
+                    {currentPage === "stories" && selectedStory && <Stories data={selectedStory.toString()} />}
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Forum;
+
