@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 import FaQ from "./forumData/FaQ";
 import UsersQuestions from "./forumData/UsersQuestion";
-import Stories from "./forumData/Stories"
+import Stories from "./Stories/Stories"
 
 class Forum extends React.Component {
   constructor(props) {
@@ -64,7 +64,7 @@ class Forum extends React.Component {
           {/* В зависимости от currentPage рендерим соответствующий компонент */}
           {currentPage === "forum" && <UsersQuestions />}
           {currentPage === "faq" && <FaQ />}
-          {currentPage === "stories" && <Stories />}
+          {currentPage === "stories" && <Stories data="1" />}
         </div>
       </div>
     );

@@ -644,7 +644,8 @@ ol {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
+    position: absolute;
+    top: 0;
     color: white;
 }
 
@@ -698,6 +699,7 @@ ol {
 }
 
 .forum-info {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
