@@ -686,6 +686,35 @@ ol {
     font-style: italic;
 }
 
+.stories-list {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.stories-list-elem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-top: 20px;
+    height: 70px;
+    background-color: #00EAC0;
+    border: 1px solid black;
+    outline: 0;
+    color: black;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
 /* Forum */
 
 .forumElem {
@@ -705,7 +734,7 @@ ol {
     justify-content: center;
 
     width: 65%;
-    max-height: 600px;
+    max-height: 700px;
     background: #121212;
     box-shadow: 0px 0px 10px black inset;
     overflow-y: auto;
@@ -716,7 +745,7 @@ ol {
     flex-direction: column;
 
     width: 30%;
-    min-height: 600px;
+    max-height: 700px;
 
     box-shadow: 0px 0px 10px black inset;
 }

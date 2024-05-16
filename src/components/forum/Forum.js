@@ -3,12 +3,13 @@ import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 import FaQ from "./forumData/FaQ";
 import UsersQuestions from "./forumData/UsersQuestion";
 import Stories from "./Stories/Stories"
+import StoriesList from "./Stories/StoriesList";
 
 class Forum extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: "forum", // начальная страница - Форум
+      currentPage: "forum", 
     };
   }
 
@@ -27,7 +28,6 @@ class Forum extends React.Component {
       <div className="forumElem">
         <div className="forum-nav">
           <div className="forum-nav-choose">
-            {/* Используем Link из react-router-dom вместо обычных ссылок */}
             <Link
               className="forum-link"
               to="#"
@@ -52,16 +52,41 @@ class Forum extends React.Component {
           </div>
 
           <div className="forum-nav-list">
-            <ul className="forum-tree">
-              <li className="lvl-1">Текст1</li>
-              <li className="lvl-1">Текст2</li>
-              <li className="lvl-1">Текст3</li>
-              <li className="lvl-1">Текст4</li>
-            </ul>
+            {
+                currentPage === "forum" && 
+                    <ul className="forum-tree">
+                        <li className="lvl-1">Текст1</li>
+                        <li className="lvl-1">Текст2</li>
+                        <li className="lvl-1">Текст3</li>
+                        <li className="lvl-1">Текст4</li>
+                    </ul>
+            }
+
+            {
+                currentPage === "faq" && 
+                    <ul className="forum-tree">
+                        <li className="lvl-1">Текст1</li>
+                        <li className="lvl-1">Текст2</li>
+                        <li className="lvl-1">Текст3</li>
+                        <li className="lvl-1">Текст4</li>
+                    </ul>
+            }
+
+            {
+                currentPage === "stories" && 
+                    <div className="stories-list">
+                        <div className="stories-list-elem">
+                            Я жил в страхе, но не успокоился
+                        </div>
+                        <div className="stories-list-elem">
+                            Как так можно жить? Адский круг этот не отпускает
+                        </div>
+                    </div>
+            }
+            
           </div>
         </div>
         <div className="forum-info">
-          {/* В зависимости от currentPage рендерим соответствующий компонент */}
           {currentPage === "forum" && <UsersQuestions />}
           {currentPage === "faq" && <FaQ />}
           {currentPage === "stories" && <Stories data="1" />}
