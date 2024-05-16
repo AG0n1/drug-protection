@@ -3,45 +3,57 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
-const { act } = require('react');
+const fs = require("fs")
+const path = require("path")
 
-app = express()
-
-// RUBISH
-/*
-const http = require('http');
-const path = require('path');
-const localtunnel = require('localtunnel');
 const app = express();
-const server = http.createServer(app);
-app.use(express.static(path.join(__dirname, '../build')));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
-*/
- 
+
 app.use(cors());
 app.use(bodyParser.json());
 
+const messagesDir = path.join(__dirname, 'messages');
+if (!fs.existsSync(messagesDir)) {
+  fs.mkdirSync(messagesDir);
+}
+
+app.post('/saveMessage', (req, res) => {
+  const { message, date, time, name, second_name } = req.body;
+
+  if (!message || !date || !time || !name || !second_name) {
+    return res.status(400).json({ error: 'Incomplete data' });
+  }
+
+  const formattedDate = `${date}, ${time}`;
+  const dataToWrite = `${name}, ${second_name}, ${formattedDate}\n${message}\n`;
+
+  const filePath = path.join(messagesDir, 'messages.txt');
+  fs.appendFile(filePath, dataToWrite, 'utf8', (err) => {
+    if (err) {
+      console.error('Error writing to file:', err);
+      return res.status(500).json({ error: 'Error writing message to file' });
+    }
+    console.log('Message saved to file:', dataToWrite);
+    res.json({ message: 'Message saved successfully' });
+  });
+});
+
 function generateToken() {
-  const symbols = ['1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i','g','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-  let token = "";
+  const symbols = '1234567890abcdefghijklmnopqrstuvwxyz';
+  let token = '';
   for (let i = 0; i < 16; i++) {
-      token += symbols[Math.floor(Math.random() * 36)];
+    token += symbols[Math.floor(Math.random() * symbols.length)];
   }
   return token;
 }
 
-let activeUsers = {
-
-}
+let activeUsers = {};
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'mmark',
   password: 'LQ8G/WoJJd_EsC9v',
   database: 'users'
-})
+});
 
 connection.connect((err) => {
   if (err) {
@@ -53,34 +65,20 @@ connection.connect((err) => {
 
 const secretKey = 'your_secret_key';
 
-const user = {
-  name: "someName",
-  age: 0,
-  
-}
-
-app.get('/api', (req, res) => {
-  res.json(user)
-})
-
-app.get('/telegramCheckUser', (req, res) => {
-  res.json(user)
-})
-
 app.post('/signIn', (req, res) => {
   const { email, password } = req.body;
   connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
-    console.log(results)
+    console.log(results);
     if (error) {
-      console.error('Error in trying to connect to database:', error)
+      console.error('Error in trying to connect to database:', error);
       res.status(500).json({ error: 'Error in fetching' });
     } else {
       if (results.length > 0) {
-        const token = generateToken()
+        const token = jwt.sign({ email: results[0].email, userId: results[0].id }, secretKey, { expiresIn: '10h' });
         activeUsers[token] = {
-          expiresIn: "10h",
+          expiresIn: '10h',
           isActive: true,
-        }
+        };
         res.json({ user: results[0], token: token });
       } else {
         console.log('Пользователь не найден');
@@ -90,45 +88,42 @@ app.post('/signIn', (req, res) => {
   });
 });
 
-app.post('/register', (req,res) => {
+app.post('/register', (req, res) => {
   const { email, password } = req.body;
 
-  connection.query('SELECT id FROM users WHERE id = ?', (err, result) => {
-    if (!err) {
-      if (result.length > 0) {
-        console.log(result)
-      }
-    }
-  })
-
   connection.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
-    if (err) { 
-      console.log("Error in trying to connect to database: ", err)
-      res.status(500).json({error: 'Error in fetching'})
+    if (err) {
+      console.log('Error in trying to connect to database: ', err);
+      res.status(500).json({ error: 'Error in fetching' });
     } else {
       if (results.length > 0) {
-        res.json({user: true})
+        res.json({ user: true });
       } else {
-        connection.query(`INSERT INTO \`users\`(\`email\`, \`password\`) VALUES ('${email}','${password}')`)
-        console.log("User succesfully created")
+        connection.query('INSERT INTO `users`(`email`, `password`) VALUES (?, ?)', [email, password], (error, result) => {
+          if (error) {
+            console.error('Error in inserting user:', error);
+            res.status(500).json({ error: 'Error in inserting user' });
+          } else {
+            console.log('User successfully created');
+            const token = jwt.sign({ email: email, userId: result.insertId }, secretKey, { expiresIn: '10h' });
+            activeUsers[token] = {
+              expiresIn: '10h',
+              isActive: true,
+            };
+            res.json({ user: { email: email, id: result.insertId }, token: token });
+          }
+        });
       }
     }
-  })
-})
+  });
+});
 
 app.post('/logout', (req, res) => {
-  let {token} = req.body
-  activeUsers[token] = {
-    expiresIn: undefined,
-    isActive: false,
-  }
-  console.log(activeUsers)
-})
-
-app.post("/isActiveUser", (req, res) => {
-  // Добавить логику проверки пользователя
-  res.json({isActive: true})
-})
+  let { token } = req.body;
+  delete activeUsers[token];
+  console.log(activeUsers);
+  res.json({ message: 'Logged out successfully' });
+});
 
 const PORT = 3001;
 app.listen(PORT, () => {

@@ -9,30 +9,32 @@ import Registration from "./components/Registration";
 import UserPage from './components/userPage/UserPage';
 import { UserProvider } from './components/UserContext';
 
+import Test from './test';
+
 function App() {
-    if (localStorage.getItem("token") !== null) {
-        fetch("http://localhost:3001/isActiveUser", {
-            method: "POST",
-            headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem('token')}` 
-            },
-            body: JSON.stringify({token: localStorage.getItem("token")})
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            if (!data.isActive) {
-                localStorage.setItem("token", null)   
-            }
-        })
-    }
+    // if (localStorage.getItem("token") !== null) {
+    //     fetch("http://localhost:3001/isActiveUser", {
+    //         method: "POST",
+    //         headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Authorization": `Bearer ${localStorage.getItem('token')}` 
+    //         },
+    //         body: JSON.stringify({token: localStorage.getItem("token")})
+    //     })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         if (!data.isActive) {
+    //             localStorage.setItem("token", null)   
+    //         }
+    //     })
+    // }
     const deleteToken = () => {
         localStorage.setItem("token", "null")
         localStorage.setItem("userData", JSON.stringify({
             nickname: "",
             name: "",
             second_name: "",
-            email: "", 
+            email: "",     
             telegram_id: "",
             donate_value: "",
             description: "",
@@ -48,12 +50,17 @@ function App() {
                         path = "/" 
                         element={
                             <MainInfo />
-                        } />
+                         } />
 
+                    <Route 
+                        path = "test" 
+                        element={
+                            <Test />
+                         } />
                     <Route 
                         path = "laws" 
                         element ={
-                            <Laws />
+                              <Laws />
                         } />
 
                     <Route 

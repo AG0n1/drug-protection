@@ -32,7 +32,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
   const isUser = document.getElementById("input-div-isuser")
   useImperativeHandle(ref, () => ({
     openForm: openForm,
-  }));
+  }));                                                                                                                                                                                                                                                                                                                                                                                                                                                              
   const styles = {
     defaultStyle: {
       display: "none",
@@ -69,9 +69,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
       borderRadius: "5px",
       fontWeight: "bold"
     }
-  }
-
-
+  };
   const openForm = () => {
     setDisplay("flex");
   };
