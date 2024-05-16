@@ -1,5 +1,5 @@
 function FaQ() {
-    return <div>
+    return <div className="FaQ">
 
     </div>
 }

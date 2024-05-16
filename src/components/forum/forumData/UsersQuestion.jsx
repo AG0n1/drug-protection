@@ -1,7 +1,8 @@
 function UsersQuestions() {
-    return <div>
-        
+    return <div className="users-questions">
+
     </div>
 }
 
 export default UsersQuestions
+
