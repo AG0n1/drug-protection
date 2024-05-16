@@ -47,7 +47,7 @@ class Forum extends React.Component {
                     </div>
                 </div>
                 <div className="forum-info">
-
+                    
                 </div>
 
                 
