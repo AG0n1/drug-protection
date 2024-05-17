@@ -41,6 +41,21 @@ app.post('/getStoriesInfo', (req, res) => {
   });
 });
 
+app.post('/getMessages', (req, res) => {
+  let {id} = req.body
+  
+  const filePath = path.join(messagesDir, `${id}.txt`);
+  
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error writing to file:', err);
+      return res.status(500).json({ error: 'Error writing message to file' });
+    } else {
+      res.json(data)
+    }
+  });
+})
+
 if (!fs.existsSync(messagesDir)) {
   fs.mkdirSync(messagesDir);
 }
@@ -52,14 +67,13 @@ app.post('/saveMessage', (req, res) => {
     return
   } 
 
-  const formattedDate = `${date}, ${time}`;
-  const dataToWrite = `{
-  name: ${name}, 
-  second_name: ${second_name}, 
-  time: ${time}, 
-  date: ${date}, 
-  message: ${message}
-}\n`;
+  const dataToWrite = 
+`"${time}": {
+  "name": "${name}", 
+  "second_name": "${second_name}", 
+  "date": "${date}", 
+  "message": "${message}"
+},\n`;
 
   const filePath = path.join(messagesDir, `${id}.txt`);
   console.log(filePath)

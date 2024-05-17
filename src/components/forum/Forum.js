@@ -15,12 +15,39 @@ class Forum extends React.Component {
         };
     }
     
-
     handlePageChange = (page) => {
         this.setState({ currentPage: page });
     };
 
     handleForumClick = (itemId) => {
+        fetch("http://localhost:3001/getMessages", {
+            method: "POST",   
+            headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}` 
+            },
+            body: JSON.stringify({id: itemId})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data.slice(0, -2))
+            let parsedObj = JSON.parse(`{${data.slice(0, -2)}}`)
+
+            for (let key in parsedObj) {
+                const {message, name} = parsedObj[key]
+                const messageBlock = document.createElement("div");
+                messageBlock.className = "message-block";
+                messageBlock.innerHTML = `
+                    <div class="user-message" >${message}</div>
+                `;
+
+                const placeForMessages = document.getElementById("place-for-messages");
+                placeForMessages.appendChild(messageBlock);
+            }
+
+            console.log(parsedObj)
+        })
+
         this.setState({ selectedForumItem: itemId });
     };
     
