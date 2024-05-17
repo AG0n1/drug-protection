@@ -864,7 +864,9 @@ footer {
 
 .item {
     display: flex;
-    width: 26rem;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
     height: 12.5rem;
     background-color: aquamarine;
     border-radius: 8px;
@@ -872,6 +874,24 @@ footer {
     align-items: center;
     font-size: 2rem;
     flex-shrink: 0;
+}
+
+.item > .space {
+    width: 30px
+}
+
+.item-photo {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background: red
+}
+
+.item-info {
+    width: 250px;
+    height: 150px;
+    background: blue;
 }
 
 .item:not(:last-child) {

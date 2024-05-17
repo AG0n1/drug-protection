@@ -69,13 +69,90 @@ const ScrollableContainer = () => {
         style={{paddingBottom: "20px"}}
     >
         
-        <li className="item">1</li>
-        <li className="item">2</li>
-        <li className="item">3</li>
-        <li className="item">4</li>
-        <li className="item">5</li>
-        <li className="item">6</li>
-        <li className="item">7</li>
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+
+          </div>
+        </li>
+
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+
+          </div>
+        </li>
+
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+
+          </div>
+        </li>
+
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+
+          </div>
+        </li>
+
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+
+          </div>
+        </li>
+
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+
+          </div>
+        </li>
+        
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+
+          </div>
+        </li>
+
       </ul>
     </div>
   );

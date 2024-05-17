@@ -7,7 +7,7 @@ class Nav extends React.Component {
         return (
             <div className="header-nav absoluteCenter">
                 <Link className="header-link" to="/">Главная</Link>
-                <Link className="header-link" to="/forum">Форум</Link>
+                <Link className="header-link" to="/forum">Полезная информация</Link>
             </div>
             )
     }
