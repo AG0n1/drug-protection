@@ -652,6 +652,9 @@ ol {
     
 }
   
+.stories-list-elem.active {
+    border: 1px solid #00EAC0;
+}
 
 .storiesMain {
     display: flex;

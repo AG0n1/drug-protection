@@ -10,7 +10,7 @@ class Forum extends React.Component {
         super(props);
         this.state = {
             currentPage: "forum",
-            selectedStory: "0",
+            selectedStory: null,
         };
     }
 
@@ -55,12 +55,18 @@ class Forum extends React.Component {
                     <div className="forum-nav-list">
                         {currentPage === "stories" && (
                             <div className="stories-list">
-                                <div className="stories-list-elem" onClick={() => this.handleStoryClick(1)}>
+                                <div
+                                    className={`stories-list-elem ${selectedStory === 1 ? 'active' : ''}`}
+                                    onClick={() => this.handleStoryClick(1)}
+                                >
                                     Я жил в страхе, но не успокоился
                                     <div>Никита, 21 год</div>
                                 </div>
-                                <div className="stories-list-elem" onClick={() => this.handleStoryClick(2)}>
-                                    Как так можно жить? Адский кру...
+                                <div
+                                    className={`stories-list-elem ${selectedStory === 2 ? 'active' : ''}`}
+                                    onClick={() => this.handleStoryClick(2)}
+                                >   
+                                    Как так можно жить? Адский круг...
                                     <div>Валерия, 20 лет</div>
                                 </div>
                             </div>
@@ -78,4 +84,3 @@ class Forum extends React.Component {
 }
 
 export default Forum;
-

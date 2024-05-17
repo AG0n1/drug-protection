@@ -76,13 +76,12 @@ class Stories extends React.Component {
                 <div className="storiesMain">
                     {data === "0" && (
                         <div className="placeholder">
-                        Выберите историю, которую вы хотите прочитать
+                            Выберите историю, которую вы хотите прочитать
                         </div>
                     )}
                     {data === "1" && <StoriesBlock title={this.state.title1} info={this.state.info1} />}
                     {data === "2" && <StoriesBlock title={this.state.title2} info={this.state.info2} />}
                     </div>
-                
             </div>
         )
     }
