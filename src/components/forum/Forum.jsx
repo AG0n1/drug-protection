@@ -52,6 +52,15 @@ class Forum extends React.Component {
         this.setState({ selectedForumItem: itemId });
     };
     
+    showCreate = () => {
+        let item = document.getElementById("create-question")
+        item.classList.remove("hidden")
+    }
+
+    hideCreate = () => {
+        let item = document.getElementById("create-question")
+        item.classList.add("hidden")
+    }
 
     handleStoryClick = (storyId) => {
         this.setState({ selectedStory: storyId });
@@ -112,7 +121,7 @@ class Forum extends React.Component {
                                 
 
                                 <div className="create-new-theme">
-                                    <button id="create-new-theme">
+                                    <button onClick={() => this.showCreate()} id="create-new-theme">
                                         Создать новую тему
                                     </button>
                                 </div>
@@ -145,6 +154,11 @@ class Forum extends React.Component {
                     {currentPage === "stories" && selectedStory && <Stories data={selectedStory.toString()} />}
                 </div>
 
+                <div className="hidden absoluteCenter" id="create-question">
+                    <div onClick={() => this.hideCreate()} className="create">
+                        
+                    </div>
+                </div>
             </div>
         );
     }
