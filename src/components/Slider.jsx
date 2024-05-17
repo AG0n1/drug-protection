@@ -2,6 +2,10 @@ import { useState, useRef, useEffect } from "react";
 import cn from "classnames";
 import debounce from "lodash.debounce";
 
+import computerAddict from "./images/slider/computerAddict.svg"
+import pornAddict from "./images/slider/pornAddict.svg"
+import drugAddict from "./images/slider/drugAddict.svg"
+
 const ScrollableContainer = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -21,7 +25,6 @@ const ScrollableContainer = () => {
   };
 
   const debounceCheckForScrollPosition = debounce(checkForScrollPosition, 200);
-
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -70,76 +73,58 @@ const ScrollableContainer = () => {
     >
         
         <li className="item">
-          <div className="item-photo">
+            <img draggable="false" width="100px" height="100px" src={drugAddict} />
 
-          </div>
           <div className="space">
 
           </div>
           <div className="item-info">
+            <div className="item-info-title">
+              Наркозависимость
+            </div>
 
+            <div className="item-info-text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur officiis, deserunt neque, doloremque cupiditate nam voluptatem accusamus...
+            </div>
           </div>
         </li>
 
+        
         <li className="item">
-          <div className="item-photo">
+            <img draggable="false" width="100px" height="100px" src={pornAddict} />
 
-          </div>
           <div className="space">
 
           </div>
           <div className="item-info">
+            <div className="item-info-title">
+              Порнозависимость
+            </div>
 
+            <div className="item-info-text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur officiis, deserunt neque, doloremque cupiditate nam voluptatem accusamus...
+            </div>
           </div>
         </li>
 
+        
         <li className="item">
-          <div className="item-photo">
+            <img draggable="false" width="100px" height="100px" src={computerAddict} />
 
-          </div>
           <div className="space">
 
           </div>
           <div className="item-info">
+            <div className="item-info-title">
+              Компьютерная зависимость
+            </div>
 
+            <div className="item-info-text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur officiis, deserunt neque, doloremque cupiditate nam voluptatem accusamus...
+            </div>
           </div>
         </li>
 
-        <li className="item">
-          <div className="item-photo">
-
-          </div>
-          <div className="space">
-
-          </div>
-          <div className="item-info">
-
-          </div>
-        </li>
-
-        <li className="item">
-          <div className="item-photo">
-
-          </div>
-          <div className="space">
-
-          </div>
-          <div className="item-info">
-
-          </div>
-        </li>
-
-        <li className="item">
-          <div className="item-photo">
-
-          </div>
-          <div className="space">
-
-          </div>
-          <div className="item-info">
-
-          </div>
-        </li>
         
         <li className="item">
           <div className="item-photo">
@@ -149,10 +134,74 @@ const ScrollableContainer = () => {
 
           </div>
           <div className="item-info">
+            <div className="item-info-title">
+              Наркозависимость
+            </div>
 
+            <div className="item-info-text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur officiis, deserunt neque, doloremque cupiditate nam voluptatem accusamus...
+            </div>
           </div>
         </li>
 
+        
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+            <div className="item-info-title">
+              Наркозависимость
+            </div>
+
+            <div className="item-info-text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur officiis, deserunt neque, doloremque cupiditate nam voluptatem accusamus...
+            </div>
+          </div>
+        </li>
+
+        
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+            <div className="item-info-title">
+              Наркозависимость
+            </div>
+
+            <div className="item-info-text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur officiis, deserunt neque, doloremque cupiditate nam voluptatem accusamus...
+            </div>
+          </div>
+        </li>
+
+        
+        <li className="item">
+          <div className="item-photo">
+
+          </div>
+          <div className="space">
+
+          </div>
+          <div className="item-info">
+            <div className="item-info-title">
+              Наркозависимость
+            </div>
+
+            <div className="item-info-text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur officiis, deserunt neque, doloremque cupiditate nam voluptatem accusamus...
+            </div>
+          </div>
+        </li>
+
+        
       </ul>
     </div>
   );

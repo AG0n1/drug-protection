@@ -876,22 +876,28 @@ footer {
     flex-shrink: 0;
 }
 
-.item > .space {
+/* .item > .space {
     width: 30px
-}
+} */
 
 .item-photo {
     width: 150px;
     height: 150px;
     background-size: cover;
     background-position: center;
-    background: red
 }
 
 .item-info {
     width: 250px;
-    height: 150px;
-    background: blue;
+}
+
+.item-info-title {
+    font-size: 26px;
+}
+
+.item-info-text {
+    margin-top: 10px;
+    font-size: 15px;
 }
 
 .item:not(:last-child) {
