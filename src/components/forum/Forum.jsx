@@ -20,6 +20,7 @@ class Forum extends React.Component {
     };
 
     handleForumClick = (itemId) => {
+        
         fetch("http://localhost:3001/getMessages", {
             method: "POST",   
             headers: {
@@ -30,6 +31,8 @@ class Forum extends React.Component {
         })
         .then(res => res.json())
         .then(data => {
+            const placeForMessages = document.getElementById("place-for-messages");
+            placeForMessages.textContent = ""
             console.log(data.slice(0, -2))
             let parsedObj = JSON.parse(`{${data.slice(0, -2)}}`)
 
@@ -40,8 +43,6 @@ class Forum extends React.Component {
                 messageBlock.innerHTML = `
                     <div class="user-message" >${message}</div>
                 `;
-
-                const placeForMessages = document.getElementById("place-for-messages");
                 placeForMessages.appendChild(messageBlock);
             }
 
@@ -90,18 +91,30 @@ class Forum extends React.Component {
                         
                         {currentPage === "forum" && (
                             <div className="forum-list">
-                                <div
-                                    className={`forum-list-elem`}
-                                    onClick={() => this.handleForumClick(1)}
-                                >
-                                    Как избавиться от зависимости?
-                                </div>
+                                <div id="place-for-list">
+                                    <div
+                                        className={`forum-list-elem`}
+                                        onClick={() => this.handleForumClick(1)}
+                                    >
+                                        Как избавиться от зависимости?
+                                    </div>
 
-                                <div
-                                    className={`forum-list-elem`}
-                                    onClick={() => this.handleForumClick(2)}
-                                >   
-                                    Как найти в себе силы?
+                                    <div
+                                        className={`forum-list-elem`}
+                                        onClick={() => this.handleForumClick(2)}
+                                    >   
+                                        Как найти в себе силы?
+                                    </div>
+
+                                    
+
+                                </div>
+                                
+
+                                <div className="create-new-theme">
+                                    <button id="create-new-theme">
+                                        Создать новую тему
+                                    </button>
                                 </div>
                             </div>
                         )}

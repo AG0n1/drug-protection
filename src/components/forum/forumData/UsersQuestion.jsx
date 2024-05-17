@@ -2,9 +2,10 @@ function UsersQuestions(props) {
     const {id} = props
     let token = localStorage.getItem("token")
     const func = () => {
-        if (token && token !== "null" && token !== null) {
+        
+        const inp = document.getElementById("inp");
+        if (token && token !== "null" && token !== null && inp.value.trim().length !== 0) {
             console.log(token)
-            const inp = document.getElementById("inp");
             const currentDate = new Date().toLocaleDateString();
             const currentTime = new Date().toLocaleTimeString();
             const userData = JSON.parse(localStorage.getItem('userData')); 
@@ -26,30 +27,25 @@ function UsersQuestions(props) {
               },
               body: JSON.stringify(dataToSend),
             });
-            
+
             const messageBlock = document.createElement("div");
             messageBlock.className = "message-block";
             messageBlock.innerHTML = `
-                <div class="user-message" >${inp.value}</div>
+            <div class="user-message" >${inp.value}</div>
             `;
+            
 
             const placeForMessages = document.getElementById("place-for-messages");
             placeForMessages.appendChild(messageBlock);
 
-            inp.value = "";
     
-        } else {
-            console.log(token)
-            alert("Нужно войти в аккаунт")
         }
+
+        inp.value = "";
     };
     
-    
-
     return (
         <div className="users-questions">
-
-            
             {id === "0" && (
                         <div className="placeholder">
                             Выберите тему, которую вы хотите обсудить
@@ -59,9 +55,9 @@ function UsersQuestions(props) {
                 <div id="place-for-messages">
                 
                 </div>
-            )}        
+            )}
             {id !== "0" && (
-                <input id="inp" onBlur={func} className="users-inp" placeholder="Введите сообщение..." />
+                <input id="inp" autocomplete="off" onBlur={func} className="users-inp" placeholder="Введите сообщение..." />
             )}
         </div>
     )

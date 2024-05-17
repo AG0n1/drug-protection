@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 const fs = require("fs")
 const path = require("path")
-
+let activeUsers = {}
 const app = express();
 
 app.use(cors());
