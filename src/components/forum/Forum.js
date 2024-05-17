@@ -10,13 +10,17 @@ class Forum extends React.Component {
         super(props);
         this.state = {
             currentPage: "forum",
-            selectedStory: null,
+            selectedStory: "0",
         };
     }
 
     handlePageChange = (page) => {
         this.setState({ currentPage: page });
     };
+
+    handleForumClick = () => {
+
+    }
 
     handleStoryClick = (storyId) => {
         this.setState({ selectedStory: storyId });
@@ -53,6 +57,25 @@ class Forum extends React.Component {
                     </div>
 
                     <div className="forum-nav-list">
+                        
+                        {currentPage === "forum" && (
+                            <div className="forum-list">
+                                <div
+                                    className={`forum-list-elem`}
+                                    onClick={() => this.handleForumClick(1)}
+                                >
+                                    Как избавиться от зависимости?
+                                </div>
+
+                                <div
+                                    className={`forum-list-elem`}
+                                    onClick={() => this.handleForumClick(2)}
+                                >   
+                                    Как найти в себе силы?
+                                </div>
+                            </div>
+                        )}
+
                         {currentPage === "stories" && (
                             <div className="stories-list">
                                 <div
