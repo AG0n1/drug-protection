@@ -14,7 +14,8 @@ function UsersQuestions(props) {
               date: currentDate,
               time: currentTime,
               name: userData.name,
-              second_name: userData.second_name
+              second_name: userData.second_name,
+              id: id,
             };
             console.log(typeof localStorage.getItem("token"))
             fetch("http://localhost:3001/saveMessage", {
@@ -48,14 +49,22 @@ function UsersQuestions(props) {
     return (
         <div className="users-questions">
 
-            <div id="place-for-messages">
+            
+            {id === "0" && (
+                        <div className="placeholder">
+                            Выберите тему, которую вы хотите обсудить
+                        </div>
+                    )}
+            {id !== "0" && (
+                <div id="place-for-messages">
                 
-            </div>
-
-            <input id="inp" onBlur={func} className="users-inp" placeholder="Введите сообщение..." />
+                </div>
+            )}        
+            {id !== "0" && (
+                <input id="inp" onBlur={func} className="users-inp" placeholder="Введите сообщение..." />
+            )}
         </div>
     )
-    
 }
 
 export default UsersQuestions

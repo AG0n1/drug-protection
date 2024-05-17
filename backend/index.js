@@ -11,8 +11,17 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const messagesDir = path.join(__dirname, 'messages');
+const messagesDir = path.join(__dirname, 'forum');
 const storiesFilePath = path.join(__dirname, 'stories', 'stories.txt');
+
+function generateToken() {
+  const symbols = '1234567890abcdefghijklmnopqrstuvwxyz';
+  let token = '';
+  for (let i = 0; i < 16; i++) {
+    token += symbols[Math.floor(Math.random() * symbols.length)];
+  }
+  return token;
+}
 
 app.post('/getStoriesInfo', (req, res) => {
   fs.readFile(storiesFilePath, 'utf8', (err, data) => {
@@ -37,13 +46,23 @@ if (!fs.existsSync(messagesDir)) {
 }
 
 app.post('/saveMessage', (req, res) => {
-  console.log(1)
-  const { message, date, time, name, second_name } = req.body;
+  const { message, date, time, name, second_name, id } = req.body;
+
+  if (message.trim().length === 0) {
+    return
+  } 
 
   const formattedDate = `${date}, ${time}`;
-  const dataToWrite = `${name}, ${second_name}, ${formattedDate}\n${message}\n`;
+  const dataToWrite = `{
+  name: ${name}, 
+  second_name: ${second_name}, 
+  time: ${time}, 
+  date: ${date}, 
+  message: ${message}
+}\n`;
 
-  const filePath = path.join(messagesDir, 'messages.txt');
+  const filePath = path.join(messagesDir, `${id}.txt`);
+  console.log(filePath)
   
   fs.appendFile(filePath, dataToWrite, 'utf8', (err) => {
     if (err) {
@@ -54,17 +73,6 @@ app.post('/saveMessage', (req, res) => {
     res.json({ message: 'Message saved successfully' });
   });
 });
-
-function generateToken() {
-  const symbols = '1234567890abcdefghijklmnopqrstuvwxyz';
-  let token = '';
-  for (let i = 0; i < 16; i++) {
-    token += symbols[Math.floor(Math.random() * symbols.length)];
-  }
-  return token;
-}
-
-let activeUsers = {};
 
 const connection = mysql.createConnection({
   host: 'localhost',

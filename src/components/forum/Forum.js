@@ -11,7 +11,7 @@ class Forum extends React.Component {
         this.state = {
             currentPage: "forum",
             selectedStory: "0",
-            selectedForumItem: null, 
+            selectedForumItem: "0", 
         };
     }
     
