@@ -37,16 +37,14 @@ if (!fs.existsSync(messagesDir)) {
 }
 
 app.post('/saveMessage', (req, res) => {
+  console.log(1)
   const { message, date, time, name, second_name } = req.body;
-
-  if (!message || !date || !time || !name || !second_name) {
-    return res.status(400).json({ error: 'Incomplete data' });
-  }
 
   const formattedDate = `${date}, ${time}`;
   const dataToWrite = `${name}, ${second_name}, ${formattedDate}\n${message}\n`;
 
   const filePath = path.join(messagesDir, 'messages.txt');
+  
   fs.appendFile(filePath, dataToWrite, 'utf8', (err) => {
     if (err) {
       console.error('Error writing to file:', err);

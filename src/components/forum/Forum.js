@@ -11,16 +11,19 @@ class Forum extends React.Component {
         this.state = {
             currentPage: "forum",
             selectedStory: "0",
+            selectedForumItem: null, 
         };
     }
+    
 
     handlePageChange = (page) => {
         this.setState({ currentPage: page });
     };
 
-    handleForumClick = () => {
-
-    }
+    handleForumClick = (itemId) => {
+        this.setState({ selectedForumItem: itemId });
+    };
+    
 
     handleStoryClick = (storyId) => {
         this.setState({ selectedStory: storyId });
@@ -97,10 +100,11 @@ class Forum extends React.Component {
                     </div>
                 </div>
                 <div className="forum-info">
-                    {currentPage === "forum" && <UsersQuestions />}
+                    {currentPage === "forum" && <UsersQuestions id={this.state.selectedForumItem} />} 
                     {currentPage === "faq" && <FaQ />}
                     {currentPage === "stories" && selectedStory && <Stories data={selectedStory.toString()} />}
                 </div>
+
             </div>
         );
     }
