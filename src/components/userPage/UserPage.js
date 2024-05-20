@@ -15,13 +15,12 @@ class UserPage extends Component {
         donate_value: "",
         description: "",
         background: "",
-        hasError: false,
     };
   }
 
   componentDidMount() {
-    const userData = JSON.parse(localStorage.getItem("userData"))
-    console.log(userData)
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    console.log(userData);
     this.setState({  
       nickname: userData.nickname,
       name: userData.name,
@@ -46,14 +45,7 @@ class UserPage extends Component {
     localStorage.setItem("token", "null");
   };
 
-  componentDidCatch(error, errorInfo) {
-    this.setState({ hasError: true });
-  }
-
   render() {
-    if (this.state.hasError) {
-        return <p style={{ color: "white" }}>Some error was caught</p>;
-      }
     const {
       nickname,
       name,
@@ -64,15 +56,18 @@ class UserPage extends Component {
       description,
       background,
     } = this.state;
-    console.log(this.state)
 
     const save = () => {
+      console.log(this.state)
       fetch("http://localhost:3001/saveData", {
         method: "POST",
-
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem('token')}` 
+        },
         body: JSON.stringify(this.state)
-      })
-    }
+      });
+    };
 
     return (
       <div className="userPage">
@@ -112,21 +107,27 @@ class UserPage extends Component {
           />
           <input
             className="user__input"
+            id="telegram_id"
             placeholder="Введите ваш id"
             value={telegram_id}
             onChange={(e) => this.setState({ telegram_id: e.target.value })}
+            disabled
           />
           <input
             className="user__input"
             placeholder="Введите ваш id"
+            value={nickname}
+            onChange={(e) => this.setState({ nickname: e.target.value })}
           />
 
-          <button className="saveData" onClick={save} ></button>
+          <div className="centerBtn">
+            <button className="saveData" onClick={save} >Сохранить</button>
+          </div>
         </div>
-            {/* <button onClick={deleteToken} >Log out</button> */}
-    </div>
-    )
+        {/* <button onClick={deleteToken} >Log out</button> */}
+      </div>
+    );
   }
 }
 
-export default UserPage
+export default UserPage;

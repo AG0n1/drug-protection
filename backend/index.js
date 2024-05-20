@@ -158,6 +158,49 @@ app.post('/register', (req, res) => {
   });
 });
 
+app.post("/saveData", (req, res) => {
+  const { body } = req;
+  const { nickname } = body;
+
+  console.log('Request body:', body);
+
+  if (!nickname) {
+    console.log('Nickname is required');
+    return res.status(400).json({ error: 'Nickname is required' });
+  }
+
+  const fields = Object.keys(body).filter(key => key !== 'nickname');
+  const values = fields.map(field => body[field]);
+
+  if (fields.length === 0) {
+    console.log('No fields to update');
+    return res.status(400).json({ error: 'No fields to update' });
+  }
+
+  const setClause = fields.map(field => `${field} = ?`).join(', ');
+
+  const query = `UPDATE users SET ${setClause} WHERE nickname = ?`;
+  values.push(nickname);
+
+  console.log('Executing query:', query, 'with values:', values);
+
+  connection.query(query, values, (err, results) => {
+    if (err) {
+      console.log('Error in trying to connect to database: ', err);
+      return res.status(500).json({ error: 'Error in updating' });
+    }
+
+    if (results.affectedRows === 0) {
+      console.log('User not found');
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    console.log('Data updated successfully');
+    res.status(200).json({ message: 'Data updated successfully' });
+  });
+});
+
+
 app.post('/logout', (req, res) => {
   let { token } = req.body;
   delete activeUsers[token];

@@ -887,10 +887,22 @@ footer {
     color: white;
 }
 
-.saveData {
-    width: 40%;
-    height: 40px;
+.centerBtn {
+    width: 90%;
     margin: 50px auto 10px auto;
+}
+
+#telegram_id {
+    cursor: no-drop;
+}
+
+.saveData {
+    width: 30%;
+    height: 60px;
+    border-radius: 20px;
+    font-size: 25px;
+    background-color: #00ffff;
+    cursor: pointer;
 }
 
 .users-inp:focus {
