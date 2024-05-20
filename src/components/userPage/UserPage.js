@@ -49,7 +49,7 @@ class UserPage extends Component {
   componentDidCatch(error, errorInfo) {
     this.setState({ hasError: true });
   }
-  
+
   render() {
     if (this.state.hasError) {
         return <p style={{ color: "white" }}>Some error was caught</p>;
@@ -64,6 +64,15 @@ class UserPage extends Component {
       description,
       background,
     } = this.state;
+    console.log(this.state)
+
+    const save = () => {
+      fetch("http://localhost:3001/saveData", {
+        method: "POST",
+
+        body: JSON.stringify(this.state)
+      })
+    }
 
     return (
       <div className="userPage">
@@ -111,6 +120,8 @@ class UserPage extends Component {
             className="user__input"
             placeholder="Введите ваш id"
           />
+
+          <button className="saveData" onClick={save} ></button>
         </div>
             {/* <button onClick={deleteToken} >Log out</button> */}
     </div>

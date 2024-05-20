@@ -887,6 +887,12 @@ footer {
     color: white;
 }
 
+.saveData {
+    width: 40%;
+    height: 40px;
+    margin: 50px auto 10px auto;
+}
+
 .users-inp:focus {
     border: 0;
     outline: 0;
