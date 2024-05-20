@@ -8,6 +8,7 @@ import Forum from './components/forum/Forum';
 import Registration from "./components/Registration";
 import UserPage from './components/userPage/UserPage';
 import { UserProvider } from './components/UserContext';
+import Footer from './components/Footer';
 
 import Test from './test';
 
@@ -77,6 +78,7 @@ function App() {
                 </Routes>
                 <Registration display="none" />
             </BrowserRouter>
+            <Footer />
             <button style={{position: "absolute", top: "0", left: "0", zIndex: "100000"}} onClick={deleteToken} >Log out</button>
         </UserProvider>
     )
