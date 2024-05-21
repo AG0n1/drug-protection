@@ -187,7 +187,7 @@ p {
     flex-direction: column;
     justify-content: space-between;
     width: 50%;
-    height: 30vh;
+    height: 20vw;
 }
 
 .contact-title {
@@ -884,7 +884,7 @@ footer {
 }
 
 .inp_placeholder_text {
-    margin: 40px 0px 5px 5px;
+    margin: 20px 0px 5px 5px;
     font-size: 14px;
     color: white
 }
@@ -899,12 +899,20 @@ footer {
 }
 
 .saveData {
-    width: 30%;
+    width: 40%;
     height: 60px;
     border-radius: 20px;
     font-size: 25px;
-    background-color: #00ffff;
+    background-color: #00aeff;
+    border: 0;
+    outline: 0;
     cursor: pointer;
+}
+
+.saveData:hover {
+    transition: .2s;
+
+    box-shadow: 0px 0px 20px #00ffff;
 }
 
 .users-inp:focus {
