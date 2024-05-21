@@ -9,6 +9,7 @@ import Registration from "./components/Registration";
 import UserPage from './components/userPage/UserPage';
 import { UserProvider } from './components/UserContext';
 import Footer from './components/Footer';
+import AdminPage from './components/userPage/AdminPage';
 
 import Test from './test';
 
@@ -75,6 +76,13 @@ function App() {
                         element={
                             <UserPage />
                         } />
+
+                    <Route
+                        path="admin"
+                        element = {
+                            <AdminPage />
+                        }
+                    />
                 </Routes>
                 <Registration display="none" />
             </BrowserRouter>

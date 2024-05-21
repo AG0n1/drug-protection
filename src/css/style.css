@@ -1116,7 +1116,7 @@ footer {
     display: flex;
     flex-direction: column;
     width: 80%;
-    min-height: 33vh;
+    min-height: 27vh;
     margin-top: 150px;
     background-color: #171717;
     padding-top: 3vh;
@@ -1233,12 +1233,14 @@ footer {
     top: calc(100% - 40px);
     width: 100%;
     left: 0;
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
     height: 40px;
     background-color: #171717;
     border: 0;
     outline: 0;
     cursor: pointer;
+    color: white;
+    font-size: 15px;
 }
 
 .hideInfo:hover {

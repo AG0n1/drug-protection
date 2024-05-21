@@ -9,7 +9,13 @@ const Header = () => {
   const open = (e) => {
     if (localStorage.getItem("token") !== "null") {
       console.log(localStorage.getItem("token"))
-      navigate("../user")
+      let userData = JSON.parse(localStorage.getItem("userData"))
+
+      if (userData.status == "user") {
+        navigate("../user")
+      } else {
+        navigate("../admin")
+      }
       return;
     } else {
       registrationRef.current.openForm();

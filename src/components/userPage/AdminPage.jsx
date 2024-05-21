@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import UserContext from "../UserContext";
-
-import customer from "../images/customer.svg"
-import user from "../images/user.svg"
 import admin from "../images/admin.svg"
-import tech from "../images/technical.svg"
 
-class UserPage extends Component {
+
+class AdminPage extends Component {
   static contextType = UserContext;
 
   constructor(props) {
@@ -25,6 +22,10 @@ class UserPage extends Component {
 
   componentDidMount() {
     const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData.status !== "admin") {
+        alert("У Вас нету прав для доступа к этой странице")
+        window.location.href = "/";
+    }
     console.log(userData);
     this.setState({  
       nickname: userData.nickname,
@@ -95,10 +96,7 @@ class UserPage extends Component {
         <div className="userInfo">
           <div className="userUser">
             <div className="userPhoto absoluteCenter">
-              {this.state.status === 'user' && <img width="220px" src={user} alt="User" />}
-              {this.state.status === 'tech' && <img width="220px" src={tech} alt="Tech" />}
               {this.state.status === 'admin' && <img width="150px" src={admin} alt="Admin" />}
-              {this.state.status === 'customer' && <img width="220px" src={customer} alt="Customer" />}
             </div>
 
 
@@ -166,4 +164,4 @@ class UserPage extends Component {
   }
 }
 
-export default UserPage;
+export default AdminPage;
