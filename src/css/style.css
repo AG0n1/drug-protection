@@ -883,9 +883,15 @@ footer {
     color: white;
 }
 
+.inp_placeholder_text {
+    margin: 40px 0px 5px 5px;
+    font-size: 14px;
+    color: white
+}
+
 .centerBtn {
     width: 90%;
-    margin: 50px auto 10px auto;
+    margin: 50px 0 10px 0;
 }
 
 #telegram_id {
@@ -1159,18 +1165,16 @@ footer {
     margin-top: 20px;
     padding: 0px;
     padding-bottom: 40px;
-
+    width: 40%;
     /* height: 20vh; */
 }
 
 .user__input {
-    width: 90%;
+    width: 100%;
     height: 60px;
     border: 0;
     outline: 0;
-    border-radius: 30px;
-    margin: 0 auto;
-    margin-top: 40px;
+    border-radius: 10px;
     padding-left: 20px;
     font-size: 20px;
     background: black;

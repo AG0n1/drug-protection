@@ -161,16 +161,16 @@ app.post('/register', (req, res) => {
 
 app.post("/saveData", (req, res) => {
   const { body } = req;
-  const { nickname } = body;
+  const { email } = body;
 
   console.log('Request body:', body);
 
-  if (!nickname) {
+  if (!email) {
     console.log('Nickname is required');
     return res.status(400).json({ error: 'Nickname is required' });
   }
 
-  const fields = Object.keys(body).filter(key => key !== 'nickname');
+  const fields = Object.keys(body).filter(key => key !== 'email');
   const values = fields.map(field => body[field]);
 
   if (fields.length === 0) {
@@ -180,8 +180,8 @@ app.post("/saveData", (req, res) => {
 
   const setClause = fields.map(field => `${field} = ?`).join(', ');
 
-  const query = `UPDATE users SET ${setClause} WHERE nickname = ?`;
-  values.push(nickname);
+  const query = `UPDATE users SET ${setClause} WHERE email = ?`;
+  values.push(email);
 
   console.log('Executing query:', query, 'with values:', values);
 

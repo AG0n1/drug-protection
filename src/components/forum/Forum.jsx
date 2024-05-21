@@ -120,7 +120,6 @@ class Forum extends React.Component {
                     </div>
 
                     <div className="forum-nav-list">
-                        
                         {currentPage === "forum" && (
                             <div className="forum-list">
                                 <div id="place-for-list">
