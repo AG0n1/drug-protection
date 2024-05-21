@@ -91,9 +91,13 @@ class UserPage extends Component {
       <div className="userPage">
         <div className="userInfo">
           <div className="userUser">
-            <div className="userPhoto">
-              <img src={`${this.state}.svg`} />
+            <div className="userPhoto absoluteCenter">
+              {this.state.status === 'user' && <img width="220px" src={user} alt="User" />}
+              {this.state.status === 'tech' && <img width="220px" src={tech} alt="Tech" />}
+              {this.state.status === 'admin' && <img width="150px" src={admin} alt="Admin" />}
+              {this.state.status === 'customer' && <img width="220px" src={customer} alt="Customer" />}
             </div>
+
 
             <div className="space"></div>
 
@@ -146,7 +150,7 @@ class UserPage extends Component {
             </div>
           </div>
 
-        <button className="hideInfo" onClick={toggleUserInputVisibility} >Открыть</button>
+          <button className="hideInfo" onClick={toggleUserInputVisibility} >Открыть</button>
         </div>
       </div>
     );

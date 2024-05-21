@@ -1130,11 +1130,10 @@ footer {
 }
 
 .userPhoto {
-    width: 24vh;
-    height: 24vh;
+    width: 220px;
+    height: 220px;
     
     border-radius: 50%;
-    border: 2px solid white;
 }
     
 .space {
