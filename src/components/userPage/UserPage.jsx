@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import UserContext from "../UserContext";
 
+import customer from "../images/customer.svg"
+import user from "../images/user.svg"
+import admin from "../images/admin.svg"
+import tech from "../images/technical.svg"
+
 class UserPage extends Component {
   static contextType = UserContext;
 
@@ -30,6 +35,7 @@ class UserPage extends Component {
       donate_value: userData.donate_value,
       description: userData.description,
       background: userData.background,
+      status: userData.status
     });
   }
 
@@ -55,6 +61,7 @@ class UserPage extends Component {
       donate_value,
       description,
       background,
+      status,
     } = this.state;
     let isOpen = false
     const save = () => {
@@ -84,7 +91,9 @@ class UserPage extends Component {
       <div className="userPage">
         <div className="userInfo">
           <div className="userUser">
-            <div className="userPhoto"></div>
+            <div className="userPhoto">
+              <img src={`${this.state}.svg`} />
+            </div>
 
             <div className="space"></div>
 

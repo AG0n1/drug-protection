@@ -135,7 +135,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
             }
             setUserData(data.user);
             localStorage.setItem('token', data.token)
-            
+            console.log(data.user)
             localStorage.setItem('userData', JSON.stringify(data.user))
           }
         } else {
