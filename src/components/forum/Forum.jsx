@@ -5,6 +5,11 @@ import UsersQuestions from "./forumData/UsersQuestion";
 import Stories from "./Stories/Stories"
 import StoriesBlock from "./Stories/StoriesBlock";
 
+import customer from "../images/customer.svg"
+import user from "../images/user.svg"
+import admin from "../images/admin.svg"
+import tech from "../images/technical.svg"
+
 class Forum extends React.Component {
     constructor(props) {
         super(props);
@@ -36,12 +41,30 @@ class Forum extends React.Component {
             console.log(data.slice(0, -2))
             let parsedObj = JSON.parse(`{${data.slice(0, -2)}}`)
 
+            let userImage;
+
             for (let key in parsedObj) {
+                const {status} = parsedObj[key]
+                if (status === "admin") {
+                    userImage = admin;
+                } else if (status === "customer") {
+                    userImage = customer;
+                } else if (status === "tech") {
+                    userImage = tech;
+                } else {
+                    userImage = user;
+                }
+                console.log(key.status)
                 const {message, name} = parsedObj[key]
                 const messageBlock = document.createElement("div");
                 messageBlock.className = "message-block";
                 messageBlock.innerHTML = `
-                    <div class="user-message" >${message}</div>
+                    <div class="user-message">
+                        <div class="forum-photo-place">
+                            <img src="${userImage}" alt="User status" width="30" height="30">
+                        </div>
+                        ${message}
+                    </div>
                 `;
                 placeForMessages.appendChild(messageBlock);
             }

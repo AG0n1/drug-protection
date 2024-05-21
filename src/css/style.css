@@ -1125,6 +1125,10 @@ footer {
     border-radius: 30px;
 }
 
+.forum-photo-place {
+    margin-right: 20px;
+}
+
 .userUser {
     display: flex;
 }

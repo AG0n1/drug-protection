@@ -72,7 +72,8 @@ app.post('/saveMessage', (req, res) => {
   "name": "${name}", 
   "second_name": "${second_name}", 
   "date": "${date}", 
-  "message": "${message}"
+  "message": "${message}",
+  "status": "${status}"
 },\n`;
 
   const filePath = path.join(messagesDir, `${id}.txt`);
