@@ -115,38 +115,31 @@ class AdminPage extends Component {
           </div>
 
           <div id="hiddenInfo" className="userInfo userInput hidden">
+          <div className="inp_placeholder_text">Ваш nickname</div>
             <input
               className="user__input"
               placeholder="Введите имя пользователя:"
               value={nickname}
               onChange={(e) => this.setState({ nickname: e.target.value })}
             />
+
+            <div className="inp_placeholder_text">Ваше имя</div>
             <input
               className="user__input"
               placeholder="Введите ваше имя:"
               value={name}
               onChange={(e) => this.setState({ name: e.target.value })}
             />
+
+            <div className="inp_placeholder_text">Ваша фамилия</div>  
             <input
               className="user__input"
               placeholder="Введите вашу фамилию:"
               value={second_name}
               onChange={(e) => this.setState({ second_name: e.target.value })}
             />
-            <input
-              className="user__input"
-              id="telegram_id"
-              placeholder="Введите ваш id"
-              value={telegram_id}
-              onChange={(e) => this.setState({ telegram_id: e.target.value })}
-              disabled
-            />
-            <input
-              className="user__input"
-              placeholder="Введите ваш id"
-              value={nickname}
-              onChange={(e) => this.setState({ nickname: e.target.value })}
-            />
+
+            <div className="inp_placeholder_text">Ваш статус</div>
             <input
               className="user__input"
               placeholder="Введите ваш id"
