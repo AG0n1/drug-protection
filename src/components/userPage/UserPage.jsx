@@ -65,7 +65,8 @@ class UserPage extends Component {
     } = this.state;
     let isOpen = false
     const save = () => {
-      console.log(this.state)
+      localStorage.setItem("userData", JSON.stringify(this.state))
+      console.log()
       fetch("http://localhost:3001/saveData", {
         method: "POST",
         headers: {

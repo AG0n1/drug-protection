@@ -17,6 +17,7 @@ class AdminPage extends Component {
         donate_value: "",
         description: "",
         background: "",
+        status: "",
     };
   }
 
@@ -66,16 +67,17 @@ class AdminPage extends Component {
     } = this.state;
     let isOpen = false
     const save = () => {
-      console.log(this.state)
-      fetch("http://localhost:3001/saveData", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem('token')}` 
-        },
-        body: JSON.stringify(this.state)
-      });
-    };
+        localStorage.setItem("userData", JSON.stringify(this.state))
+        console.log()
+        fetch("http://localhost:3001/saveData", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}` 
+          },
+          body: JSON.stringify(this.state)
+        });
+      };
 
     const toggleUserInputVisibility = () => {
       let elem = document.getElementById("hiddenInfo");

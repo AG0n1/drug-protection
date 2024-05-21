@@ -17,6 +17,7 @@ function UsersQuestions(props) {
               name: userData.name,
               second_name: userData.second_name,
               id: id,
+              status: userData.status
             };
             console.log(typeof localStorage.getItem("token"))
             fetch("http://localhost:3001/saveMessage", {

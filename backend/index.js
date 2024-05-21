@@ -61,7 +61,7 @@ if (!fs.existsSync(messagesDir)) {
 }
 
 app.post('/saveMessage', (req, res) => {
-  const { message, date, time, name, second_name, id } = req.body;
+  const { message, date, time, name, second_name, id, status } = req.body;
 
   if (message.trim().length === 0) {
     return
