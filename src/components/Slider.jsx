@@ -5,6 +5,10 @@ import debounce from "lodash.debounce";
 import computerAddict from "./images/slider/computerAddict.svg"
 import pornAddict from "./images/slider/pornAddict.svg"
 import drugAddict from "./images/slider/drugAddict.svg"
+import cigarette from "./images/slider/cigarette.svg"
+import internet from "./images/slider/internet.svg"
+import gambling from "./images/slider/gambling.svg"
+import smartpnone from "./images/slider/smartphone.svg"
 
 const ScrollableContainer = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -109,8 +113,7 @@ const ScrollableContainer = () => {
 
         
         <li className="item">
-            <img draggable="false" width="100px" height="100px" src={computerAddict} />
-
+          <img draggable="false" width="100px" height="100px" src={computerAddict} />
           <div className="space">
 
           </div>
@@ -127,15 +130,13 @@ const ScrollableContainer = () => {
 
         
         <li className="item">
-          <div className="item-photo">
-
-          </div>
+            <img draggable="false" width="100px" height="100px" src={cigarette} />
           <div className="space">
 
           </div>
           <div className="item-info">
             <div className="item-info-title">
-              Наркозависимость
+              Никотиновая зависимость
             </div>
 
             <div className="item-info-text">
@@ -146,15 +147,13 @@ const ScrollableContainer = () => {
 
         
         <li className="item">
-          <div className="item-photo">
-
-          </div>
+          <img draggable="false" width="100px" height="100px" src={internet} />
           <div className="space">
 
           </div>
           <div className="item-info">
             <div className="item-info-title">
-              Наркозависимость
+              Интернет-зависимость
             </div>
 
             <div className="item-info-text">
@@ -165,15 +164,14 @@ const ScrollableContainer = () => {
 
         
         <li className="item">
-          <div className="item-photo">
+        <img draggable="false" width="100px" height="100px" src={gambling} />
 
-          </div>
           <div className="space">
 
           </div>
           <div className="item-info">
             <div className="item-info-title">
-              Наркозависимость
+              Лудомания
             </div>
 
             <div className="item-info-text">
@@ -184,15 +182,14 @@ const ScrollableContainer = () => {
 
         
         <li className="item">
-          <div className="item-photo">
+          <img draggable="false" width="120px" height="120px" src={smartpnone} />
 
-          </div>
           <div className="space">
 
           </div>
           <div className="item-info">
             <div className="item-info-title">
-              Наркозависимость
+              Номофобия
             </div>
 
             <div className="item-info-text">

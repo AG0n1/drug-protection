@@ -124,7 +124,7 @@ class AdminPage extends Component {
     .then(res => res.json())
     .then(data => {
 
-      let table = document.getElementById("users");
+      let table = document.getElementById("users-table");
       table.innerHTML = '';
       
       let fieldNames = document.createElement("div")
@@ -300,6 +300,10 @@ class AdminPage extends Component {
         <div id="users" className="userInfo admin-tool">
               <div className="userName tableName">
                 <span id="firstName">Клиенты</span>
+              </div>
+
+              <div id="users-table">
+
               </div>
         </div>
       </div>
