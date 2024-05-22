@@ -917,20 +917,59 @@ footer {
     position: relative;
     width: 40%;
     height: 40vh;
-    background-color: white;
+    background-color: #E5EBED;
+    
+    border-radius: 20px;
 }
 
 .adv-title {
     color: black;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 40px;
     font-family: "Open Sans", sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
 }
 
 .adv-title > span {
     color: #FF3EF7ed
+}
+
+.input-zone {
+    width: 80%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-top: 5px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    
+    margin-top: 50px;
+    
+}
+
+.adv-input {
+    border-radius: 10px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+}
+
+.cross {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+
+    background: red
 }
 
 .saveData:hover {

@@ -101,7 +101,6 @@ class AdminPage extends Component {
               {this.state.status === 'admin' && <img width="150px" src={admin} alt="Admin" />}
             </div>
 
-
             <div className="space"></div>
 
             <div className="userData">
