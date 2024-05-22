@@ -61,7 +61,7 @@ function Advertising() {
 
                     <div className="input-zone">
                         Ваш номер:
-                        <input className="adv-input" id="name" />
+                        <input className="adv-input" id="phone-number" />
                     </div>
 
                     <div className="btn-place absoluteCenter">
