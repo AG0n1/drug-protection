@@ -25,6 +25,10 @@ html {
     width: 1200px;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 /* Header */
 
 header {
@@ -907,6 +911,26 @@ footer {
     border: 0;
     outline: 0;
     cursor: pointer;
+}
+
+.appointment-form {
+    position: relative;
+    width: 40%;
+    height: 40vh;
+    background-color: white;
+}
+
+.adv-title {
+    color: black;
+    width: 100%;
+    margin-top: 20px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.adv-title > span {
+    color: #FF3EF7ed
 }
 
 .saveData:hover {

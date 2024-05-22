@@ -5,13 +5,16 @@ function Advertising() {
     let isOpen = false
     const open = () => {
         let appointment = document.getElementById("appointment")
-        appointment.classList.remove("hidden")
+        
+        appointment.classList.remove("hidden", "no-scroll")
+        document.body.classList.add("no-scroll")
     }
 
     const close = () => {
-        
         let appointment = document.getElementById("appointment")
-        appointment.classList.add("hidden")
+        
+        document.body.classList.remove("no-scroll")
+        appointment.classList.add("hidden", "no-scroll")
     }
 
     return(
@@ -42,7 +45,9 @@ function Advertising() {
 
             <div id="appointment" className="hidden formZone">
                 <div className="appointment-form">
-
+                    <div className="adv-title">
+                        Запишитесь, и получите скидку в <span>50%</span>
+                    </div>
                 </div>
             </div>
         </div>
