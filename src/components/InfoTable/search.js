@@ -8,11 +8,12 @@ function Search() {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${localStorage.getItem('token')}` 
-        }
+        },
+        body: JSON.stringify({value: ""})
     })
     .then(res => res.json())
     .then(data => {
-
+        
     })
 
     const func = (e) => {
@@ -21,6 +22,8 @@ function Search() {
             res.classList.add("hidden")
             return
         } else {
+            
+
             res.classList.remove("hidden")
         }
     }

@@ -56,6 +56,12 @@ app.post('/getMessages', (req, res) => {
   });
 })
 
+app.post("/getSearchData", (req, res) => {
+  let {value} = req.body
+
+  
+})
+
 if (!fs.existsSync(messagesDir)) {
   fs.mkdirSync(messagesDir);
 }
