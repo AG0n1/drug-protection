@@ -201,6 +201,49 @@ app.post("/saveData", (req, res) => {
   });
 });
 
+app.post("/getUsersData", (req, res) => {
+  const query = `
+    SELECT name, second_name, status 
+    FROM users 
+    WHERE status IN ('user')
+  `;
+
+  connection.query(query, (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
+
+    const response = results.map(row => ({
+      name: row.name,
+      second_name: row.second_name,
+      status: row.status
+    }));
+
+    res.json(response);
+  });
+})
+
+app.post("/getCustomersData", (req, res) => {
+  const query = `
+    SELECT name, second_name, status 
+    FROM users 
+    WHERE status IN ('customer', 'tech', 'admin')
+  `;
+
+  connection.query(query, (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
+
+    const response = results.map(row => ({
+      name: row.name,
+      second_name: row.second_name,
+      status: row.status
+    }));
+
+    res.json(response);
+  });
+});
 
 app.post('/logout', (req, res) => {
   let { token } = req.body;

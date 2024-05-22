@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createElement } from "react";
 import UserContext from "../UserContext";
 import admin from "../images/admin.svg"
 
@@ -23,11 +23,36 @@ class AdminPage extends Component {
 
   componentDidMount() {
     const userData = JSON.parse(localStorage.getItem("userData"));
+
+    const createFirstRow = () => {
+      let table = document.getElementById("table");
+      let fieldNames = document.createElement("div")
+      fieldNames.classList.add("customer-list", "first-row")
+
+      let nameElem = document.createElement("div");
+      nameElem.classList.add("customer-name", "table-elem");
+      nameElem.textContent = "Имя";
+
+      let secondNameElem = document.createElement("div");
+      secondNameElem.classList.add("customer-second-name", "table-elem");
+      secondNameElem.textContent = "Фамилия";
+
+      let statusElem = document.createElement("div");
+      statusElem.classList.add("customer-status", "table-elem");
+      statusElem.textContent = "Статус";
+
+      fieldNames.appendChild(nameElem);
+      fieldNames.appendChild(secondNameElem);
+      fieldNames.appendChild(statusElem);
+
+      table.appendChild(fieldNames)
+    }
+
     if (userData.status !== "admin") {
         alert("У Вас нету прав для доступа к этой странице")
         window.location.href = "/";
     }
-    console.log(userData);
+    
     this.setState({  
       nickname: userData.nickname,
       name: userData.name,
@@ -39,6 +64,115 @@ class AdminPage extends Component {
       background: userData.background,
       status: userData.status
     });
+
+    fetch("http://localhost:3001/getCustomersData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('token')}` 
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      let table = document.getElementById("table");
+      table.innerHTML = '';
+      
+      createFirstRow()
+      
+       const sortByStatus = (a, b) => {
+        const order = {
+            'admin': 1,
+            'tech': 2,
+            'customer': 3
+        };
+        return order[a.status] - order[b.status];
+    };
+
+    data.sort(sortByStatus);
+
+    for (let i = 0; i < data.length; i++) {
+        let elem = document.createElement("div");
+        elem.classList.add("customer-list");
+
+        let nameElem = document.createElement("div");
+        nameElem.classList.add("customer-name", "table-elem");
+        nameElem.textContent = data[i].name;
+
+        let secondNameElem = document.createElement("div");
+        secondNameElem.classList.add("customer-second-name", "table-elem");
+        secondNameElem.textContent = data[i].second_name;
+
+        let statusElem = document.createElement("div");
+        statusElem.classList.add("customer-status", "table-elem");
+        statusElem.textContent = data[i].status;
+
+        elem.appendChild(nameElem);
+        elem.appendChild(secondNameElem);
+        elem.appendChild(statusElem);
+
+        table.appendChild(elem);
+    }
+  });
+
+    fetch("http://localhost:3001/getUsersData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('token')}` 
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+
+      let table = document.getElementById("users");
+      table.innerHTML = '';
+      
+      let fieldNames = document.createElement("div")
+      fieldNames.classList.add("customer-list", "first-row")
+
+      let nameElem = document.createElement("div");
+      nameElem.classList.add("customer-name", "table-elem");
+      nameElem.textContent = "Имя";
+
+      let secondNameElem = document.createElement("div");
+      secondNameElem.classList.add("customer-second-name", "table-elem");
+      secondNameElem.textContent = "Фамилия";
+
+      let statusElem = document.createElement("div");
+      statusElem.classList.add("customer-status", "table-elem");
+      statusElem.textContent = "Статус";
+
+      fieldNames.appendChild(nameElem);
+      fieldNames.appendChild(secondNameElem);
+      fieldNames.appendChild(statusElem);
+
+      table.appendChild(fieldNames)
+
+    for (let i = 0; i < data.length; i++) {
+        let elem = document.createElement("div");
+        elem.classList.add("customer-list");
+
+        let nameElem = document.createElement("div");
+        nameElem.classList.add("customer-name", "table-elem");
+        nameElem.textContent = data[i].name;
+
+        let secondNameElem = document.createElement("div");
+        secondNameElem.classList.add("customer-second-name", "table-elem");
+        secondNameElem.textContent = data[i].second_name;
+
+        let statusElem = document.createElement("div");
+        statusElem.classList.add("customer-status", "table-elem");
+        statusElem.textContent = data[i].status;
+
+        elem.appendChild(nameElem);
+        elem.appendChild(secondNameElem);
+        elem.appendChild(statusElem);
+
+        table.appendChild(elem);
+    }
+
+    })
+
   }
 
   deleteToken = () => {
@@ -46,7 +180,7 @@ class AdminPage extends Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({ token: localStorage.getItem("token") }),
     });
@@ -152,6 +286,21 @@ class AdminPage extends Component {
             </div>
           </div>
           <button className="hideInfo" onClick={toggleUserInputVisibility}>{inf}</button>
+        </div>
+
+        <div id="customers" className="userInfo admin-tool">
+              <div className="userName tableName">
+                <span id="firstName">Сотрудники</span>
+              </div>
+              <div id="table">
+
+              </div>
+        </div>
+
+        <div id="users" className="userInfo admin-tool">
+              <div className="userName tableName">
+                <span id="firstName">Клиенты</span>
+              </div>
         </div>
       </div>
     );
