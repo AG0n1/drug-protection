@@ -6,12 +6,14 @@ import MainInfo from "./components/InfoTable/MainInfo"
 import Laws from "./components/laws/Laws";
 import Forum from './components/forum/Forum';
 import Registration from "./components/Registration";
-import UserPage from './components/userPage/UserPage';
 import { UserProvider } from './components/UserContext';
 import Footer from './components/Footer';
-import AdminPage from './components/userPage/AdminPage';
 
-import Test from './test';
+import AdminPage from './components/userPage/AdminPage';
+import UserPage from './components/userPage/UserPage';
+import CustomerPage from './components/userPage/CustomerPage';
+import TechPage from './components/userPage/TechPage';
+
 
 function App() {
     const deleteToken = () => {
@@ -38,12 +40,6 @@ function App() {
                         element={
                             <MainInfo />
                          } />
-
-                    <Route 
-                        path = "test" 
-                        element={
-                            <Test />
-                         } />
                     <Route 
                         path = "laws" 
                         element ={
@@ -66,6 +62,20 @@ function App() {
                         path="admin"
                         element = {
                             <AdminPage />
+                        }
+                    />
+
+                    <Route 
+                        path='tech'
+                        element = {
+                            <TechPage />
+                        }
+                    />
+
+                    <Route 
+                        path='customer'
+                        element = {
+                            <CustomerPage />
                         }
                     />
                 </Routes>
