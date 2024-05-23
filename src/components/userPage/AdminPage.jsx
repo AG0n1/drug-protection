@@ -48,10 +48,10 @@ class AdminPage extends Component {
       table.appendChild(fieldNames)
     }
 
-    if (userData.status !== "admin") {
-        alert("У Вас нету прав для доступа к этой странице")
-        window.location.href = "/";
-    }
+    // if (userData.status !== "admin") {
+    //     alert("У Вас нету прав для доступа к этой странице")
+    //     window.location.href = "/";
+    // }
     
     this.setState({  
       nickname: userData.nickname,

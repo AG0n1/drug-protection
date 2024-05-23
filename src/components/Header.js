@@ -9,12 +9,11 @@ const Header = () => {
   const open = (e) => {
     if (localStorage.getItem("token") !== "null") {
       let userData = JSON.parse(localStorage.getItem("userData"))
-
       switch (userData.status) {
         case ("user"): navigate("../user")
         break;
 
-        case ("admin"): navigate("../admin")
+        case ("admin"): navigate("../admin"); console.log(1)
         break;
 
         case ("tech"): navigate("../tech")
@@ -25,12 +24,6 @@ const Header = () => {
 
         default: navigate("../createUser")
         break;
-      }
-
-      if (userData.status == "user") {
-        navigate("../user")
-      } else {
-        navigate("../admin")
       }
       return;
     } else {

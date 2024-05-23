@@ -1356,6 +1356,10 @@ textarea {
     font-size: 50px
 }
 
+#secondName {
+    margin-left: 10px;
+}
+
 /* Scroll */
 
 ::-webkit-scrollbar {

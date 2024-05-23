@@ -53,16 +53,19 @@ class UserPage extends Component {
   }
 
   deleteToken = () => {
-    fetch("http://localhost:3001/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({ token: localStorage.getItem("token") }),
-    });
-    localStorage.setItem("token", "null");
-  };
+    localStorage.setItem("token", "null")
+    localStorage.setItem("userData", JSON.stringify({
+        nickname: "",
+        name: "",
+        second_name: "",
+        email: "",     
+        telegram_id: "",
+        donate_value: "",
+        description: "",
+        background: "",
+    }))
+    window.location.href = "/"
+};
 
   render() {
 
@@ -124,10 +127,7 @@ class UserPage extends Component {
         <div className="userInfo">
           <div className="userUser">
             <div className="userPhoto absoluteCenter">
-              {this.state.status === 'user' && <img width="220px" src={user} alt="User" />}
-              {this.state.status === 'tech' && <img width="220px" src={tech} alt="Tech" />}
-              {this.state.status === 'admin' && <img width="150px" src={admin} alt="Admin" />}
-              {this.state.status === 'customer' && <img width="220px" src={customer} alt="Customer" />}
+              {this.state.status === 'user' && <img width="220px" height="190px" src={user} alt="User" />}
             </div>
 
 
