@@ -947,7 +947,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     width: 40%;
-    height: 40vh;
+    min-height: 40vh;
     background-color: #E5EBED;
     
     border-radius: 20px;
@@ -968,7 +968,7 @@ footer {
 
 .input-zone {
     width: 80%;
-    height: 50px;
+    min-height: 50px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -987,7 +987,7 @@ footer {
 
 .adv-input {
     border-radius: 10px;
-    height: 40px;
+    min-height: 40px;
     border: 0;
     outline: 0;
     font-size: 16px;
@@ -1250,6 +1250,8 @@ footer {
     border-radius: 30px;
 }
 
+
+
 .forum-photo-place {
     margin-right: 20px;
 }
@@ -1301,7 +1303,46 @@ footer {
     color: white
 }
 
+.logout {
+    width: 40px;
+    height: 40px;
+
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: gray;
+    cursor: pointer;
+}
+
+.txtarea {
+    padding-top: 10px;
+    justify-content: flex-start;
+    height: 300px;
+}
+
+textarea {
+    border-radius: 0px;
+    margin-top: 5px;
+    resize: none;
+    width: 95%;
+    height: 300px;
+
+    border: 0;
+    outline: 0;
+
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.app-fix {
+    width: 70%;
+    font-size: 20px;
+    margin: 40px auto;
+}
+
 .userName {
+    display: flex;
+    align-items: center;
     color: white;
     font-size: 50px
 }
@@ -1425,6 +1466,22 @@ footer {
 .mobile {
     display: none;
 }
+
+#create-appointment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background: rgb(0, 200, 17);
+    font-size: 15px;
+    margin-left: 40px;
+    width: 180px;
+    border-radius: 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
 
 @media (max-width: 1343px) {
     .container {

@@ -82,7 +82,6 @@ function App() {
                 <Registration display="none" />
             </BrowserRouter>
             <Footer />
-            <button style={{position: "absolute", top: "0", left: "0", zIndex: "100000"}} onClick={deleteToken} >Log out</button>
         </UserProvider>
     )
 } 
