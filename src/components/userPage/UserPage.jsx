@@ -37,6 +37,19 @@ class UserPage extends Component {
       background: userData.background,
       status: userData.status
     });
+
+    fetch("http://localhost:3001/getUserAppointmentsData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('token')}` 
+      },
+      body: JSON.stringify(this.state.nickname)
+    })
+    .then(res => res.json())
+    .then(data => {
+      
+    })
   }
 
   deleteToken = () => {
@@ -154,6 +167,16 @@ class UserPage extends Component {
             </div>
           </div>
           <button className="hideInfo" onClick={toggleUserInputVisibility}>{inf}</button>
+        </div>
+
+        <div className="userInfo admin-tool">
+              <div className="userName tableName">
+                Мои обращения
+              </div>
+
+              <div id="appointments-table">
+
+              </div>
         </div>
       </div>
     );

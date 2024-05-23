@@ -72,7 +72,7 @@ class Stories extends React.Component {
     render() {
         let {data} = this.props
         return(
-            <div className="storiesMain">
+
                 <div className="storiesMain">
                     {data === "0" && (
                         <div className="placeholder">
@@ -81,8 +81,7 @@ class Stories extends React.Component {
                     )}
                     {data === "1" && <StoriesBlock title={this.state.title1} info={this.state.info1} />}
                     {data === "2" && <StoriesBlock title={this.state.title2} info={this.state.info2} />}
-                    </div>
-            </div>
+                </div>
         )
     }
 }

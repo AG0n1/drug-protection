@@ -229,6 +229,10 @@ app.post("/getUsersData", (req, res) => {
   });
 })
 
+app.post("/getUserAppointmentsData", (req,res) => {
+  
+})
+
 app.post("/getCustomersData", (req, res) => {
   const query = `
     SELECT name, second_name, status 
