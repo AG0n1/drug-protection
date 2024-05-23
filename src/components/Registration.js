@@ -2,6 +2,8 @@ import React, { useState, forwardRef, useImperativeHandle, useContext } from "re
 import { useNavigate } from "react-router-dom";
 import UserContext from "./UserContext";
 
+import cross from "./images/cross.svg"
+
 function emailForm(emailValue) {
   const arrOfDomain = ["@tut.by", "@gmail.com", "@mail.com", "@yandex.ru", "@"]
   const deniedSimbols = [".", "/", "<", ">", "{", "}", "[", "]", "|", "\\", "(", ")", "*", ";", ":", "&", "^", "%", "$", "#", "!", "\"", "№"]
@@ -126,6 +128,10 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
+          if (data.user === "Wrong password") {
+            isUser.textContent = `Wrong password`
+            return
+          }
           if (localStorage.getItem("token") === "null") {
             setIsUserStyle(styles.styleForSuccessLogin);
             if (data.user.name !== "\"\"") {
@@ -194,13 +200,7 @@ const Registration = forwardRef(({ openFormCallback }, ref) => {
         </div>
         <button className="button3">Forgot Password?</button>
         <div className="closeForm" onClick={close}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="2em"
-            viewBox="0 0 384 512"
-            fill="white"
-          >
-          </svg>
+          <img width="40px" src={cross} />
         </div>
       </form>
     </div>

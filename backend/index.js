@@ -114,19 +114,25 @@ const secretKey = 'your_secret_key';
 
 app.post('/signIn', (req, res) => {
   const { email, password } = req.body;
-  connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (error, results) => {
-    console.log(results);
+
+  connection.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
     if (error) {
       console.error('Error in trying to connect to database:', error);
       res.status(500).json({ error: 'Error in fetching' });
     } else {
       if (results.length > 0) {
-        const token = jwt.sign({ email: results[0].email, userId: results[0].id }, secretKey, { expiresIn: '10h' });
-        activeUsers[token] = {
-          expiresIn: '10h',
-          isActive: true,
-        };
-        res.json({ user: results[0], token: token });
+        const user = results[0];
+
+        if (user.password === password) {
+          const token = jwt.sign({ email: user.email, userId: user.id }, secretKey, { expiresIn: '10h' });
+          activeUsers[token] = {
+            expiresIn: '10h',
+            isActive: true,
+          };
+          res.json({ user: user, token: token });
+        } else {
+          res.json({ user: "Wrong password" });
+        }
       } else {
         console.log('Пользователь не найден');
         res.json({ user: null });
@@ -134,6 +140,7 @@ app.post('/signIn', (req, res) => {
     }
   });
 });
+
 
 app.post('/register', (req, res) => {
   const { email, password } = req.body;

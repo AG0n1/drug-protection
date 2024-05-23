@@ -5,6 +5,7 @@ import customer from "../images/customer.svg"
 import user from "../images/user.svg"
 import admin from "../images/admin.svg"
 import tech from "../images/technical.svg"
+import logout from "../images/logout.svg"
 
 class UserPage extends Component {
   static contextType = UserContext;
@@ -180,7 +181,9 @@ class UserPage extends Component {
               <button className="saveData" onClick={save} >Сохранить</button>
             </div>
           </div>
-          <button className="logout" onClick={this.deleteToken}></button>
+          <button className="logout" onClick={this.deleteToken}>
+            <img src={logout} width="40px" height="40px" />
+          </button>
           <button className="hideInfo" onClick={toggleUserInputVisibility}>{inf}</button>
         </div>
 
@@ -194,7 +197,7 @@ class UserPage extends Component {
               </div>
         </div>
 
-        <div id="appointment" className="hidden formZone">
+        <form id="appointment" className="hidden formZone">
                 <div className="appointment-form">
                     <div onClick={close} className="cross">
                         <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -222,7 +225,7 @@ class UserPage extends Component {
                     </div>
                     
                 </div>
-            </div>
+            </form>
       </div>
     );
   }

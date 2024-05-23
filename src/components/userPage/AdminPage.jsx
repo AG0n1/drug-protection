@@ -1,7 +1,7 @@
 import React, { Component, createElement } from "react";
 import UserContext from "../UserContext";
 import admin from "../images/admin.svg"
-
+import logout from "../images/logout.svg"
 
 class AdminPage extends Component {
   static contextType = UserContext;
@@ -176,15 +176,18 @@ class AdminPage extends Component {
   }
 
   deleteToken = () => {
-    fetch("http://localhost:3001/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({ token: localStorage.getItem("token") }),
-    });
-    localStorage.setItem("token", "null");
+      localStorage.setItem("token", "null")
+      localStorage.setItem("userData", JSON.stringify({
+          nickname: "",
+          name: "",
+          second_name: "",
+          email: "",     
+          telegram_id: "",
+          donate_value: "",
+          description: "",
+          background: "",
+      }))
+      window.location.href = "/"
   };
 
   render() {
@@ -285,6 +288,9 @@ class AdminPage extends Component {
               <button className="saveData" onClick={save} >Сохранить</button>
             </div>
           </div>
+          <button className="logout" onClick={this.deleteToken}>
+            <img src={logout} width="40px" height="40px" />
+          </button>
           <button className="hideInfo" onClick={toggleUserInputVisibility}>{inf}</button>
         </div>
 
