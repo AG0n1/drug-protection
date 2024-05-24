@@ -13,6 +13,7 @@ import AdminPage from './components/userPage/AdminPage';
 import UserPage from './components/userPage/UserPage';
 import CustomerPage from './components/userPage/CustomerPage';
 import TechPage from './components/userPage/TechPage';
+import SupportPage from './components/support/SupportPage';
 
 
 function App() {
@@ -63,6 +64,13 @@ function App() {
                         path='customer'
                         element = {
                             <CustomerPage />
+                        }
+                    />
+
+                    <Route
+                        path="support"
+                        element = {
+                            <SupportPage />
                         }
                     />
                 </Routes>

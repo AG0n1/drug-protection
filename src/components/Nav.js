@@ -8,6 +8,7 @@ class Nav extends React.Component {
             <div className="header-nav absoluteCenter">
                 <Link className="header-link" to="/">Главная</Link>
                 <Link className="header-link" to="/forum">Полезная информация</Link>
+                <Link className="header-link" to="/support">Техническая Поддержка</Link>
             </div>
             )
     }
