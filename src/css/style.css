@@ -1335,6 +1335,7 @@ textarea {
     resize: none;
     width: 95%;
     height: 300px;
+    padding: 10px;
 
     border: 0;
     outline: 0;
@@ -1482,7 +1483,9 @@ textarea {
     align-items: center;
 
     width: 100%;
-    height: 100vh
+    height: 100vh;
+
+    color: white;
 }
 
 .support-form {
@@ -1495,17 +1498,57 @@ textarea {
 }
 
 .form-title {
+    flex-direction: column;
     width: 90%;
+    min-height: 100px;
     margin: 0 auto;
 
     font-size: 35px;
-    color: white;
     text-align: center;
 }
 
 .form-title-small {
     font-size: 17px;
     margin: 15px 0 0 0;
+}
+
+.form-field {
+    width: 90%;
+    color: #FF3EF7;
+    margin: 0 auto;
+}
+
+.form-field > select {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+
+    background-color: #000;
+    color: #00EAC0;
+
+    border: 0;
+    outline: 0;
+    margin: 5px 0 0 0;
+}
+
+.support-userarea {
+    background: black;
+    color: #00EAC0;
+    width: 100%;
+    height: 240px;
+}
+
+#form-send {
+    width: 200px;
+    height: 50px;
+
+    background-color: #00EAC0;
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+
+    font-size: 20px;
+    cursor: pointer;
 }
 
 /* Media */
