@@ -1,15 +1,26 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 const fs = require("fs")
 const path = require("path")
-let activeUsers = {}
 const app = express();
-
 app.use(cors());
-app.use(bodyParser.json());
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'mmark',
+  password: 'LQ8G/WoJJd_EsC9v',
+  database: 'users'
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Ошибка подключения к базе данных:', err);
+  } else {
+    console.log('Подключение к базе данных успешно');
+  }
+});
 
 const messagesDir = path.join(__dirname, 'forum');
 const storiesFilePath = path.join(__dirname, 'stories', 'stories.txt');
@@ -56,11 +67,11 @@ app.post('/getMessages', (req, res) => {
   });
 })
 
-app.post("/getSearchData", (req, res) => {
-  let {value} = req.body
+// app.post("/getSearchData", (req, res) => {
+//   let {value} = req.body
 
   
-})
+// })
 
 if (!fs.existsSync(messagesDir)) {
   fs.mkdirSync(messagesDir);
@@ -95,21 +106,6 @@ app.post('/saveMessage', (req, res) => {
   });
 });
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'mmark',
-  password: 'LQ8G/WoJJd_EsC9v',
-  database: 'users'
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error('Ошибка подключения к базе данных:', err);
-  } else {
-    console.log('Подключение к базе данных успешно');
-  }
-});
-
 const secretKey = 'your_secret_key';
 
 app.post('/signIn', (req, res) => {
@@ -141,7 +137,15 @@ app.post('/signIn', (req, res) => {
   });
 });
 
+app.post("/routeName", (res,req) => {
+  // const {someParams} = req.body
+  // some function
+  // res.json(someParams)
+})
 
+app.post("/supportGetData", (req,res) => {
+  console.log(req.body)
+})
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
 

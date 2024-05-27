@@ -1,9 +1,13 @@
 function SupportPage() {
 
-    const sendData = () => {
-        fetch('http://localhost:3001/suppornGetData', {
+    const funcSend = () => {
+        fetch("http://localhost:3001/supportGetData", {
             method: "POST",
-            body: JSON.stringify({})
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('token')}` 
+            },
+            body: "1"
         })
     }
 
@@ -23,7 +27,7 @@ function SupportPage() {
                         Выберите тип проблемы
                     </div>
 
-                    <select>
+                    <select id="optionData">
                         <option value="1">
                             Проблема с сайтом
                         </option>
@@ -51,13 +55,13 @@ function SupportPage() {
                         Пожалуйста, детально опишите Вашу проблему
                     </div>
 
-                    <textarea className="support-userarea">
+                    <textarea id="userProblem" className="support-userarea">
 
                     </textarea>
                 </div>
 
                 <div className="form-field">
-                    <button onClick={sendData} id="form-send">Отправить</button>
+                    <button onClick={funcSend} id="form-send">Отправить</button>
                 </div>
             </form>
         </div>
