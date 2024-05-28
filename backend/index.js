@@ -12,7 +12,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const messagesDir = path.join(__dirname, 'forum');
-const searchDir = path.join(__dirname, "search")
 const storiesFilePath = path.join(__dirname, 'stories', 'stories.txt');
 
 function generateToken() {
@@ -58,13 +57,9 @@ app.post('/getMessages', (req, res) => {
   });
 })
 
-const fs = require('fs');
-const path = require('path');
-
 app.post("/getSearchData", (req, res) => {
   let { value } = req.body;
-  const searchDir = 'путь_к_файлу/result.txt'; // Замените 'путь_к_файлу' на реальный путь к файлу
-
+  const searchDir = 'backend/search/result.txt';
   fs.readFile(searchDir, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
@@ -73,6 +68,7 @@ app.post("/getSearchData", (req, res) => {
 
     try {
       const parsedData = JSON.parse(data);
+      console.log(parsedData)
       let foundText = '';
 
       for (let key in parsedData) {
