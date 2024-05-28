@@ -1,28 +1,18 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 const fs = require("fs")
 const path = require("path")
+let activeUsers = {}
 const app = express();
+
 app.use(cors());
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'mmark',
-  password: 'LQ8G/WoJJd_EsC9v',
-  database: 'users'
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error('Ошибка подключения к базе данных:', err);
-  } else {
-    console.log('Подключение к базе данных успешно');
-  }
-});
+app.use(bodyParser.json());
 
 const messagesDir = path.join(__dirname, 'forum');
+const searchDir = path.join(__dirname, "search")
 const storiesFilePath = path.join(__dirname, 'stories', 'stories.txt');
 
 function generateToken() {
@@ -35,7 +25,8 @@ function generateToken() {
 }
 
 app.post('/getStoriesInfo', (req, res) => {
-  fs.readFile(storiesFilePath, 'utf8', (err, data) => {
+  let {id} = req.body
+  fs.readFile(storiesFilePath + {id} + ".txt", 'utf8', (err, data) => {
     if (err) {
       console.error('Ошибка чтения файла:', err);
       res.status(500).json({data: 'Произошла ошибка при чтении данных.'});
@@ -67,11 +58,51 @@ app.post('/getMessages', (req, res) => {
   });
 })
 
-// app.post("/getSearchData", (req, res) => {
-//   let {value} = req.body
+const fs = require('fs');
+const path = require('path');
 
-  
-// })
+app.post("/getSearchData", (req, res) => {
+  let { value } = req.body;
+  const searchDir = 'путь_к_файлу/result.txt'; // Замените 'путь_к_файлу' на реальный путь к файлу
+
+  fs.readFile(searchDir, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Ошибка чтения файла' });
+    }
+
+    try {
+      const parsedData = JSON.parse(data);
+      let foundText = '';
+
+      for (let key in parsedData) {
+        if (key.toLowerCase().includes(value.toLowerCase())) {
+          foundText = parsedData[key];
+          break;
+        }
+      }
+
+      if (!foundText) {
+        for (let key in parsedData) {
+          if (parsedData[key].title.toLowerCase().includes(value.toLowerCase())) {
+            foundText = parsedData[key].title;
+            break;
+          }
+        }
+      }
+
+      if (foundText) {
+        res.status(200).json({ foundText });
+      } else {
+        res.status(404).json({ message: `Текст "${value}" не найден` });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Ошибка при обработке данных' });
+    }
+  });
+});
+
 
 if (!fs.existsSync(messagesDir)) {
   fs.mkdirSync(messagesDir);
@@ -106,6 +137,21 @@ app.post('/saveMessage', (req, res) => {
   });
 });
 
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'mmark',
+  password: 'LQ8G/WoJJd_EsC9v',
+  database: 'users'
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Ошибка подключения к базе данных:', err);
+  } else {
+    console.log('Подключение к базе данных успешно');
+  }
+});
+
 const secretKey = 'your_secret_key';
 
 app.post('/signIn', (req, res) => {
@@ -137,15 +183,7 @@ app.post('/signIn', (req, res) => {
   });
 });
 
-app.post("/routeName", (res,req) => {
-  // const {someParams} = req.body
-  // some function
-  // res.json(someParams)
-})
 
-app.post("/supportGetData", (req,res) => {
-  console.log(req.body)
-})
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
 

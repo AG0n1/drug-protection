@@ -3,7 +3,13 @@ import logo from "../images/magnifying-glass-solid.svg"
 
 function Search() {
 
-    fetch("http://localhost:3001/getSearchData", {
+    const func = (e) => {
+        let res = document.getElementById("result-field")
+        if (e.target.value.trim() === "") {
+            res.classList.add("hidden")
+            return
+        } else {
+            fetch("http://localhost:3001/getSearchData", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -15,14 +21,6 @@ function Search() {
     .then(data => {
         
     })
-
-    const func = (e) => {
-        let res = document.getElementById("result-field")
-        if (e.target.value.trim() === "") {
-            res.classList.add("hidden")
-            return
-        } else {
-            
 
             res.classList.remove("hidden")
         }
