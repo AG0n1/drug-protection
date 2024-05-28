@@ -59,6 +59,7 @@ app.post('/getMessages', (req, res) => {
 
 app.post("/getSearchData", (req, res) => {
   let { value } = req.body;
+  console.log(value);
   const searchDir = 'backend/search/result.txt';
   fs.readFile(searchDir, 'utf8', (err, data) => {
     if (err) {
@@ -68,29 +69,29 @@ app.post("/getSearchData", (req, res) => {
 
     try {
       const parsedData = JSON.parse(data);
-      console.log(parsedData)
       let foundText = '';
-
+      let title = ''; 
       for (let key in parsedData) {
         if (key.toLowerCase().includes(value.toLowerCase())) {
+          console.log(key.toLowerCase(), value.toLowerCase());
           foundText = parsedData[key];
+          title = key; 
           break;
         }
       }
 
       if (!foundText) {
         for (let key in parsedData) {
-          if (parsedData[key].title.toLowerCase().includes(value.toLowerCase())) {
-            foundText = parsedData[key].title;
+          if (parsedData[key].content.toLowerCase().includes(value.toLowerCase())) {
+            foundText = parsedData[key].content;
+            title = key; 
             break;
           }
         }
       }
 
       if (foundText) {
-        res.status(200).json({ foundText });
-      } else {
-        res.status(404).json({ message: `Текст "${value}" не найден` });
+        res.status(200).json({ foundText, title });
       }
     } catch (error) {
       console.error(error);

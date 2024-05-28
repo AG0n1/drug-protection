@@ -1,3 +1,4 @@
+import { connection } from "mongoose"
 import Image from "../Image"
 import logo from "../images/magnifying-glass-solid.svg"
 
@@ -10,18 +11,17 @@ function Search() {
             return
         } else {
             fetch("http://localhost:3001/getSearchData", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem('token')}` 
-        },
-        body: JSON.stringify({value: ""})
-    })
-    .then(res => res.json())
-    .then(data => {
-        
-    })
-
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem('token')}` 
+                },
+                body: JSON.stringify({value: e.target.value})
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.foundText, data.title)
+            })
             res.classList.remove("hidden")
         }
     }
