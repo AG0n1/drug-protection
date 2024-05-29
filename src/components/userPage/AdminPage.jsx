@@ -217,14 +217,15 @@ class AdminPage extends Component {
       };
 
     const toggleUserInputVisibility = () => {
-      let elem = document.getElementById("hiddenInfo");
+      let elem = document.getElementById("hiddenInfo"),
+      btn = document.getElementById("show-toggle")
     
       if (isOpen) {
         elem.classList.add("hidden");
-        inf = "Открыть";
+        btn.textContent = "Открыть"
       } else {
         elem.classList.remove("hidden");
-        inf = "Закрыть";
+        btn.textContent = "Закрыть";
       }
       isOpen = !isOpen;
     };
@@ -291,7 +292,7 @@ class AdminPage extends Component {
           <button className="logout" onClick={this.deleteToken}>
             <img src={logout} width="40px" height="40px" />
           </button>
-          <button className="hideInfo" onClick={toggleUserInputVisibility}>{inf}</button>
+          <button className="hideInfo" id="show-toggle" onClick={toggleUserInputVisibility}>{inf}</button>
         </div>
 
         <div id="customers" className="userInfo admin-tool">

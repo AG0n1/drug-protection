@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 const fs = require("fs")
-const path = require("path")
+const path = require("path");
+const e = require('cors');
 let activeUsers = {}
 const app = express();
 
@@ -92,6 +93,8 @@ app.post("/getSearchData", (req, res) => {
 
       if (foundText) {
         res.status(200).json({ foundText, title });
+      } else {
+        res.status(200).json({title: null})
       }
     } catch (error) {
       console.error(error);

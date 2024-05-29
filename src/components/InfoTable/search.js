@@ -18,11 +18,20 @@ function Search() {
                 },
                 body: JSON.stringify({value: e.target.value})
             })
-            .then(res => res.json())
+            .then(response => response.json())
             .then(data => {
-                console.log(data.foundText, data.title)
+                if (data.foundText && data.title) {
+                    res.textContent = data.title;
+                } else {
+                    res.textContent = "По Вашему запросу ничего не найдено";
+                }
+                res.classList.remove("hidden");
             })
-            res.classList.remove("hidden")
+            .catch(error => {
+                console.error('Error:', error);
+                res.textContent = "Произошла ошибка при выполнении запроса";
+                res.classList.remove("hidden");
+            });
         }
     }
 

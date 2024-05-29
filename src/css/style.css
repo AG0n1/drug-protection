@@ -33,6 +33,7 @@ html {
 
 header {
     position: fixed;
+    align-items: center;
     width: 100%;
     z-index: 100;
     transition: .5s;
