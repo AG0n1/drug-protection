@@ -24,12 +24,16 @@ function generateToken() {
   return token;
 }
 
+app.post('/userSupportRequests', (req, res) => {
+  let { message, name, second_name, telegram_name } = req.body
+})
+
 app.post('/getStoriesInfo', (req, res) => {
-  let {id} = req.body
-  fs.readFile(storiesFilePath + {id} + ".txt", 'utf8', (err, data) => {
+  let { id } = req.body
+  fs.readFile(storiesFilePath + { id } + ".txt", 'utf8', (err, data) => {
     if (err) {
       console.error('Ошибка чтения файла:', err);
-      res.status(500).json({data: 'Произошла ошибка при чтении данных.'});
+      res.status(500).json({ data: 'Произошла ошибка при чтении данных.' });
       return;
     }
 
@@ -38,16 +42,16 @@ app.post('/getStoriesInfo', (req, res) => {
       res.json(parsedData);
     } catch (parseError) {
       console.error('Ошибка парсинга данных:', parseError);
-      res.status(500).json({data: 'Произошла ошибка при парсинге данных.'});
+      res.status(500).json({ data: 'Произошла ошибка при парсинге данных.' });
     }
   });
 });
 
 app.post('/getMessages', (req, res) => {
-  let {id} = req.body
-  
+  let { id } = req.body
+
   const filePath = path.join(messagesDir, `${id}.txt`);
-  
+
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.error('Error writing to file:', err);
@@ -71,12 +75,12 @@ app.post("/getSearchData", (req, res) => {
     try {
       const parsedData = JSON.parse(data);
       let foundText = '';
-      let title = ''; 
+      let title = '';
       for (let key in parsedData) {
         if (key.toLowerCase().includes(value.toLowerCase())) {
           console.log(key.toLowerCase(), value.toLowerCase());
           foundText = parsedData[key];
-          title = key; 
+          title = key;
           break;
         }
       }
@@ -85,7 +89,7 @@ app.post("/getSearchData", (req, res) => {
         for (let key in parsedData) {
           if (parsedData[key].content.toLowerCase().includes(value.toLowerCase())) {
             foundText = parsedData[key].content;
-            title = key; 
+            title = key;
             break;
           }
         }
@@ -94,7 +98,7 @@ app.post("/getSearchData", (req, res) => {
       if (foundText) {
         res.status(200).json({ foundText, title });
       } else {
-        res.status(200).json({title: null})
+        res.status(200).json({ title: null })
       }
     } catch (error) {
       console.error(error);
@@ -113,10 +117,10 @@ app.post('/saveMessage', (req, res) => {
 
   if (message.trim().length === 0) {
     return
-  } 
+  }
 
-  const dataToWrite = 
-`"${time}": {
+  const dataToWrite =
+    `"${time}": {
   "name": "${name}", 
   "second_name": "${second_name}", 
   "date": "${date}", 
@@ -126,7 +130,7 @@ app.post('/saveMessage', (req, res) => {
 
   const filePath = path.join(messagesDir, `${id}.txt`);
   console.log(filePath)
-  
+
   fs.appendFile(filePath, dataToWrite, 'utf8', (err) => {
     if (err) {
       console.error('Error writing to file:', err);
@@ -278,8 +282,8 @@ app.post("/getUsersData", (req, res) => {
   });
 })
 
-app.post("/getUserAppointmentsData", (req,res) => {
-  
+app.post("/getUserAppointmentsData", (req, res) => {
+
 })
 
 app.post("/getCustomersData", (req, res) => {
