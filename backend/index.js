@@ -26,6 +26,15 @@ function generateToken() {
 
 app.post('/userSupportRequests', (req, res) => {
   let { message, name, second_name, telegram_name } = req.body
+
+  connection.query("SELECT * FROM usersSupport", (err, result) => {
+    if (!err) {
+
+    } else {
+      console.log("Some error, ", err)
+    }
+  })
+
 })
 
 app.post('/getStoriesInfo', (req, res) => {
