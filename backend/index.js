@@ -5,6 +5,9 @@ const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
+const util = require('util');
+
+
 
 const app = express();
 app.use(cors());
@@ -215,6 +218,8 @@ const saveData = async (req, res) => {
   }
 };
 
+const query = util.promisify(connection.query).bind(connection);
+
 const getUsersData = async (req, res) => {
   const query = "SELECT name, second_name, status FROM users WHERE status IN ('user')";
 
@@ -227,12 +232,13 @@ const getUsersData = async (req, res) => {
 };
 
 const getCustomersData = async (req, res) => {
-  const query = "SELECT name, second_name, status FROM users WHERE status IN ('customer', 'tech', 'admin')";
+  const queryStr = "SELECT name, second_name, status FROM users WHERE status IN ('customer', 'tech', 'admin')";
 
   try {
-    const [results] = await connection.query(query);
+    const results = await query(queryStr);
     res.json(results.map(row => ({ name: row.name, second_name: row.second_name, status: row.status })));
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 };

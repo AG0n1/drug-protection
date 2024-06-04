@@ -48,10 +48,6 @@ class AdminPage extends Component {
       table.appendChild(fieldNames)
     }
 
-    // if (userData.status !== "admin") {
-    //     alert("У Вас нету прав для доступа к этой странице")
-    //     window.location.href = "/";
-    // }
     
     this.setState({  
       nickname: userData.nickname,
@@ -87,8 +83,9 @@ class AdminPage extends Component {
         };
         return order[a.status] - order[b.status];
     };
-
+    console.log(data)
     data.sort(sortByStatus);
+
 
     for (let i = 0; i < data.length; i++) {
         let elem = document.createElement("div");
