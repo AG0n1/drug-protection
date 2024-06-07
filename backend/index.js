@@ -7,8 +7,6 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 
-
-
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -35,6 +33,8 @@ connection.connect((err) => {
   }
 });
 
+const query = util.promisify(connection.query).bind(connection);
+
 const secretKey = 'your_secret_key';
 let activeUsers = {};
 
@@ -48,7 +48,7 @@ const userSupportRequests = async (req, res) => {
   const { message, name, second_name, telegram_name } = req.body;
 
   try {
-    const [result] = await connection.query("SELECT * FROM usersSupport");
+    const result = await query("SELECT * FROM usersSupport");
     res.json(result);
   } catch (err) {
     console.error("Error:", err);
@@ -148,7 +148,7 @@ const signIn = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const [results] = await connection.query('SELECT * FROM users WHERE email = ?', [email]);
+    const results = await query('SELECT * FROM users WHERE email = ?', [email]);
     if (results.length > 0) {
       const user = results[0];
       if (user.password === password) {
@@ -171,11 +171,11 @@ const register = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const [results] = await connection.query('SELECT * FROM users WHERE email = ?', [email]);
+    const results = await query('SELECT * FROM users WHERE email = ?', [email]);
     if (results.length > 0) {
       res.json({ user: true });
     } else {
-      const [result] = await connection.query('INSERT INTO users (email, password) VALUES (?, ?)', [email, password]);
+      const result = await query('INSERT INTO users (email, password) VALUES (?, ?)', [email, password]);
       const token = jwt.sign({ email, userId: result.insertId }, secretKey, { expiresIn: '10h' });
       activeUsers[token] = { expiresIn: '10h', isActive: true };
       res.json({ user: { email, id: result.insertId }, token });
@@ -202,11 +202,11 @@ const saveData = async (req, res) => {
   const values = fields.map(field => body[field]);
   const setClause = fields.map(field => `${field} = ?`).join(', ');
 
-  const query = `UPDATE users SET ${setClause} WHERE email = ?`;
+  const queryStr = `UPDATE users SET ${setClause} WHERE email = ?`;
   values.push(email);
 
   try {
-    const [results] = await connection.query(query, values);
+    const results = await query(queryStr, values);
     if (results.affectedRows === 0) {
       res.status(404).json({ error: 'User not found' });
     } else {
@@ -218,13 +218,11 @@ const saveData = async (req, res) => {
   }
 };
 
-const query = util.promisify(connection.query).bind(connection);
-
 const getUsersData = async (req, res) => {
-  const query = "SELECT name, second_name, status FROM users WHERE status IN ('user')";
+  const queryStr = "SELECT name, second_name, status FROM users WHERE status IN ('user')";
 
   try {
-    const [results] = await connection.query(query);
+    const results = await query(queryStr);
     res.json(results.map(row => ({ name: row.name, second_name: row.second_name, status: row.status })));
   } catch (error) {
     res.status(500).json({ error: error.message });
