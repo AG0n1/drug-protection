@@ -21,7 +21,7 @@ if (!fs.existsSync(messagesDir)) {
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'mmark',
-  password: 'LQ8G/WoJJd_EsC9v',
+  password: '9HjnEI.K!(LJlEnH',
   database: 'users'
 });
 
